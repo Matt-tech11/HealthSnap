@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:healthsnap/common/color_extension.dart';
-import 'package:healthsnap/common_widget/round_button.dart';
-import 'package:healthsnap/common_widget/upcoming_workout_row.dart';
-import 'package:healthsnap/common_widget/what_train.dart';
+import 'package:healthsnap/common_widget/icon_title_next_row.dart';
 
 class WorkoutDetail extends StatefulWidget {
   final Map dObj;
@@ -184,46 +182,22 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
                     ],
                   ),
                   SizedBox(height: media.width * 0.05),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 15,
-                      horizontal: 15,
-                    ),
-                    decoration: BoxDecoration(
-                      color: TColor.primaryColor2.withValues(alpha: 0.3),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Daily Workout Schedule",
-                          style: TextStyle(
-                            color: TColor.black,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 25,
-                          height: 25,
-                          child: InkWell(
-                            onTap: () {},
-                            child: Container(
-                              width: 25,
-                              height: 25,
-                              alignment: Alignment.center,
-                              child: Image.asset(
-                                "assets/img/arrow_right.png",
-                                width: 12,
-                                height: 12,
-                                fit: BoxFit.contain,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+
+                  IconTitleNextRow(
+                    icon: "assets/img/calendar.png",
+                    title: "Schedule Workout",
+                    time: "5/27, 09:00 AM",
+                    color: TColor.primaryColor2.withValues(alpha: 0.3),
+                    onPressed: () {},
+                  ),
+
+                  SizedBox(height: media.width * 0.05),
+                  IconTitleNextRow(
+                    icon: "assets/img/calendar.png",
+                    title: "Schedule Workout",
+                    time: "5/27, 09:00 AM",
+                    color: TColor.secondaryColor2.withValues(alpha: 0.3),
+                    onPressed: () {},
                   ),
 
                   SizedBox(height: media.width * 0.05),
