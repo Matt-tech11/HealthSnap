@@ -21,7 +21,7 @@ class IconTitleNextRow extends StatelessWidget {
     return InkWell(
       onTap: onPressed,
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
         decoration: BoxDecoration(
           color: color,
           borderRadius: BorderRadius.circular(15),
@@ -30,13 +30,13 @@ class IconTitleNextRow extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              width: 25,
-              height: 25,
+              width: 30,
+              height: 30,
               alignment: Alignment.center,
               child: Image.asset(
                 icon,
-                width: 12,
-                height: 12,
+                width: 18,
+                height: 18,
                 fit: BoxFit.contain,
               ),
             ),

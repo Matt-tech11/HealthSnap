@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:healthsnap/common/color_extension.dart';
 import 'package:healthsnap/common_widget/icon_title_next_row.dart';
+import 'package:healthsnap/common_widget/upcoming_workout_row.dart';
 
 class WorkoutDetail extends StatefulWidget {
   final Map dObj;
-  const WorkoutDetail({super.key, required this.dObj});
+  //final Map yObj;
+  const WorkoutDetail({super.key, required this.dObj /*required this.yObj*/});
 
   @override
   State<WorkoutDetail> createState() => _WorkoutDetailState();
@@ -43,6 +45,41 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
       "time": "20mins",
     },
   ];
+  List youArr = [
+    {"img": "assets/img/skipping_rope.png", "title": "Skipping Rope"},
+    {"img": "assets/img/barbel.png", "title": "Barbel"},
+    {"img": "assets/img/water_bottle.png", "title": "Bottle 1 Liters"},
+  ];
+  List exerciseArr = [
+    {
+      "img": "assets/img/skipping_rope.png",
+      "title": "Warm Up",
+      "value": "05:00",
+    },
+    {"img": "assets/img/barbel.png", "title": "Jumping Jack", "value": "05:00"},
+
+    {
+      "img": "assets/img/water_bottle.png",
+      "title": "Skipping",
+      "value": "05:00",
+    },
+    {
+      "img": "assets/img/skipping_rope.png",
+      "title": "Squats",
+      "value": "05:00",
+    },
+    {
+      "img": "assets/img/skipping_rope.png",
+      "title": "Arm Raises",
+      "value": "05:00",
+    },
+    {
+      "img": "assets/img/skipping_rope.png",
+      "title": "Rest and Drink",
+      "value": "05:00",
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
@@ -111,10 +148,14 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
               leadingWidth: 0,
               leading: Container(),
               expandedHeight: media.width * 0.5,
-              flexibleSpace: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                height: media.width * 0.5,
-                width: double.maxFinite,
+              flexibleSpace: Align(
+                alignment: Alignment.center,
+                child: Image.asset(
+                  "assets/img/skip_detail.png",
+                  width: media.width * 0.75,
+                  height: media.width * 0.8,
+                  fit: BoxFit.contain,
+                ),
               ),
             ),
           ];
@@ -161,7 +202,7 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
                               ),
                             ),
                             Text(
-                              "${widget.dObj["exercise"].toString()}exrcises | ${widget.dObj["time"].toString()} 320 Calories Burn",
+                              "${widget.dObj["exercise"].toString()} | ${widget.dObj["time"].toString()} 320 Calories Burn",
                               style: TextStyle(
                                 color: TColor.gray,
                                 fontSize: 12,
@@ -193,51 +234,124 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
 
                   SizedBox(height: media.width * 0.05),
                   IconTitleNextRow(
-                    icon: "assets/img/calendar.png",
-                    title: "Schedule Workout",
-                    time: "5/27, 09:00 AM",
+                    icon: "assets/img/difficulity.png",
+                    title: "Difficulty",
+                    time: "Beginner",
                     color: TColor.secondaryColor2.withValues(alpha: 0.3),
                     onPressed: () {},
                   ),
 
                   SizedBox(height: media.width * 0.05),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "You'll need this",
+                        style: TextStyle(
+                          color: TColor.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
 
-                  //ListView.builder(
-                  // padding: EdgeInsets.zero,
-                  // physics: NeverScrollableScrollPhysics(),
-                  //shrinkWrap: true,
-                  //itemCount: latestArr.length,
-                  //itemBuilder: (context, index) {
-                  //var wObj = latestArr[index] as Map? ?? {};
-                  //return UpcomingWorkoutRow(wObj: wObj);
-                  //},
-                  //),
+                      TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          "${youArr.length} Items",
+                          style: TextStyle(color: TColor.gray, fontSize: 12),
+                        ),
+                      ),
+                    ],
+                  ),
 
-                  //SizedBox(height: media.width * 0.05),
-                  //Row(
-                  //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //children: [
-                  //Text(
-                  //"What Do You Want to Train",
-                  //style: TextStyle(
-                  //color: TColor.black,
-                  //fontSize: 16,
-                  //fontWeight: FontWeight.w700,
-                  //),
-                  //),
-                  //],
-                  //),
-                  ///SizedBox(height: media.width * 0.03),
-                  //ListView.builder(
-                  //padding: EdgeInsets.zero,
-                  //physics: NeverScrollableScrollPhysics(),
-                  //shrinkWrap: true,
-                  //itemCount: upcomingArr.length,
-                  //itemBuilder: (context, index) {
-                  //var wObj = upcomingArr[index] as Map? ?? {};
-                  // return WhatTrain(wObj: wObj);
-                  //},
-                  //),
+                  SizedBox(
+                    height: media.width * 0.5,
+                    child: ListView.builder(
+                      padding: EdgeInsets.zero,
+                      scrollDirection: Axis.horizontal,
+                      shrinkWrap: true,
+                      itemCount: youArr.length,
+                      itemBuilder: (context, index) {
+                        var yObj = youArr[index] as Map? ?? {};
+                        return Container(
+                          margin: EdgeInsets.all(8),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                height: media.width * 0.35,
+                                width: media.width * 0.35,
+                                decoration: BoxDecoration(
+                                  color: TColor.LightGray,
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                alignment: Alignment.center,
+                                child: Image.asset(
+                                  yObj["img"].toString(),
+                                  width: media.width * 0.2,
+                                  height: media.width * 0.2,
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
+
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  yObj["title"].toString(),
+                                  style: TextStyle(
+                                    color: TColor.black,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+
+                  SizedBox(height: media.width * 0.05),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Exercises",
+                        style: TextStyle(
+                          color: TColor.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+
+                      TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          "${youArr.length} Sets",
+                          style: TextStyle(color: TColor.gray, fontSize: 12),
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  ListView.builder(
+                    padding: EdgeInsets.zero,
+                    physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: exerciseArr.length,
+                    itemBuilder: (context, index) {
+                      var sObj = exerciseArr[index] as Map? ?? {};
+                      return Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            "${youArr.length} Sets",
+                            style: TextStyle(color: TColor.gray, fontSize: 12),
+                          ),
+                        ],
+                      );
+                    },
+                  ),
                   SizedBox(height: media.width * 0.1),
                 ],
               ),
