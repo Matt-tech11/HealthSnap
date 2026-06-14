@@ -7,8 +7,8 @@ import 'package:healthsnap/common_widget/upcoming_workout_row.dart';
 
 class WorkoutDetail extends StatefulWidget {
   final Map dObj;
-  //final Map yObj;
-  const WorkoutDetail({super.key, required this.dObj /*required this.yObj*/});
+
+  const WorkoutDetail({super.key, required this.dObj});
 
   @override
   State<WorkoutDetail> createState() => _WorkoutDetailState();
@@ -27,6 +27,7 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
       "time": "June 05, 02:00pm",
     },
   ];
+
   List upcomingArr = [
     {
       "img": "assets/img/skipper.png",
@@ -47,11 +48,13 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
       "time": "20mins",
     },
   ];
+
   List youArr = [
     {"img": "assets/img/skipping_rope.png", "title": "Skipping Rope"},
     {"img": "assets/img/barbel.png", "title": "Barbel"},
     {"img": "assets/img/water_bottle.png", "title": "Bottle 1 Liters"},
   ];
+
   List exerciseArr = [
     {
       "name": "Set 1",
@@ -66,7 +69,6 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
           "title": "Jumping Jack",
           "value": "05:00",
         },
-
         {
           "img": "assets/img/water_bottle.png",
           "title": "Skipping",
@@ -104,6 +106,7 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
+
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(colors: TColor.primaryG),
@@ -115,8 +118,6 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
               backgroundColor: Colors.transparent,
               centerTitle: true,
               elevation: 0,
-              //leadingWidth: 0,
-              //automaticallyImplyLeading: false,
               leading: InkWell(
                 onTap: () {
                   Navigator.pop(context);
@@ -138,8 +139,6 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
                   ),
                 ),
               ),
-
-              //pinned: true,
               actions: [
                 InkWell(
                   onTap: () {},
@@ -186,8 +185,8 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
           decoration: BoxDecoration(
             color: TColor.white,
             borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(30),
-              topRight: Radius.circular(30),
+              topLeft: Radius.circular(25),
+              topRight: Radius.circular(25),
             ),
           ),
           child: Scaffold(
@@ -208,7 +207,6 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
                       ),
                       SizedBox(height: media.width * 0.05),
 
-                      // DAILY WORKOUT SCHEDULE SECTION
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -245,26 +243,29 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
                           ),
                         ],
                       ),
+
                       SizedBox(height: media.width * 0.05),
 
                       IconTitleNextRow(
                         icon: "assets/img/calendar.png",
                         title: "Schedule Workout",
                         time: "5/27, 09:00 AM",
-                        color: TColor.primaryColor2.withValues(alpha: 0.3),
+                        color: TColor.primaryColor2.withOpacity(0.3),
                         onPressed: () {},
                       ),
 
                       SizedBox(height: media.width * 0.05),
+
                       IconTitleNextRow(
                         icon: "assets/img/difficulity.png",
                         title: "Difficulty",
                         time: "Beginner",
-                        color: TColor.secondaryColor2.withValues(alpha: 0.3),
+                        color: TColor.secondaryColor2.withOpacity(0.3),
                         onPressed: () {},
                       ),
 
                       SizedBox(height: media.width * 0.05),
+
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -276,7 +277,6 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
                               fontWeight: FontWeight.w700,
                             ),
                           ),
-
                           TextButton(
                             onPressed: () {},
                             child: Text(
@@ -299,8 +299,9 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
                           itemCount: youArr.length,
                           itemBuilder: (context, index) {
                             var yObj = youArr[index] as Map? ?? {};
+
                             return Container(
-                              margin: EdgeInsets.all(8),
+                              margin: const EdgeInsets.all(8),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -319,7 +320,6 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
                                       fit: BoxFit.contain,
                                     ),
                                   ),
-
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Text(
@@ -338,6 +338,7 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
                       ),
 
                       SizedBox(height: media.width * 0.05),
+
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -349,11 +350,10 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
                               fontWeight: FontWeight.w700,
                             ),
                           ),
-
                           TextButton(
                             onPressed: () {},
                             child: Text(
-                              "${youArr.length} Sets",
+                              "${exerciseArr.length} Sets",
                               style: TextStyle(
                                 color: TColor.gray,
                                 fontSize: 12,
@@ -365,18 +365,20 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
 
                       ListView.builder(
                         padding: EdgeInsets.zero,
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemCount: exerciseArr.length,
                         itemBuilder: (context, index) {
                           var sObj = exerciseArr[index] as Map? ?? {};
+
                           return ExerciseSetSection(
                             sObj: sObj,
                             onPressed: (eObj) {},
                           );
                         },
                       ),
-                      SizedBox(height: media.width * 0.1),
+
+                      SizedBox(height: media.width * 0.25),
                     ],
                   ),
                 ),
