@@ -362,7 +362,7 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
 
                           return ExerciseSetSection(
                             sObj: sObj,
-                            onPressed: (Obj) {},
+                            onPressed: (obj) {},
                           );
                         },
                       ),
