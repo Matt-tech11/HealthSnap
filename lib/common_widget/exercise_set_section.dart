@@ -4,19 +4,23 @@ import 'package:healthsnap/common_widget/exercise_row.dart';
 
 class ExerciseSetSection extends StatelessWidget {
   final Map sObj;
-  final void Function(Map eObj)? onPressed;
+  final Function(Map obj)? onPressed;
   const ExerciseSetSection({super.key, required this.sObj, this.onPressed});
 
   @override
   Widget build(BuildContext context) {
-    var exerciseArr = sObj["exercise"] as List? ?? [];
+    var exerciseArr = sObj["set"] as List? ?? [];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
           sObj["name"].toString(),
-          style: TextStyle(color: TColor.gray, fontSize: 8),
+          style: TextStyle(
+            color: TColor.black,
+            fontSize: 12,
+            fontWeight: FontWeight.w500,
+          ),
         ),
         const SizedBox(height: 8),
 

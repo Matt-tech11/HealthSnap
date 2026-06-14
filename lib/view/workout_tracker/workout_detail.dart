@@ -59,33 +59,21 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
     {
       "name": "Set 1",
       "set": [
+        {"img": "assets/img/warm_up.png", "title": "Warm Up", "value": "05:00"},
         {
-          "img": "assets/img/skipping_rope.png",
-          "title": "Warm Up",
-          "value": "05:00",
-        },
-        {
-          "img": "assets/img/barbel.png",
+          "img": "assets/img/jumping_jack.png",
           "title": "Jumping Jack",
           "value": "05:00",
         },
+        {"img": "assets/img/skipp.png", "title": "Skipping", "value": "05:00"},
+        {"img": "assets/img/squats.png", "title": "Squats", "value": "05:00"},
         {
-          "img": "assets/img/water_bottle.png",
-          "title": "Skipping",
-          "value": "05:00",
-        },
-        {
-          "img": "assets/img/skipping_rope.png",
-          "title": "Squats",
-          "value": "05:00",
-        },
-        {
-          "img": "assets/img/skipping_rope.png",
+          "img": "assets/img/arm_raises.png",
           "title": "Arm Raises",
           "value": "05:00",
         },
         {
-          "img": "assets/img/skipping_rope.png",
+          "img": "assets/img/rest.png",
           "title": "Rest and Drink",
           "value": "05:00",
         },
@@ -95,7 +83,7 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
       "name": "Set 2",
       "set": [
         {
-          "img": "assets/img/skipping_rope.png",
+          "img": "assets/img/rest.png",
           "title": "Rest and Drink",
           "value": "05:00",
         },
@@ -136,6 +124,7 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
                     color: Colors.black,
                     width: 15,
                     height: 15,
+                    fit: BoxFit.contain,
                   ),
                 ),
               ),
@@ -191,8 +180,8 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
           ),
           child: Scaffold(
             backgroundColor: Colors.transparent,
-            body: Stack(
-              children: [
+            body: //Stack(
+                //children: [
                 SingleChildScrollView(
                   child: Column(
                     children: [
@@ -270,7 +259,7 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "You'll need this",
+                            "You'll need",
                             style: TextStyle(
                               color: TColor.black,
                               fontSize: 16,
@@ -373,7 +362,7 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
 
                           return ExerciseSetSection(
                             sObj: sObj,
-                            onPressed: (eObj) {},
+                            onPressed: (Obj) {},
                           );
                         },
                       ),
@@ -383,17 +372,18 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
                   ),
                 ),
 
-                SafeArea(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      RoundButton(title: "Start Workout", onPressed: () {}),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+            //SafeArea(
+            //child: Column(
+            //mainAxisSize: MainAxisSize.max,
+            //mainAxisAlignment: MainAxisAlignment.end,
+            //children: [
+            //RoundButton(title: "Start Workout", onPressed: () {}),
+            //],
+            //),
+            //),
+
+            //],
+            //),
           ),
         ),
       ),
