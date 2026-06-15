@@ -180,8 +180,8 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
           ),
           child: Scaffold(
             backgroundColor: Colors.transparent,
-            body: //Stack(
-                //children: [
+            body: Stack(
+              children: [
                 SingleChildScrollView(
                   child: Column(
                     children: [
@@ -372,18 +372,17 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
                   ),
                 ),
 
-            //SafeArea(
-            //child: Column(
-            //mainAxisSize: MainAxisSize.max,
-            //mainAxisAlignment: MainAxisAlignment.end,
-            //children: [
-            //RoundButton(title: "Start Workout", onPressed: () {}),
-            //],
-            //),
-            //),
-
-            //],
-            //),
+                SafeArea(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      RoundButton(title: "Start Workout", onPressed: () {}),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
