@@ -12,6 +12,7 @@ class ExercisesStepDetails extends StatefulWidget {
 class _ExercisesStepDetailsState extends State<ExercisesStepDetails> {
   @override
   Widget build(BuildContext context) {
+    var media = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: TColor.white,
@@ -31,7 +32,7 @@ class _ExercisesStepDetailsState extends State<ExercisesStepDetails> {
               borderRadius: BorderRadius.circular(10),
             ),
             child: Image.asset(
-              "assets/img/back_nav.png",
+              "assets/img/back_navs.png",
               color: Colors.black,
               width: 15,
               height: 15,
@@ -67,7 +68,74 @@ class _ExercisesStepDetailsState extends State<ExercisesStepDetails> {
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 25),
-          child: Column(children: []),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  Container(
+                    width: media.width,
+                    height: media.width * 0.43,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(colors: TColor.primaryG),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    //child: Image.asset(
+                    //"assets/img/video.png",
+                    //width: media.width,
+                    //height: media.width * 0.43,
+                    //fit: BoxFit.contain,
+                    //),
+                  ),
+                  Container(
+                    width: media.width,
+                    height: media.width * 0.43,
+                    decoration: BoxDecoration(
+                      color: TColor.black.withOpacity(0.2),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                  //IconButton(
+                  //onPressed: () {},
+                  //icon: Image.asset(
+                  //"assets/img/play.png",
+                  //width: 30,
+                  //height: 30,
+                  //),
+                  //),
+                ],
+              ),
+              const SizedBox(height: 18),
+              Text(
+                widget.eObj["title"].toString(),
+                style: TextStyle(
+                  color: TColor.black,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                "Easy | 390 Calories Burn",
+                style: TextStyle(color: TColor.gray, fontSize: 12),
+              ),
+              const SizedBox(height: 15),
+              Text(
+                "Description",
+                style: TextStyle(
+                  color: TColor.black,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                "Easy | 390 Calories Burn",
+                style: TextStyle(color: TColor.gray, fontSize: 12),
+              ),
+            ],
+          ),
         ),
       ),
     );

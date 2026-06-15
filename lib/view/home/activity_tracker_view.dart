@@ -47,7 +47,7 @@ class _ActivityTrackerViewState extends State<ActivityTrackerView> {
               borderRadius: BorderRadius.circular(10),
             ),
             child: Image.asset(
-              "assets/img/back_nav.png",
+              "assets/img/back_navs.png",
               color: Colors.black,
               width: 15,
               height: 15,

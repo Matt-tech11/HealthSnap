@@ -59,7 +59,7 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
     {
       "name": "Set 1",
       "set": [
-        {"img": "assets/img/warm_up.png", "title": "Warm Up", "value": "05:00"},
+        //{"img": "assets/img/warm_up.png", "title": "Warm Up", "value": "05:00"},
         {
           "img": "assets/img/jumping_jack.png",
           "title": "Jumping Jack",
@@ -82,7 +82,6 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
     {
       "name": "Set 2",
       "set": [
-        {"img": "assets/img/warm_up.png", "title": "Warm Up", "value": "05:00"},
         {
           "img": "assets/img/jumping_jack.png",
           "title": "Jumping Jack",
@@ -105,7 +104,6 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
     {
       "name": "Set 3",
       "set": [
-        {"img": "assets/img/warm_up.png", "title": "Warm Up", "value": "05:00"},
         {
           "img": "assets/img/jumping_jack.png",
           "title": "Jumping Jack",
