@@ -109,7 +109,7 @@ class _NotificationViewState extends State<NotificationView> {
           return NotificationRow(obj: nobj);
         }),
         separatorBuilder: (context, index) {
-          return Divider(height: 1, color: TColor.gray.withOpacity(0.5));
+          return Divider(height: 1, color: TColor.gray.withOpacity(0.2));
         },
         itemCount: notificationArr.length,
       ),

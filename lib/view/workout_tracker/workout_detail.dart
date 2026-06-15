@@ -3,6 +3,7 @@ import 'package:healthsnap/common/color_extension.dart';
 import 'package:healthsnap/common_widget/exercise_set_section.dart';
 import 'package:healthsnap/common_widget/icon_title_next_row.dart';
 import 'package:healthsnap/common_widget/round_button.dart';
+import 'package:healthsnap/view/workout_tracker/exercises_step_details.dart';
 
 class WorkoutDetail extends StatefulWidget {
   final Map dObj;
@@ -81,6 +82,42 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
     {
       "name": "Set 2",
       "set": [
+        {"img": "assets/img/warm_up.png", "title": "Warm Up", "value": "05:00"},
+        {
+          "img": "assets/img/jumping_jack.png",
+          "title": "Jumping Jack",
+          "value": "05:00",
+        },
+        {"img": "assets/img/skipp.png", "title": "Skipping", "value": "05:00"},
+        {"img": "assets/img/squats.png", "title": "Squats", "value": "05:00"},
+        {
+          "img": "assets/img/arm_raises.png",
+          "title": "Arm Raises",
+          "value": "05:00",
+        },
+        {
+          "img": "assets/img/rest.png",
+          "title": "Rest and Drink",
+          "value": "05:00",
+        },
+      ],
+    },
+    {
+      "name": "Set 3",
+      "set": [
+        {"img": "assets/img/warm_up.png", "title": "Warm Up", "value": "05:00"},
+        {
+          "img": "assets/img/jumping_jack.png",
+          "title": "Jumping Jack",
+          "value": "05:00",
+        },
+        {"img": "assets/img/skipp.png", "title": "Skipping", "value": "05:00"},
+        {"img": "assets/img/squats.png", "title": "Squats", "value": "05:00"},
+        {
+          "img": "assets/img/arm_raises.png",
+          "title": "Arm Raises",
+          "value": "05:00",
+        },
         {
           "img": "assets/img/rest.png",
           "title": "Rest and Drink",
@@ -119,7 +156,7 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Image.asset(
-                    "assets/img/back_nav.png",
+                    "assets/img/back_navs.png",
                     color: Colors.black,
                     width: 15,
                     height: 15,
@@ -211,7 +248,7 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
                                   ),
                                 ),
                                 Text(
-                                  "${widget.dObj["exercise"].toString()} | ${widget.dObj["time"].toString()} 320 Calories Burn",
+                                  "${widget.dObj["exercises"].toString()} | ${widget.dObj["time"].toString()} 320 Calories Burn",
                                   style: TextStyle(
                                     color: TColor.gray,
                                     fontSize: 12,
@@ -258,7 +295,7 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "You'll need",
+                            "You'll Need",
                             style: TextStyle(
                               color: TColor.black,
                               fontSize: 16,
@@ -338,20 +375,21 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
                               fontWeight: FontWeight.w700,
                             ),
                           ),
+                          TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              "${exerciseArr.length} Sets",
+                              style: TextStyle(
+                                color: TColor.gray,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
                         ],
                       ),
 
-                      //TextButton(
-                      // onPressed: () {},
-                      // child: Text(
-                      // "${exerciseArr.length} Sets",
-                      // style: TextStyle(
-                      //  color: TColor.gray,
-                      //  fontSize: 12,
-                      // ),
-                      // ),
-                      // ),
-                      SizedBox(height: media.width * 0.05),
+                      SizedBox(height: media.width * 0.03),
 
                       ListView.builder(
                         padding: EdgeInsets.zero,
@@ -363,7 +401,15 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
 
                           return ExerciseSetSection(
                             sObj: sObj,
-                            onPressed: (obj) {},
+                            onPressed: (obj) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      ExercisesStepDetails(eObj: obj),
+                                ),
+                              );
+                            },
                           );
                         },
                       ),
