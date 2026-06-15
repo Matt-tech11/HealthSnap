@@ -16,9 +16,9 @@ class ExerciseRow extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(5),
             child: Image.asset(
-              eObj["image"].toString(),
-              width: 60,
-              height: 60,
+              eObj["img"].toString(),
+              width: 80,
+              height: 80,
               fit: BoxFit.cover,
             ),
           ),
@@ -31,7 +31,7 @@ class ExerciseRow extends StatelessWidget {
                   eObj["title"].toString(),
                   style: TextStyle(
                     color: TColor.black,
-                    fontSize: 12,
+                    fontSize: 14,
                     fontWeight: FontWeight.w500,
                   ),
                 ),

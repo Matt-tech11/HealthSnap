@@ -3,7 +3,6 @@ import 'package:healthsnap/common/color_extension.dart';
 import 'package:healthsnap/common_widget/exercise_set_section.dart';
 import 'package:healthsnap/common_widget/icon_title_next_row.dart';
 import 'package:healthsnap/common_widget/round_button.dart';
-import 'package:healthsnap/common_widget/upcoming_workout_row.dart';
 
 class WorkoutDetail extends StatefulWidget {
   final Map dObj;
@@ -243,7 +242,7 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
                         onPressed: () {},
                       ),
 
-                      SizedBox(height: media.width * 0.05),
+                      SizedBox(height: media.width * 0.02),
 
                       IconTitleNextRow(
                         icon: "assets/img/difficulity.png",
@@ -339,18 +338,20 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
                               fontWeight: FontWeight.w700,
                             ),
                           ),
-                          TextButton(
-                            onPressed: () {},
-                            child: Text(
-                              "${exerciseArr.length} Sets",
-                              style: TextStyle(
-                                color: TColor.gray,
-                                fontSize: 12,
-                              ),
-                            ),
-                          ),
                         ],
                       ),
+
+                      //TextButton(
+                      // onPressed: () {},
+                      // child: Text(
+                      // "${exerciseArr.length} Sets",
+                      // style: TextStyle(
+                      //  color: TColor.gray,
+                      //  fontSize: 12,
+                      // ),
+                      // ),
+                      // ),
+                      SizedBox(height: media.width * 0.05),
 
                       ListView.builder(
                         padding: EdgeInsets.zero,
