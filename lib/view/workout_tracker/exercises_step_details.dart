@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:healthsnap/common/color_extension.dart';
 import 'package:healthsnap/common_widget/round_button.dart';
@@ -215,8 +216,61 @@ class _ExercisesStepDetailsState extends State<ExercisesStepDetails> {
                   fontWeight: FontWeight.w700,
                 ),
               ),
+              SizedBox(
+                height: 150,
+                child: CupertinoPicker.builder(
+                  itemExtent: 40,
+                  selectionOverlay: Container(
+                    width: double.maxFinite,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      border: Border(
+                        top: BorderSide(
+                          color: TColor.gray.withOpacity(0.3),
+                          width: 1,
+                        ),
+                        bottom: BorderSide(
+                          color: TColor.gray.withOpacity(0.2),
+                          width: 1,
+                        ),
+                      ),
+                    ),
+                  ),
+                  onSelectedItemChanged: (index) {},
+                  childCount: 60,
+                  itemBuilder: (context, index) {
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          "assets/img/burn.png",
+                          width: 15,
+                          height: 15,
+                          fit: BoxFit.contain,
+                        ),
+                        Text(
+                          " ${(index * 1) + 15} Calories Burn",
+                          style: TextStyle(color: TColor.gray, fontSize: 10),
+                        ),
+                        Text(
+                          " ${index + 1}",
+                          style: TextStyle(
+                            color: TColor.gray,
+                            fontSize: 24,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        Text(
+                          " times",
+                          style: TextStyle(color: TColor.gray, fontSize: 10),
+                        ),
+                      ],
+                    );
+                  },
+                ),
+              ),
+              RoundButton(title: "Save", elevation: 0, onPressed: () {}),
               const SizedBox(height: 15),
-              RoundButton(title: "Save", onPressed: () {}),
             ],
           ),
         ),
