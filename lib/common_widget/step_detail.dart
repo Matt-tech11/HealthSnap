@@ -14,6 +14,13 @@ class StepDetail extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        SizedBox(
+          width: 25,
+          child: Text(
+            sObj["no"].toString(),
+            style: TextStyle(color: TColor.secondaryColor1, fontSize: 14),
+          ),
+        ),
         Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -30,7 +37,7 @@ class StepDetail extends StatelessWidget {
 
             if (!isLast)
               DottedDashedLine(
-                height: media.width * 0.078,
+                height: 100,
                 width: 0,
                 dashColor: TColor.secondaryColor1.withOpacity(0.5),
                 axis: Axis.vertical,
@@ -45,7 +52,11 @@ class StepDetail extends StatelessWidget {
             children: [
               Text(
                 sObj["title"].toString(),
-                style: TextStyle(color: TColor.black, fontSize: 14),
+                style: TextStyle(
+                  color: TColor.black,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
               Text(
                 sObj["details"].toString(),
