@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:healthsnap/common/color_extension.dart';
+import 'package:healthsnap/common_widget/step_detail.dart';
+import 'package:readmore/readmore.dart';
 
 class ExercisesStepDetails extends StatefulWidget {
   final Map eObj;
@@ -10,6 +12,32 @@ class ExercisesStepDetails extends StatefulWidget {
 }
 
 class _ExercisesStepDetailsState extends State<ExercisesStepDetails> {
+  List stepArr = [
+    {
+      "no": "01",
+      "title": "Spread Your Arms",
+      "details":
+          "To make the gestures feel more relaxed, stretch your arms as you start this movement. No bending of hands.",
+    },
+    {
+      "no": "02",
+      "title": "Rest at The Toe",
+      "details":
+          "The basis of this movement is jumping. Now, what needs to be considered is that you have to use the tips of your feet",
+    },
+    {
+      "no": "03",
+      "title": "Adjust Foot Movement",
+      "details":
+          "Jumping Jack is not just an ordinary jump. But, you also have to pay close attention to leg movements.",
+    },
+    {
+      "no": "04",
+      "title": "Clapping Both Hands",
+      "details":
+          "This cannot be taken lightly. You see, without realizing it, the clapping of your hands helps you to keep your rhythm while doing the Jumping Jack",
+    },
+  ];
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
@@ -130,9 +158,52 @@ class _ExercisesStepDetailsState extends State<ExercisesStepDetails> {
                 ),
               ),
               const SizedBox(height: 4),
-              Text(
-                "A jumping jack, also known as a star jump and called a side-straddle hop in the US military, is a physical jumping exercise performed by jumping to a position with the legs spread wide",
-                style: TextStyle(color: TColor.gray, fontSize: 12),
+              ReadMoreText(
+                'A jumping jack, also known as a star jump and referred to as a side-straddle hop in the United States military, is a simple yet effective full-body exercise performed by repeatedly jumping from a standing position with the feet together and arms at the sides to a position where the legs are spread apart and the arms are raised overhead. The movement is then reversed by jumping back to the starting position. This rhythmic exercise engages multiple muscle groups simultaneously, including the legs, arms, shoulders, core, and cardiovascular system, making it a popular choice for warm-ups, aerobic workouts, and general fitness training. Jumping jacks help improve coordination, increase heart rate, enhance endurance, and promote overall physical conditioning without requiring any equipment',
+                trimMode: TrimMode.Line,
+                trimLines: 4,
+                colorClickableText: TColor.black,
+                trimCollapsedText: 'Read More',
+                trimExpandedText: '...Read Less',
+                moreStyle: TextStyle(
+                  color: TColor.gray,
+                  fontSize: 13,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              const SizedBox(height: 18),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "How To Do It",
+                    style: TextStyle(
+                      color: TColor.black,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "${stepArr.length} Steps",
+                      style: TextStyle(
+                        color: TColor.gray,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: stepArr.length,
+                itemBuilder: (context, index) {
+                  var sObj = stepArr[index] as Map? ?? {};
+                  return StepDetail(sObj: sObj, isLast: stepArr.last == sObj);
+                },
               ),
             ],
           ),
