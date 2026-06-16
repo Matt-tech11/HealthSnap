@@ -10,7 +10,6 @@ class StepDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var media = MediaQuery.of(context).size;
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -26,12 +25,20 @@ class StepDetail extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              margin: const EdgeInsets.symmetric(vertical: 4),
-              width: 10,
-              height: 10,
+              width: 20,
+              height: 20,
               decoration: BoxDecoration(
-                color: TColor.secondaryColor1.withOpacity(0.5),
-                borderRadius: BorderRadius.circular(5),
+                color: TColor.secondaryColor1,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              alignment: Alignment.center,
+              child: Container(
+                width: 18,
+                height: 18,
+                decoration: BoxDecoration(
+                  border: Border.all(color: TColor.white, width: 3),
+                  borderRadius: BorderRadius.circular(9),
+                ),
               ),
             ),
 
@@ -39,7 +46,7 @@ class StepDetail extends StatelessWidget {
               DottedDashedLine(
                 height: 100,
                 width: 0,
-                dashColor: TColor.secondaryColor1.withOpacity(0.5),
+                dashColor: TColor.secondaryColor1,
                 axis: Axis.vertical,
               ),
           ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:healthsnap/common/color_extension.dart';
+import 'package:healthsnap/common_widget/round_button.dart';
 import 'package:healthsnap/common_widget/step_detail.dart';
 import 'package:readmore/readmore.dart';
 
@@ -205,6 +206,17 @@ class _ExercisesStepDetailsState extends State<ExercisesStepDetails> {
                   return StepDetail(sObj: sObj, isLast: stepArr.last == sObj);
                 },
               ),
+
+              Text(
+                "Custom Repetitions",
+                style: TextStyle(
+                  color: TColor.black,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              const SizedBox(height: 15),
+              RoundButton(title: "Save", onPressed: () {}),
             ],
           ),
         ),
