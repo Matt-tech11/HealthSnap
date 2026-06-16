@@ -32,7 +32,7 @@ class _ExercisesStepDetailsState extends State<ExercisesStepDetails> {
               borderRadius: BorderRadius.circular(10),
             ),
             child: Image.asset(
-              "assets/img/back_navs.png",
+              "assets/img/close.png",
               color: Colors.black,
               width: 15,
               height: 15,
@@ -81,12 +81,12 @@ class _ExercisesStepDetailsState extends State<ExercisesStepDetails> {
                       gradient: LinearGradient(colors: TColor.primaryG),
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    //child: Image.asset(
-                    //"assets/img/video.png",
-                    //width: media.width,
-                    //height: media.width * 0.43,
-                    //fit: BoxFit.contain,
-                    //),
+                    child: Image.asset(
+                      "assets/img/video.png",
+                      width: media.width,
+                      height: media.width * 0.43,
+                      fit: BoxFit.contain,
+                    ),
                   ),
                   Container(
                     width: media.width,
@@ -96,14 +96,14 @@ class _ExercisesStepDetailsState extends State<ExercisesStepDetails> {
                       borderRadius: BorderRadius.circular(20),
                     ),
                   ),
-                  //IconButton(
-                  //onPressed: () {},
-                  //icon: Image.asset(
-                  //"assets/img/play.png",
-                  //width: 30,
-                  //height: 30,
-                  //),
-                  //),
+                  IconButton(
+                    onPressed: () {},
+                    icon: Image.asset(
+                      "assets/img/play.png",
+                      width: 30,
+                      height: 30,
+                    ),
+                  ),
                 ],
               ),
               const SizedBox(height: 18),
@@ -131,7 +131,7 @@ class _ExercisesStepDetailsState extends State<ExercisesStepDetails> {
               ),
               const SizedBox(height: 4),
               Text(
-                "Easy | 390 Calories Burn",
+                "A jumping jack, also known as a star jump and called a side-straddle hop in the US military, is a physical jumping exercise performed by jumping to a position with the legs spread wide",
                 style: TextStyle(color: TColor.gray, fontSize: 12),
               ),
             ],

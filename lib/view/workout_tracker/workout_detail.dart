@@ -83,15 +83,19 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
       "name": "Set 2",
       "set": [
         {
-          "img": "assets/img/jumping_jack.png",
-          "title": "Jumping Jack",
+          "img": "assets/img/inclined_pushup.png",
+          "title": "Inclined Push-Ups",
+          "value": "05:00",
+        },
+        {
+          "img": "assets/img/push_up.png",
+          "title": "Push-Ups",
           "value": "05:00",
         },
         {"img": "assets/img/skipp.png", "title": "Skipping", "value": "05:00"},
-        {"img": "assets/img/squats.png", "title": "Squats", "value": "05:00"},
         {
-          "img": "assets/img/arm_raises.png",
-          "title": "Arm Raises",
+          "img": "assets/img/cobra_stretch.png",
+          "title": "Cobra Stretch",
           "value": "05:00",
         },
         {
