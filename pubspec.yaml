@@ -42,7 +42,7 @@ dependencies:
   animated_toggle_switch: ^0.8.7
   readmore: ^3.0.0
   calendar_agenda:
-  path: dev_libs/calendar_agenda-main/
+    path: dev_lib/calendar_agenda-main/
 
 dev_dependencies:
   flutter_test:
