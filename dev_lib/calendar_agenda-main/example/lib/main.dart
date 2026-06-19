@@ -67,7 +67,7 @@ class _ExamplePageState extends State<ExamplePage> {
         backgroundColor: Colors.white,
         fullCalendarScroll: FullCalendarScroll.horizontal,
         fullCalendarDay: WeekDay.long,
-        selectedDateColor: Colors.green.shade900,
+        selectedDateColor: Colors.white,
         dateColor: Colors.black,
         locale: 'en',
         initialDate: DateTime.now(),
@@ -83,13 +83,16 @@ class _ExamplePageState extends State<ExamplePage> {
             _selectedDateAppBBar = date;
           });
         },
-        calendarLogo: Image.network(
-          'https://www.kindpng.com/picc/m/355-3557482_flutter-logo-png-transparent-png.png',
-          scale: 5.0,
-        ),
-        selectedDayLogo: NetworkImage(
-          'https://www.kindpng.com/picc/m/355-3557482_flutter-logo-png-transparent-png.png',
-          scale: 15.0,
+        selectedDayLogo: Container(
+          width: double.maxFinite,
+          height: double.maxFinite,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(colors: [
+              const Color(0xff9DCEFF),
+              const Color(0xff92A3FD),
+            ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
+            borderRadius: BorderRadius.circular(10),
+          ),
         ),
       ),
       body: Center(
