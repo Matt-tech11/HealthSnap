@@ -4,6 +4,7 @@ import 'package:healthsnap/common_widget/exercise_set_section.dart';
 import 'package:healthsnap/common_widget/icon_title_next_row.dart';
 import 'package:healthsnap/common_widget/round_button.dart';
 import 'package:healthsnap/view/workout_tracker/exercises_step_details.dart';
+import 'package:healthsnap/view/workout_tracker/workout_schedule_view.dart';
 
 class WorkoutDetail extends StatefulWidget {
   final Map dObj;
@@ -278,7 +279,14 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
                         title: "Schedule Workout",
                         time: "5/27, 09:00 AM",
                         color: TColor.primaryColor2.withOpacity(0.3),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => WorkoutScheduleView(),
+                            ),
+                          );
+                        },
                       ),
 
                       SizedBox(height: media.width * 0.02),

@@ -26,9 +26,13 @@ class CalendarAgenda extends StatefulWidget implements PreferredSizeWidget {
   final Color? calendarBackground;
   final Color? calendarEventSelectedColor;
   final Color? calendarEventColor;
+  final Color? dayBGColor;
   final FullCalendarScroll fullCalendarScroll;
   final Widget? calendarLogo;
   final Widget? selectedDayLogo;
+  final double dayNumberFontSize;
+  final double dayNameFontSize;
+  final double titleSpaceBetween;
 
   final String? locale;
   final bool? fullCalendar;
@@ -55,10 +59,14 @@ class CalendarAgenda extends StatefulWidget implements PreferredSizeWidget {
     this.calendarBackground = Colors.white,
     this.calendarEventSelectedColor = Colors.white,
     this.calendarEventColor = Colors.blue,
+    this.dayBGColor,
     this.calendarLogo,
     this.locale = 'en',
     this.padding,
     this.leading,
+    this.dayNumberFontSize = 22,
+    this.dayNameFontSize = 12,
+    this.titleSpaceBetween = 10,
     this.appbar = false,
     this.events,
     this.fullCalendar = true,
@@ -173,7 +181,7 @@ class CalendarAgendaState extends State<CalendarAgenda>
                         width: MediaQuery.of(context).size.width / 5 - 10,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10.0),
-                          color: isSelected ? Colors.white : null,
+                          color: isSelected ? Colors.white : widget.dayBGColor,
                           boxShadow: [
                             isSelected
                                 ? BoxShadow(
@@ -224,18 +232,6 @@ class CalendarAgendaState extends State<CalendarAgenda>
                                   height: 2.0,
                                 ),
                                 Text(
-                                  DateFormat("dd").format(date),
-                                  style: TextStyle(
-                                      fontSize: 22.0,
-                                      color: isSelected
-                                          ? widget.selectedDateColor
-                                          : widget.headerDateColor,
-                                      fontWeight: isSelected
-                                          ? FontWeight.bold
-                                          : FontWeight.w500),
-                                ),
-                                SizedBox(height: 5),
-                                Text(
                                   widget.weekDay == WeekDay.long
                                       ? DateFormat.EEEE(
                                               Locale(_locale).toString())
@@ -243,7 +239,7 @@ class CalendarAgendaState extends State<CalendarAgenda>
                                       : DateFormat.E(Locale(_locale).toString())
                                           .format(date),
                                   style: TextStyle(
-                                    fontSize: 12.0,
+                                    fontSize: widget.dayNameFontSize,
                                     color: isSelected
                                         ? widget.selectedDateColor
                                         : widget.headerDateColor,
@@ -251,6 +247,18 @@ class CalendarAgendaState extends State<CalendarAgenda>
                                         ? FontWeight.bold
                                         : FontWeight.w400,
                                   ),
+                                ),
+                                SizedBox(height: widget.titleSpaceBetween),
+                                Text(
+                                  DateFormat("dd").format(date),
+                                  style: TextStyle(
+                                      fontSize: widget.dayNumberFontSize,
+                                      color: isSelected
+                                          ? widget.selectedDateColor
+                                          : widget.headerDateColor,
+                                      fontWeight: isSelected
+                                          ? FontWeight.bold
+                                          : FontWeight.w500),
                                 ),
                               ],
                             ),
