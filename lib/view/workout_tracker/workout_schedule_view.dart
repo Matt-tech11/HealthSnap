@@ -83,58 +83,65 @@ class _WorkoutScheduleViewState extends State<WorkoutScheduleView> {
       ),
       backgroundColor: TColor.white,
       body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 25),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CalendarAgenda(
-                controller: _calendarAgendaControllerAppBar,
-                appbar: true,
-                selectedDayPosition: SelectedDayPosition.center,
-                leading: IconButton(
-                  icon: Icon(Icons.arrow_back_ios_new, color: Colors.white),
-                  onPressed: () {},
-                ),
-                weekDay: WeekDay.long,
-                dayNameFontSize: 12,
-                dayNumberFontSize: 16,
-                titleSpaceBetween: 15,
-                dayBGColor: Colors.grey.withOpacity(0.2),
-                backgroundColor: Colors.white,
-                fullCalendarScroll: FullCalendarScroll.horizontal,
-                fullCalendarDay: WeekDay.long,
-                selectedDateColor: Colors.white,
-                dateColor: Colors.black,
-                locale: 'en',
-                initialDate: DateTime.now(),
-                calendarEventColor: Colors.green,
-                firstDate: DateTime.now().subtract(Duration(days: 140)),
-                lastDate: DateTime.now().add(Duration(days: 60)),
-
-                onDateSelected: (date) {
-                  setState(() {
-                    _selectedDateAppBBar = date;
-                  });
-                },
-                selectedDayLogo: Container(
-                  width: double.maxFinite,
-                  height: double.maxFinite,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        const Color(0xff9DCEFF),
-                        const Color(0xff92A3FD),
-                      ],
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                    ),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CalendarAgenda(
+              controller: _calendarAgendaControllerAppBar,
+              appbar: false,
+              selectedDayPosition: SelectedDayPosition.center,
+              leading: IconButton(
+                onPressed: () {},
+                icon: Image.asset(
+                  "assets/img/arrow_left.png",
+                  width: 15,
+                  height: 15,
                 ),
               ),
-            ],
-          ),
+              training: IconButton(
+                onPressed: () {},
+                icon: Image.asset(
+                  "assets/img/arrow_right2.png",
+                  width: 15,
+                  height: 15,
+                ),
+              ),
+              weekDay: WeekDay.short,
+              dayNameFontSize: 12,
+              dayNumberFontSize: 16,
+              titleSpaceBetween: 15,
+              dayBGColor: Colors.grey.withOpacity(0.15),
+              backgroundColor: Colors.transparent,
+              fullCalendarScroll: FullCalendarScroll.horizontal,
+              fullCalendarDay: WeekDay.short,
+              selectedDateColor: Colors.white,
+              //fullCalendar: false,
+              dateColor: Colors.black,
+              locale: 'en',
+              initialDate: DateTime.now(),
+              calendarEventColor: TColor.primaryColor2,
+              firstDate: DateTime.now().subtract(const Duration(days: 140)),
+              lastDate: DateTime.now().add(const Duration(days: 60)),
+
+              onDateSelected: (date) {
+                setState(() {
+                  _selectedDateAppBBar = date;
+                });
+              },
+              selectedDayLogo: Container(
+                width: double.maxFinite,
+                height: double.maxFinite,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: TColor.primaryG,
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                  ),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

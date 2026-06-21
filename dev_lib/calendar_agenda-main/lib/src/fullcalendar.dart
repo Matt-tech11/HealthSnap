@@ -325,7 +325,8 @@ class _FullCalendarState extends State<FullCalendar> {
           ),
           Padding(
             padding: const EdgeInsets.only(top: 30.0),
-            child: daysOfWeek(width, widget.locale, widget.fullCalendarDay),
+            child:
+                daysOfWeek(width - 30.0, widget.locale, widget.fullCalendarDay),
           ),
           Container(
             padding: const EdgeInsets.only(top: 10.0),
