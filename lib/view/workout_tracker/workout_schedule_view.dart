@@ -184,8 +184,8 @@ class _WorkoutScheduleViewState extends State<WorkoutScheduleView> {
                   shrinkWrap: true,
                   itemCount: 24,
                   itemBuilder: (context, index) {
-                    var availWidth = (media.width * 1.2) - (80 + 40);
                     var timelineDataWidth = (media.width * 1.5) - (80 + 40);
+                    var availWidth = (media.width * 1.2) - (80 + 40);
                     var slotArr = selectDayEventArr.where((wObj) {
                       return (wObj["date"] as DateTime).hour == index;
                     }).toList();
@@ -233,7 +233,7 @@ class _WorkoutScheduleViewState extends State<WorkoutScheduleView> {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          "${sObj['name']}, ${getStringDateToOtherFormat(sObj['start_time'].toString(), outFormatStr: 'h:mm a')}",
+                                          "${sObj['name'].toString()}, ${getStringDateToOtherFormat(sObj['start_time'].toString(), outFormatStr: 'h:mm a')}",
                                           maxLines: 1,
                                           style: TextStyle(
                                             color: TColor.white,
@@ -252,8 +252,8 @@ class _WorkoutScheduleViewState extends State<WorkoutScheduleView> {
                   },
                   separatorBuilder: (context, index) {
                     return Divider(
-                      height: 1,
                       color: TColor.gray.withOpacity(0.2),
+                      height: 1,
                     );
                   },
                 ),
