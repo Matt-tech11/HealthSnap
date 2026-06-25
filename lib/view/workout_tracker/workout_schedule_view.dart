@@ -1,6 +1,7 @@
 import 'package:calendar_agenda/calendar_agenda.dart';
 import 'package:flutter/material.dart';
 import 'package:healthsnap/common/color_extension.dart';
+import 'package:healthsnap/view/workout_tracker/add_schedule_view.dart';
 import 'package:intl/intl.dart';
 
 class WorkoutScheduleView extends StatefulWidget {
@@ -159,7 +160,7 @@ class _WorkoutScheduleViewState extends State<WorkoutScheduleView> {
             onDateSelected: (date) {
               setState(() {
                 _selectedDateAppBBar = date;
-                setDayEventWorkoutList();
+                // setDayEventWorkoutList();
               });
             },
             selectedDayLogo: Container(
@@ -182,6 +183,7 @@ class _WorkoutScheduleViewState extends State<WorkoutScheduleView> {
                 width: media.width * 1.5,
                 child: ListView.separated(
                   shrinkWrap: true,
+                  //here
                   itemCount: 24,
                   itemBuilder: (context, index) {
                     var timelineDataWidth = (media.width * 1.5) - (80 + 40);
@@ -231,14 +233,12 @@ class _WorkoutScheduleViewState extends State<WorkoutScheduleView> {
                                           17.5,
                                         ),
                                       ),
-                                      child: Center(
-                                        child: Text(
-                                          "${sObj['name'].toString()}, ${getStringDateToOtherFormat(sObj['start_time'].toString(), outFormatStr: 'h:mm a')}",
-                                          maxLines: 1,
-                                          style: TextStyle(
-                                            color: TColor.white,
-                                            fontSize: 12,
-                                          ),
+                                      child: Text(
+                                        "${sObj['name'].toString()}, ${getStringDateToOtherFormat(sObj['start_time'].toString(), outFormatStr: 'h:mm a')}",
+                                        maxLines: 1,
+                                        style: TextStyle(
+                                          color: TColor.white,
+                                          fontSize: 12,
                                         ),
                                       ),
                                     ),
@@ -262,22 +262,30 @@ class _WorkoutScheduleViewState extends State<WorkoutScheduleView> {
           ),
         ],
       ),
-      floatingActionButton: Container(
-        width: 55,
-        height: 55,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(colors: TColor.secondaryG),
-          borderRadius: BorderRadius.circular(27.5),
-          boxShadow: const [
-            BoxShadow(
-              color: Colors.black12,
-              blurRadius: 5,
-              offset: Offset(0, 2),
-            ),
-          ],
+      floatingActionButton: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const AddScheduleView()),
+          );
+        },
+        child: Container(
+          width: 55,
+          height: 55,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(colors: TColor.secondaryG),
+            borderRadius: BorderRadius.circular(27.5),
+            boxShadow: const [
+              BoxShadow(
+                color: Colors.black12,
+                blurRadius: 5,
+                offset: Offset(0, 2),
+              ),
+            ],
+          ),
+          alignment: Alignment.center,
+          child: Icon(Icons.add, size: 20, color: TColor.white),
         ),
-        alignment: Alignment.center,
-        child: Icon(Icons.add, size: 20, color: TColor.white),
       ),
     );
   }
