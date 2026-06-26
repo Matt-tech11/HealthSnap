@@ -1,6 +1,7 @@
 import 'package:calendar_agenda/calendar_agenda.dart';
 import 'package:flutter/material.dart';
 import 'package:healthsnap/common/color_extension.dart';
+import 'package:healthsnap/common/common.dart';
 import 'package:healthsnap/view/workout_tracker/add_schedule_view.dart';
 import 'package:intl/intl.dart';
 
@@ -145,8 +146,8 @@ class _WorkoutScheduleViewState extends State<WorkoutScheduleView> {
             weekDay: WeekDay.short,
             dayNameFontSize: 12,
             dayNumberFontSize: 16,
-            titleSpaceBetween: 15,
             dayBGColor: Colors.grey.withOpacity(0.15),
+            titleSpaceBetween: 15,
             backgroundColor: Colors.transparent,
             fullCalendarScroll: FullCalendarScroll.horizontal,
             fullCalendarDay: WeekDay.short,
@@ -183,8 +184,6 @@ class _WorkoutScheduleViewState extends State<WorkoutScheduleView> {
                 width: media.width * 1.5,
                 child: ListView.separated(
                   shrinkWrap: true,
-                  //here
-                  itemCount: 24,
                   itemBuilder: (context, index) {
                     var timelineDataWidth = (media.width * 1.5) - (80 + 40);
                     var availWidth = (media.width * 1.2) - (80 + 40);
@@ -256,6 +255,8 @@ class _WorkoutScheduleViewState extends State<WorkoutScheduleView> {
                       height: 1,
                     );
                   },
+
+                  itemCount: 24,
                 ),
               ),
             ),
@@ -266,7 +267,9 @@ class _WorkoutScheduleViewState extends State<WorkoutScheduleView> {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const AddScheduleView()),
+            MaterialPageRoute(
+              builder: (context) => AddScheduleView(date: _selectedDateAppBBar),
+            ),
           );
         },
         child: Container(
@@ -288,30 +291,5 @@ class _WorkoutScheduleViewState extends State<WorkoutScheduleView> {
         ),
       ),
     );
-  }
-
-  String getTime(int value, {String formatStr = "hh:mm a"}) {
-    var format = DateFormat(formatStr);
-    return format.format(
-      DateTime.fromMillisecondsSinceEpoch(value * 60 * 1000, isUtc: true),
-    );
-  }
-
-  String getStringDateToOtherFormat(
-    String dateStr, {
-    String inputformatStr = "dd/MM/yyyy hh:mm aa",
-    String outFormatStr = "hh:mm a",
-  }) {
-    var format = DateFormat(outFormatStr);
-    return format.format(stringToDate(dateStr, formatStr: inputformatStr));
-  }
-
-  DateTime stringToDate(String dateStr, {String formatStr = "hh:mm a"}) {
-    var format = DateFormat(formatStr);
-    return format.parse(dateStr);
-  }
-
-  DateTime dateToStartDate(DateTime date) {
-    return DateTime(date.year, date.month, date.day);
   }
 }

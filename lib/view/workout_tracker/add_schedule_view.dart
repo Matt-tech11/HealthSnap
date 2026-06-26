@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:healthsnap/common/color_extension.dart';
+import 'package:healthsnap/common/common.dart';
 
 class AddScheduleView extends StatefulWidget {
-  const AddScheduleView({super.key});
+  final DateTime date;
+  const AddScheduleView({super.key, required this.date});
 
   @override
   State<AddScheduleView> createState() => _AddScheduleViewState();
@@ -37,7 +39,14 @@ class _AddScheduleViewState extends State<AddScheduleView> {
             ),
           ),
         ),
-
+        title: Text(
+          "Add Schedule",
+          style: TextStyle(
+            color: TColor.black,
+            fontSize: 19,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
         actions: [
           InkWell(
             onTap: () {
@@ -68,7 +77,22 @@ class _AddScheduleViewState extends State<AddScheduleView> {
           padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 25),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [],
+            children: [
+              Row(
+                children: [
+                  Image.asset("assets/img/calendar.png", width: 20, height: 20),
+                  const SizedBox(width: 8),
+                  Text(
+                    dateToString(widget.date, formatStr: "E, dd MMM yyyy"),
+                    style: TextStyle(
+                      color: TColor.black,
+                      fontSize: 19,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),
