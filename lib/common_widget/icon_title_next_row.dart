@@ -59,18 +59,15 @@ class IconTitleNextRow extends StatelessWidget {
             SizedBox(
               width: 25,
               height: 25,
-              child: InkWell(
-                onTap: () {},
-                child: Container(
-                  width: 25,
-                  height: 25,
-                  alignment: Alignment.center,
-                  child: Image.asset(
-                    "assets/img/arrow_right.png",
-                    width: 12,
-                    height: 12,
-                    fit: BoxFit.contain,
-                  ),
+              child: Container(
+                width: 25,
+                height: 25,
+                alignment: Alignment.center,
+                child: Image.asset(
+                  "assets/img/arrow_right.png",
+                  width: 12,
+                  height: 12,
+                  fit: BoxFit.contain,
                 ),
               ),
             ),
