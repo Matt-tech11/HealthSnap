@@ -29,3 +29,31 @@ String dateToString(DateTime date, {String formatStr = "dd/MM/yyyy hh:mm a"}) {
   var format = DateFormat(formatStr);
   return format.format(date);
 }
+
+String getDayTitle(String dateStr, {String formatStr = "dd/MM/yyyy hh:mm a"}) {
+  var date = stringToDate(dateStr, formatStr: formatStr);
+  if (date.isToday) {
+    return "Today";
+  } else if (date.isTommorow) {
+    return "Tommorow";
+  } else if (date.isYesterday) {
+    return "Yesterday";
+  } else {
+    var outFormat = DateFormat("E");
+    return outFormat.format(date);
+  }
+}
+
+extension DateHelpers on DateTime {
+  bool get isToday {
+    return DateTime(year, month, day).difference(DateTime.now()).inDays == 0;
+  }
+
+  bool get isYesterday {
+    return DateTime(year, month, day).difference(DateTime.now()).inDays == -1;
+  }
+
+  bool get isTommorow {
+    return DateTime(year, month, day).difference(DateTime.now()).inDays == -1;
+  }
+}

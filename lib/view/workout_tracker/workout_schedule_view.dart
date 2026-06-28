@@ -2,6 +2,7 @@ import 'package:calendar_agenda/calendar_agenda.dart';
 import 'package:flutter/material.dart';
 import 'package:healthsnap/common/color_extension.dart';
 import 'package:healthsnap/common/common.dart';
+import 'package:healthsnap/common_widget/round_button.dart';
 import 'package:healthsnap/view/workout_tracker/add_schedule_view.dart';
 import 'package:intl/intl.dart';
 
@@ -217,27 +218,177 @@ class _WorkoutScheduleViewState extends State<WorkoutScheduleView> {
 
                                   return Align(
                                     alignment: Alignment(pos, 0),
-                                    child: Container(
-                                      height: 35,
-                                      width: availWidth * 0.5,
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 8,
-                                      ),
-                                      alignment: Alignment.centerLeft,
-                                      decoration: BoxDecoration(
-                                        gradient: LinearGradient(
-                                          colors: TColor.secondaryG,
+                                    child: InkWell(
+                                      onTap: () {
+                                        showDialog(
+                                          context: context,
+                                          builder: (context) {
+                                            return AlertDialog(
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              contentPadding: EdgeInsets.zero,
+                                              content: Container(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                      vertical: 15,
+                                                      horizontal: 20,
+                                                    ),
+                                                decoration: BoxDecoration(
+                                                  color: TColor.white,
+                                                  borderRadius:
+                                                      BorderRadius.circular(20),
+                                                ),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
+                                                      children: [
+                                                        InkWell(
+                                                          onTap: () {
+                                                            Navigator.pop(
+                                                              context,
+                                                            );
+                                                          },
+                                                          child: Container(
+                                                            margin:
+                                                                const EdgeInsets.all(
+                                                                  8,
+                                                                ),
+                                                            height: 40,
+                                                            width: 40,
+                                                            alignment: Alignment
+                                                                .center,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                                  color: TColor
+                                                                      .LightGray,
+                                                                  borderRadius:
+                                                                      BorderRadius.circular(
+                                                                        10,
+                                                                      ),
+                                                                ),
+                                                            child: Image.asset(
+                                                              "assets/img/close.png",
+                                                              color:
+                                                                  Colors.black,
+                                                              width: 15,
+                                                              height: 15,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Text(
+                                                          "Workout Schedule",
+                                                          style: TextStyle(
+                                                            color: TColor.black,
+                                                            fontSize: 19,
+                                                            fontWeight:
+                                                                FontWeight.w700,
+                                                          ),
+                                                        ),
+                                                        InkWell(
+                                                          onTap: () {
+                                                            //Navigator.pop(context);
+                                                          },
+                                                          child: Container(
+                                                            margin:
+                                                                const EdgeInsets.all(
+                                                                  8,
+                                                                ),
+                                                            height: 40,
+                                                            width: 40,
+                                                            alignment: Alignment
+                                                                .center,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                                  color: TColor
+                                                                      .LightGray,
+                                                                  borderRadius:
+                                                                      BorderRadius.circular(
+                                                                        10,
+                                                                      ),
+                                                                ),
+                                                            child: Image.asset(
+                                                              "assets/img/more_nav.png",
+                                                              width: 15,
+                                                              height: 15,
+                                                              fit: BoxFit
+                                                                  .contain,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    const SizedBox(height: 15),
+                                                    Text(
+                                                      sObj['name'].toString(),
+                                                      style: TextStyle(
+                                                        color: TColor.black,
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                      ),
+                                                    ),
+                                                    const SizedBox(height: 4),
+                                                    Row(
+                                                      children: [
+                                                        Image.asset(
+                                                          "assests/img/clock.png",
+                                                          height: 20,
+                                                          width: 20,
+                                                        ),
+                                                        const SizedBox(
+                                                          width: 8,
+                                                        ),
+                                                        Text(
+                                                          "${getDayTitle(sObj['start_time'].toString())}|${getStringDateToOtherFormat(sObj['start_time'].toString(), outFormatStr: 'h:mm a')}",
+                                                          style: TextStyle(
+                                                            color: TColor.gray,
+                                                            fontSize: 12,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    const SizedBox(height: 15),
+
+                                                    RoundButton(
+                                                      title: "Done",
+                                                      onPressed: () {},
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        );
+                                      },
+                                      child: Container(
+                                        height: 35,
+                                        width: availWidth * 0.5,
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 8,
                                         ),
-                                        borderRadius: BorderRadius.circular(
-                                          17.5,
+                                        alignment: Alignment.centerLeft,
+                                        decoration: BoxDecoration(
+                                          gradient: LinearGradient(
+                                            colors: TColor.secondaryG,
+                                          ),
+                                          borderRadius: BorderRadius.circular(
+                                            17.5,
+                                          ),
                                         ),
-                                      ),
-                                      child: Text(
-                                        "${sObj['name'].toString()}, ${getStringDateToOtherFormat(sObj['start_time'].toString(), outFormatStr: 'h:mm a')}",
-                                        maxLines: 1,
-                                        style: TextStyle(
-                                          color: TColor.white,
-                                          fontSize: 12,
+                                        child: Text(
+                                          "${sObj['name'].toString()}, ${getStringDateToOtherFormat(sObj['start_time'].toString(), outFormatStr: 'h:mm a')}",
+                                          maxLines: 1,
+                                          style: TextStyle(
+                                            color: TColor.white,
+                                            fontSize: 12,
+                                          ),
                                         ),
                                       ),
                                     ),

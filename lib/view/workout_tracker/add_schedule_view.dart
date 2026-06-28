@@ -101,7 +101,7 @@ class _AddScheduleViewState extends State<AddScheduleView> {
                 fontWeight: FontWeight.w500,
               ),
             ),
-            Container(
+            SizedBox(
               height: media.width * 0.5,
               child: CupertinoDatePicker(
                 onDateTimeChanged: (newDate) {},
