@@ -122,7 +122,7 @@ class _AddScheduleViewState extends State<AddScheduleView> {
             ),
             const SizedBox(height: 10),
             IconTitleNextRow(
-              icon: "assets/img/calendar.png",
+              icon: "assets/img/barbel_1.png",
               title: "Choose Workout",
               time: "Upperbody",
               color: TColor.LightGray,
@@ -130,7 +130,7 @@ class _AddScheduleViewState extends State<AddScheduleView> {
             ),
             const SizedBox(height: 10),
             IconTitleNextRow(
-              icon: "assets/img/calendar.png",
+              icon: "assets/img/icon_swap.png",
               title: "Difficulty",
               time: "Beginner",
               color: TColor.LightGray,
@@ -138,7 +138,7 @@ class _AddScheduleViewState extends State<AddScheduleView> {
             ),
             const SizedBox(height: 10),
             IconTitleNextRow(
-              icon: "assets/img/calendar.png",
+              icon: "assets/img/icon_repetitions.png",
               title: "Custom Repitition",
               time: "",
               color: TColor.LightGray,
@@ -146,7 +146,7 @@ class _AddScheduleViewState extends State<AddScheduleView> {
             ),
             const SizedBox(height: 10),
             IconTitleNextRow(
-              icon: "assets/img/calendar.png",
+              icon: "assets/img/icon_repetitions.png",
               title: "Custom Weights",
               time: "",
               color: TColor.LightGray,
