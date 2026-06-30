@@ -4,7 +4,7 @@ import 'package:healthsnap/common/color_extension.dart';
 import 'package:healthsnap/common/common.dart';
 import 'package:healthsnap/common_widget/icon_title_next_row.dart';
 import 'package:healthsnap/common_widget/round_button.dart';
-import 'package:healthsnap/view/workout_tracker/workout_schedule_view.dart';
+//import 'package:healthsnap/view/workout_tracker/workout_schedule_view.dart';
 
 class AddScheduleView extends StatefulWidget {
   final DateTime date;
