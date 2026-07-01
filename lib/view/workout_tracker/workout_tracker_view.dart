@@ -60,7 +60,27 @@ class _WorkoutTrackerViewState extends State<WorkoutTrackerView> {
               backgroundColor: Colors.transparent,
               centerTitle: true,
               elevation: 0,
-              leadingWidth: 0,
+              leading: InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  margin: const EdgeInsets.all(8),
+                  height: 40,
+                  width: 40,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: TColor.LightGray,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Image.asset(
+                    "assets/img/close.png",
+                    color: Colors.black,
+                    width: 15,
+                    height: 15,
+                  ),
+                ),
+              ),
               automaticallyImplyLeading: false,
               //pinned: true,
               title: Text(

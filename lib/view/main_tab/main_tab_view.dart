@@ -3,6 +3,7 @@ import 'package:healthsnap/common/color_extension.dart';
 import 'package:healthsnap/common_widget/tab_button.dart';
 import 'package:healthsnap/view/home/blank_view.dart';
 import 'package:healthsnap/view/home/home_view.dart';
+import 'package:healthsnap/view/main_tab/selectedView.dart';
 import 'package:healthsnap/view/profile/profile_view.dart';
 import 'package:healthsnap/view/workout_tracker/workout_tracker_view.dart';
 
@@ -76,7 +77,7 @@ class _MainTabViewState extends State<MainTabView> {
                 isActive: selectTab == 1,
                 onTap: () {
                   selectTab = 1;
-                  currentTab = const WorkoutTrackerView();
+                  currentTab = const Selectedview();
                   if (mounted) {
                     setState(() {});
                   }

@@ -58,6 +58,9 @@ class _WorkoutScheduleViewState extends State<WorkoutScheduleView> {
           return dateToStartDate(wObj["date"] as DateTime) == date;
         })
         .toList();
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   @override
@@ -162,7 +165,7 @@ class _WorkoutScheduleViewState extends State<WorkoutScheduleView> {
             onDateSelected: (date) {
               setState(() {
                 _selectedDateAppBBar = date;
-                // setDayEventWorkoutList();
+                setDayEventWorkoutList();
               });
             },
             selectedDayLogo: Container(
