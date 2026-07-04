@@ -1,6 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:healthsnap/common/color_extension.dart';
+import 'package:healthsnap/common_widget/round_button.dart';
 
 class MealPlannerView extends StatefulWidget {
   const MealPlannerView({super.key});
@@ -76,7 +77,6 @@ class _MealPlannerViewState extends State<MealPlannerView> {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
-              SizedBox(height: media.width * 0.1),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -207,6 +207,93 @@ class _MealPlannerViewState extends State<MealPlannerView> {
                 ),
               ),
               SizedBox(height: media.width * 0.05),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 15,
+                  horizontal: 15,
+                ),
+                decoration: BoxDecoration(
+                  color: TColor.primaryColor2.withValues(alpha: 0.3),
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Daily Meal Schedule",
+                      style: TextStyle(
+                        color: TColor.black,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 75,
+                      height: 30,
+                      child: RoundButton(
+                        title: "Check",
+                        type: RoundButtonType.bgGradient,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        onPressed: () {
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) =>
+                          //         const ActivityTrackerView(),
+                          //   ),
+                          // );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: media.width * 0.05),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Today Meals",
+                    style: TextStyle(
+                      color: TColor.black,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  Container(
+                    height: 30,
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(colors: TColor.primaryG),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: DropdownButton(
+                      items: ["Breakfast", "Lunch", "Supper"]
+                          .map(
+                            (name) => DropdownMenuItem(
+                              value: name,
+                              child: Text(
+                                name,
+                                style: TextStyle(
+                                  color: TColor.gray,
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                      onChanged: (value) {},
+                      icon: Icon(Icons.arrow_drop_down, color: TColor.white),
+                      hint: Text(
+                        "Breakfast",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: TColor.white, fontSize: 12),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
@@ -219,14 +306,19 @@ class _MealPlannerViewState extends State<MealPlannerView> {
   LineChartBarData get lineChartBarData1_1 => LineChartBarData(
     isCurved: true,
     gradient: LinearGradient(
-      colors: [
-        TColor.primaryColor2.withOpacity(0.5),
-        TColor.primaryColor1.withOpacity(0.5),
-      ],
+      colors: [TColor.primaryColor2, TColor.primaryColor1],
     ),
-    barWidth: 4,
+    barWidth: 2,
     isStrokeCapRound: true,
-    dotData: const FlDotData(show: true),
+    dotData: FlDotData(
+      show: true,
+      getDotPainter: (spot, percent, barData, index) => FlDotCirclePainter(
+        radius: 3,
+        color: TColor.white,
+        strokeWidth: 1,
+        strokeColor: TColor.primaryColor2,
+      ),
+    ),
     belowBarData: BarAreaData(show: false),
     spots: const [
       FlSpot(1, 35),
