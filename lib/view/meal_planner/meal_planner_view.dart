@@ -269,20 +269,21 @@ class _MealPlannerViewState extends State<MealPlannerView> {
                       borderRadius: BorderRadius.circular(15),
                     ),
                     child: DropdownButton(
-                      items: ["Breakfast", "Lunch", "Supper"]
-                          .map(
-                            (name) => DropdownMenuItem(
-                              value: name,
-                              child: Text(
-                                name,
-                                style: TextStyle(
-                                  color: TColor.gray,
-                                  fontSize: 14,
+                      items:
+                          ["Breakfast", "Lunch", "Supper", "Dessert", "Snacks"]
+                              .map(
+                                (name) => DropdownMenuItem(
+                                  value: name,
+                                  child: Text(
+                                    name,
+                                    style: TextStyle(
+                                      color: TColor.gray,
+                                      fontSize: 14,
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
-                          )
-                          .toList(),
+                              )
+                              .toList(),
                       onChanged: (value) {},
                       icon: Icon(Icons.arrow_drop_down, color: TColor.white),
                       hint: Text(
