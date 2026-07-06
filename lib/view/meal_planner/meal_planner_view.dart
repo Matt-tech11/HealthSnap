@@ -2,6 +2,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:healthsnap/common/color_extension.dart';
 import 'package:healthsnap/common_widget/round_button.dart';
+import 'package:healthsnap/common_widget/today_meal_row.dart';
 
 class MealPlannerView extends StatefulWidget {
   const MealPlannerView({super.key});
@@ -11,6 +12,62 @@ class MealPlannerView extends StatefulWidget {
 }
 
 class _MealPlannerViewState extends State<MealPlannerView> {
+  List todayMealArr = [
+    {
+      "name": "Salmon Nigiri",
+      "image": "assets/img/food_1.png",
+      "time": "28/08/2026 08:00 AM",
+    },
+    {
+      "name": "Avocado Toast",
+      "image": "assets/img/food_2.png",
+      "time": "28/08/2026 09:30 AM",
+    },
+    {
+      "name": "Chicken Caesar Salad",
+      "image": "assets/img/food_3.png",
+      "time": "28/08/2026 12:00 PM",
+    },
+    {
+      "name": "Quinoa Bowl",
+      "image": "assets/img/food_4.png",
+      "time": "28/08/2026 01:30 PM",
+    },
+    {
+      "name": "Grilled Salmon",
+      "image": "assets/img/food_5.png",
+      "time": "28/08/2026 06:00 PM",
+    },
+    {
+      "name": "Vegetable Curry",
+      "image": "assets/img/food_6.png",
+      "time": "28/08/2026 07:30 PM",
+    },
+  ];
+
+  List findEatArr = [
+    {
+      "name": "Breakfast",
+      "image": "assets/img/food_1.png",
+      "number": "120+ Foods",
+    },
+    {"name": "Lunch", "image": "assets/img/food_2.png", "number": "300+ Foods"},
+    {
+      "name": "Supper",
+      "image": "assets/img/food_3.png",
+      "number": "400+ Foods",
+    },
+    {
+      "name": "Dessert",
+      "image": "assets/img/food_4.png",
+      "number": "200+ Foods",
+    },
+    {
+      "name": "Snacks",
+      "image": "assets/img/food_5.png",
+      "number": "150+ Foods",
+    },
+  ];
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
@@ -76,6 +133,7 @@ class _MealPlannerViewState extends State<MealPlannerView> {
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -295,6 +353,39 @@ class _MealPlannerViewState extends State<MealPlannerView> {
                   ),
                 ],
               ),
+              SizedBox(height: media.width * 0.05),
+              ListView.builder(
+                padding: EdgeInsets.zero,
+                itemCount: todayMealArr.length,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  var mObj = todayMealArr[index] as Map? ?? {};
+                  return TodayMealRow(mObj: mObj);
+                },
+              ),
+              SizedBox(height: media.width * 0.05),
+
+              Text(
+                "Find Something to Eat",
+                style: TextStyle(
+                  color: TColor.black,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              SizedBox(
+                height: media.width * 0.6,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: findEatArr.length,
+                  itemBuilder: (context, index) {
+                    var fObj = findEatArr[index] as Map? ?? {};
+                    return Container(width: media.width * 0.8);
+                  },
+                ),
+              ),
+              SizedBox(height: media.width * 0.4),
             ],
           ),
         ),

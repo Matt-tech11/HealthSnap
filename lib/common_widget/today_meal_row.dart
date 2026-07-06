@@ -1,17 +1,11 @@
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:flutter/material.dart';
 import 'package:healthsnap/common/color_extension.dart';
+import 'package:healthsnap/common/common.dart';
 
-class TodayMealRow extends StatefulWidget {
-  final Map wObj;
-  const TodayMealRow({super.key, required this.wObj});
-
-  @override
-  State<TodayMealRow> createState() => _TodayMealRowState();
-}
-
-class _TodayMealRowState extends State<TodayMealRow> {
-  bool positive = false;
+class TodayMealRow extends StatelessWidget {
+  final Map mObj;
+  const TodayMealRow({super.key, required this.mObj});
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +28,9 @@ class _TodayMealRowState extends State<TodayMealRow> {
           ClipRRect(
             borderRadius: BorderRadius.circular(30),
             child: Image.asset(
-              widget.wObj["img"].toString(),
-              width: 50,
-              height: 50,
+              mObj["img"].toString(),
+              width: 40,
+              height: 40,
               fit: BoxFit.cover,
             ),
           ),
@@ -47,7 +41,7 @@ class _TodayMealRowState extends State<TodayMealRow> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  widget.wObj["title"].toString(),
+                  "${getDayTitle(mObj['time'].toString())} | ${getStringDateToOtherFormat(mObj['time'].toString(), outFormatStr: 'h:mm a')}",
                   style: TextStyle(
                     color: TColor.black,
                     fontSize: 12,
@@ -55,72 +49,19 @@ class _TodayMealRowState extends State<TodayMealRow> {
                   ),
                 ),
                 Text(
-                  widget.wObj["time"].toString(),
+                  mObj["time"].toString(),
                   style: TextStyle(color: TColor.gray, fontSize: 10),
                 ),
               ],
             ),
           ),
-
-          CustomAnimatedToggleSwitch<bool>(
-            current: positive,
-            values: [false, true],
-            spacing: 0.0,
-            indicatorSize: const Size.square(30.0),
-            animationDuration: const Duration(milliseconds: 200),
-            animationCurve: Curves.linear,
-            onChanged: (b) {
-              setState(() => positive = b);
-            },
-            iconBuilder: (context, local, global) {
-              return const SizedBox();
-            },
-            cursors: ToggleCursors(defaultCursor: SystemMouseCursors.click),
-            onTap: (info) {
-              setState(() => positive = !positive);
-            },
-            iconsTappable: false,
-            wrapperBuilder: (context, global, child) {
-              return Stack(
-                alignment: Alignment.center,
-                children: [
-                  Positioned(
-                    left: 10.0,
-                    right: 10.0,
-                    height: 30.0,
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(colors: TColor.secondaryG),
-
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(50.0),
-                        ),
-                      ),
-                    ),
-                  ),
-                  child,
-                ],
-              );
-            },
-            foregroundIndicatorBuilder: (context, global) {
-              return SizedBox.fromSize(
-                size: const Size(10, 10),
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: const BorderRadius.all(Radius.circular(50.0)),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.black38,
-
-                        blurRadius: 1.1,
-                        offset: Offset(0, 0.8),
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            },
+          IconButton(
+            onPressed: () {},
+            icon: Image.asset(
+              "assets/img/notification.png",
+              width: 25,
+              height: 25,
+            ),
           ),
         ],
       ),
