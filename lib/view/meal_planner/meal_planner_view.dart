@@ -375,17 +375,35 @@ class _MealPlannerViewState extends State<MealPlannerView> {
                 ),
               ),
               SizedBox(
-                height: media.width * 0.6,
+                height: media.width * 0.5,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: findEatArr.length,
                   itemBuilder: (context, index) {
                     var fObj = findEatArr[index] as Map? ?? {};
-                    return Container(width: media.width * 0.8);
+                    return Container(
+                      margin: const EdgeInsets.all(8),
+                      width: media.width * 0.8,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            TColor.primaryColor2.withOpacity(0.5),
+                            TColor.primaryColor2.withOpacity(0.5),
+                          ],
+                        ),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(25),
+                          topRight: Radius.circular(75),
+                          bottomLeft: Radius.circular(25),
+                          bottomRight: Radius.circular(25),
+                        ),
+                      ),
+                      child: Column(),
+                    );
                   },
                 ),
               ),
-              SizedBox(height: media.width * 0.4),
+              SizedBox(height: media.width * 0.5),
             ],
           ),
         ),
