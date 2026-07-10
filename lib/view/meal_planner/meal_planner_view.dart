@@ -339,7 +339,7 @@ class _MealPlannerViewState extends State<MealPlannerView> {
                                   "Breakfast",
                                   "Lunch",
                                   "Supper",
-                                  "Dessert",
+                                  "Desserts",
                                   "Snacks",
                                 ]
                                 .map(

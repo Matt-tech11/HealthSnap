@@ -5,7 +5,7 @@ import 'package:healthsnap/view/home/blank_view.dart';
 import 'package:healthsnap/view/home/home_view.dart';
 import 'package:healthsnap/view/main_tab/selectedView.dart';
 import 'package:healthsnap/view/profile/profile_view.dart';
-import 'package:healthsnap/view/workout_tracker/workout_tracker_view.dart';
+//import 'package:healthsnap/view/workout_tracker/workout_tracker_view.dart';
 
 class MainTabView extends StatefulWidget {
   const MainTabView({super.key});
