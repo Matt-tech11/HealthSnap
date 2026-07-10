@@ -20,15 +20,15 @@ class _WorkoutScheduleViewState extends State<WorkoutScheduleView> {
   late DateTime _selectedDateAppBBar;
 
   List eventArr = [
-    {"name": "Ab Workout", "start_time": "27/08/2026 03:00 PM"},
-    {"name": "Upper Body Workout", "start_time": "27/08/2026 03:00 PM"},
-    {"name": "Lower Body Workout", "start_time": "27/08/2026 03:00 PM"},
-    {"name": "Ab Workout", "start_time": "27/08/2026 03:00 PM"},
-    {"name": "Upper Body Workout", "start_time": "27/08/2026 03:00 PM"},
-    {"name": "Lower Body Workout", "start_time": "27/08/2026 03:00 PM"},
-    {"name": "Ab Workout", "start_time": "27/08/2026 03:00 PM"},
-    {"name": "Upper Body Workout", "start_time": "27/08/2026 03:00 PM"},
-    {"name": "Lower Body Workout", "start_time": "27/08/2026 03:00 PM"},
+    {"name": "Ab Workout", "start_time": "27/08/2026 04:00 PM"},
+    {"name": "Upper Body Workout", "start_time": "27/08/2026 04:00 PM"},
+    {"name": "Lower Body Workout", "start_time": "27/08/2026 04:00 PM"},
+    {"name": "Ab Workout", "start_time": "27/08/2026 04:00 PM"},
+    {"name": "Upper Body Workout", "start_time": "27/08/2026 04:00 PM"},
+    {"name": "Lower Body Workout", "start_time": "27/08/2026 04:00 PM"},
+    {"name": "Ab Workout", "start_time": "27/08/2026 04:00 PM"},
+    {"name": "Upper Body Workout", "start_time": "27/08/2026 04:00 PM"},
+    {"name": "Lower Body Workout", "start_time": "27/08/2026 04:00 PM"},
   ];
 
   List selectDayEventArr = [];

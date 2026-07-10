@@ -331,7 +331,7 @@ class _WorkoutTrackerViewState extends State<WorkoutTrackerView> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "What Do You Want to Train",
+                        "What Do You Want To Train",
                         style: TextStyle(
                           color: TColor.black,
                           fontSize: 16,
