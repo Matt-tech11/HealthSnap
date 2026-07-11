@@ -5,39 +5,16 @@ import 'package:healthsnap/common_widget/find_eat_cell.dart';
 import 'package:healthsnap/common_widget/round_button.dart';
 import 'package:healthsnap/common_widget/today_meal_row.dart';
 
-class MealPlannerView extends StatefulWidget {
-  const MealPlannerView({super.key});
+class MealFoodDetail extends StatefulWidget {
+  const MealFoodDetail({super.key});
 
   @override
-  State<MealPlannerView> createState() => _MealPlannerViewState();
+  State<MealFoodDetail> createState() => _MealFoodDetailState();
 }
 
-class _MealPlannerViewState extends State<MealPlannerView> {
-  List todayMealArr = [
-    {
-      "name": "Salmon Nigiri",
-      "image": "assets/img/food_1.png",
-      "time": "28/08/2026 08:00 AM",
-    },
-    {
-      "name": "Lowfat Milk",
-      "image": "assets/img/food_7.png",
-      "time": "28/08/2026 09:30 AM",
-    },
-  ];
-
-  List findEatArr = [
-    {
-      "name": "Breakfast",
-      "image": "assets/img/food_2.png",
-      "number": "120+ Foods",
-    },
-    {"name": "Lunch", "image": "assets/img/food_3.png", "number": "300+ Foods"},
-  ];
+class _MealFoodDetailState extends State<MealFoodDetail> {
   @override
   Widget build(BuildContext context) {
-    var media = MediaQuery.of(context).size;
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: TColor.white,
@@ -379,116 +356,5 @@ class _MealPlannerViewState extends State<MealPlannerView> {
         ],
       ),
     );
-  }
-
-  List<LineChartBarData> get lineBarsData1 => [lineChartBarData1_1];
-
-  LineChartBarData get lineChartBarData1_1 => LineChartBarData(
-    isCurved: true,
-    gradient: LinearGradient(
-      colors: [TColor.primaryColor2, TColor.primaryColor1],
-    ),
-    barWidth: 2,
-    isStrokeCapRound: true,
-    dotData: FlDotData(
-      show: true,
-      getDotPainter: (spot, percent, barData, index) => FlDotCirclePainter(
-        radius: 3,
-        color: TColor.white,
-        strokeWidth: 1,
-        strokeColor: TColor.primaryColor2,
-      ),
-    ),
-    belowBarData: BarAreaData(show: false),
-    spots: const [
-      FlSpot(1, 35),
-      FlSpot(2, 70),
-      FlSpot(3, 40),
-      FlSpot(4, 80),
-      FlSpot(5, 25),
-      FlSpot(6, 70),
-      FlSpot(7, 35),
-    ],
-  );
-
-  SideTitles rightTitles() => SideTitles(
-    getTitlesWidget: rightTitleWidgets,
-    showTitles: true,
-    interval: 20,
-    reservedSize: 40,
-  );
-
-  Widget rightTitleWidgets(double value, TitleMeta meta) {
-    String text;
-
-    switch (value.toInt()) {
-      case 0:
-        text = '0%';
-        break;
-      case 20:
-        text = '20%';
-        break;
-      case 40:
-        text = '40%';
-        break;
-      case 60:
-        text = '60%';
-        break;
-      case 80:
-        text = '80%';
-        break;
-      case 100:
-        text = '100%';
-        break;
-      default:
-        return Container();
-    }
-
-    return Text(
-      text,
-      style: TextStyle(color: TColor.gray, fontSize: 12),
-      textAlign: TextAlign.center,
-    );
-  }
-
-  SideTitles bottomTitles() => SideTitles(
-    showTitles: true,
-    reservedSize: 32,
-    interval: 1,
-    getTitlesWidget: bottomTitleWidgets,
-  );
-
-  Widget bottomTitleWidgets(double value, TitleMeta meta) {
-    var style = TextStyle(color: TColor.gray, fontSize: 16);
-    Widget text;
-
-    switch (value.toInt()) {
-      case 1:
-        text = Text('Sun', style: style);
-        break;
-      case 2:
-        text = Text('Mon', style: style);
-        break;
-      case 3:
-        text = Text('Tue', style: style);
-        break;
-      case 4:
-        text = Text('Wed', style: style);
-        break;
-      case 5:
-        text = Text('Thu', style: style);
-        break;
-      case 6:
-        text = Text('Fri', style: style);
-        break;
-      case 7:
-        text = Text('Sat', style: style);
-        break;
-      default:
-        text = const Text('');
-        break;
-    }
-
-    return SideTitleWidget(axisSide: meta.axisSide, space: 10, child: text);
   }
 }
