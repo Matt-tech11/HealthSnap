@@ -1,20 +1,43 @@
-import 'package:fl_chart/fl_chart.dart';
+//import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:healthsnap/common/color_extension.dart';
 import 'package:healthsnap/common_widget/find_eat_cell.dart';
-import 'package:healthsnap/common_widget/round_button.dart';
+//import 'package:healthsnap/common_widget/round_button.dart';
 import 'package:healthsnap/common_widget/today_meal_row.dart';
 
 class MealFoodDetail extends StatefulWidget {
-  const MealFoodDetail({super.key});
+  final Map eObj;
+  const MealFoodDetail({super.key, required this.eObj});
 
   @override
   State<MealFoodDetail> createState() => _MealFoodDetailState();
 }
 
 class _MealFoodDetailState extends State<MealFoodDetail> {
+  List todayMealArr = [
+    {
+      "name": "Salmon Nigiri",
+      "image": "assets/img/food_1.png",
+      "time": "28/08/2026 08:00 AM",
+    },
+    {
+      "name": "Lowfat Milk",
+      "image": "assets/img/food_7.png",
+      "time": "28/08/2026 09:30 AM",
+    },
+  ];
+
+  List findEatArr = [
+    {
+      "name": "Breakfast",
+      "image": "assets/img/food_2.png",
+      "number": "120+ Foods",
+    },
+    {"name": "Lunch", "image": "assets/img/food_3.png", "number": "300+ Foods"},
+  ];
   @override
   Widget build(BuildContext context) {
+    var media = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: TColor.white,
@@ -80,182 +103,6 @@ class _MealFoodDetailState extends State<MealFoodDetail> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Workout Progress",
-                      style: TextStyle(
-                        color: TColor.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    Container(
-                      height: 30,
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(colors: TColor.primaryG),
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: DropdownButton(
-                        items: ["Weekly", "Monthly"]
-                            .map(
-                              (name) => DropdownMenuItem(
-                                value: name,
-                                child: Text(
-                                  name,
-                                  style: TextStyle(
-                                    color: TColor.gray,
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ),
-                            )
-                            .toList(),
-                        onChanged: (value) {},
-                        icon: Icon(Icons.arrow_drop_down, color: TColor.white),
-                        hint: Text(
-                          "Weekly",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(color: TColor.white, fontSize: 12),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: media.width * 0.1),
-                Container(
-                  padding: const EdgeInsets.only(left: 15),
-                  height: media.width * 0.5,
-                  width: double.maxFinite,
-                  child: LineChart(
-                    LineChartData(
-                      lineTouchData: LineTouchData(
-                        enabled: true,
-                        handleBuiltInTouches: false,
-                        touchCallback:
-                            (
-                              FlTouchEvent event,
-                              LineTouchResponse? response,
-                            ) {},
-                        mouseCursorResolver:
-                            (FlTouchEvent event, LineTouchResponse? response) {
-                              if (response == null ||
-                                  response.lineBarSpots == null) {
-                                return SystemMouseCursors.basic;
-                              }
-                              return SystemMouseCursors.click;
-                            },
-                        getTouchedSpotIndicator:
-                            (LineChartBarData barData, List<int> spotIndexes) {
-                              return spotIndexes.map((index) {
-                                return TouchedSpotIndicatorData(
-                                  FlLine(color: Colors.transparent),
-                                  FlDotData(
-                                    show: true,
-                                    getDotPainter:
-                                        (spot, percent, barData, index) =>
-                                            FlDotCirclePainter(
-                                              radius: 3,
-                                              color: TColor.white,
-                                              strokeWidth: 3,
-                                              strokeColor:
-                                                  TColor.secondaryColor1,
-                                            ),
-                                  ),
-                                );
-                              }).toList();
-                            },
-                        touchTooltipData: LineTouchTooltipData(
-                          getTooltipColor: (spot) => TColor.secondaryColor1,
-                          tooltipRoundedRadius: 20,
-                          getTooltipItems: (List<LineBarSpot> linearBarsSpot) {
-                            return linearBarsSpot.map((lineBarSpot) {
-                              return LineTooltipItem(
-                                "${lineBarSpot.x.toInt()} mins ago",
-                                const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              );
-                            }).toList();
-                          },
-                        ),
-                      ),
-                      lineBarsData: lineBarsData1,
-                      minY: -0.5,
-                      maxY: 110,
-                      titlesData: FlTitlesData(
-                        show: true,
-                        leftTitles: AxisTitles(),
-                        topTitles: AxisTitles(),
-                        bottomTitles: AxisTitles(sideTitles: bottomTitles()),
-                        rightTitles: AxisTitles(sideTitles: rightTitles()),
-                      ),
-                      gridData: FlGridData(
-                        show: true,
-                        drawHorizontalLine: true,
-                        horizontalInterval: 25,
-                        drawVerticalLine: false,
-                        getDrawingHorizontalLine: (value) {
-                          return FlLine(
-                            color: TColor.gray.withOpacity(0.15),
-                            strokeWidth: 2,
-                          );
-                        },
-                      ),
-                      borderData: FlBorderData(
-                        show: true,
-                        border: Border.all(color: Colors.transparent),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: media.width * 0.05),
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 15,
-                    horizontal: 15,
-                  ),
-                  decoration: BoxDecoration(
-                    color: TColor.primaryColor2.withValues(alpha: 0.3),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Daily Meal Schedule",
-                        style: TextStyle(
-                          color: TColor.black,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 75,
-                        height: 30,
-                        child: RoundButton(
-                          title: "Check",
-                          type: RoundButtonType.bgGradient,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                          onPressed: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) =>
-                            //         const ActivityTrackerView(),
-                            //   ),
-                            // );
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
                 SizedBox(height: media.width * 0.05),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
