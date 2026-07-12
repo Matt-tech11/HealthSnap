@@ -161,8 +161,8 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
                   child: Image.asset(
                     "assets/img/back_navs.png",
                     color: Colors.black,
-                    width: 15,
-                    height: 15,
+                    width: 13,
+                    height: 13,
                     fit: BoxFit.contain,
                   ),
                 ),
@@ -181,8 +181,8 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
                     ),
                     child: Image.asset(
                       "assets/img/more_nav.png",
-                      width: 15,
-                      height: 15,
+                      width: 13,
+                      height: 13,
                       fit: BoxFit.contain,
                     ),
                   ),

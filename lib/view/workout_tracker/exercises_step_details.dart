@@ -64,8 +64,8 @@ class _ExercisesStepDetailsState extends State<ExercisesStepDetails> {
             child: Image.asset(
               "assets/img/close.png",
               color: Colors.black,
-              width: 15,
-              height: 15,
+              width: 13,
+              height: 13,
             ),
           ),
         ),
@@ -86,8 +86,8 @@ class _ExercisesStepDetailsState extends State<ExercisesStepDetails> {
               ),
               child: Image.asset(
                 "assets/img/more_nav.png",
-                width: 15,
-                height: 15,
+                width: 13,
+                height: 13,
                 fit: BoxFit.contain,
               ),
             ),

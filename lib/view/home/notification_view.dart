@@ -93,8 +93,8 @@ class _NotificationViewState extends State<NotificationView> {
               ),
               child: Image.asset(
                 "assets/img/more_nav.png",
-                width: 15,
-                height: 15,
+                width: 13,
+                height: 13,
                 fit: BoxFit.contain,
               ),
             ),
