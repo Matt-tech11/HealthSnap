@@ -368,7 +368,18 @@ class _MealPlannerViewState extends State<MealPlannerView> {
                     itemCount: findEatArr.length,
                     itemBuilder: (context, index) {
                       var fObj = findEatArr[index] as Map? ?? {};
-                      return FindEatCell(fObj: fObj, index: index);
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  MealFoodDetailView(eObj: fObj),
+                            ),
+                          );
+                        },
+                        child: FindEatCell(fObj: fObj, index: index),
+                      );
                     },
                   ),
                 ),
