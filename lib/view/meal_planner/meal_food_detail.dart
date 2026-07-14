@@ -65,7 +65,7 @@ class _MealFoodDetailState extends State<MealFoodDetail> {
           ),
         ),
         title: Text(
-          "Meal Planner",
+          widget.eObj["name"].toString(),
           style: TextStyle(
             color: TColor.black,
             fontSize: 19,
