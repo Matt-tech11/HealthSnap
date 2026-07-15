@@ -125,8 +125,8 @@ class _MealFoodDetailState extends State<MealFoodDetail> {
                   scrollDirection: Axis.horizontal,
                   itemCount: findEatArr.length,
                   itemBuilder: (context, index) {
-                    var fObj = findEatArr[index] as Map? ?? {};
-                    return FindEatCell(fObj: fObj, index: index);
+                    var cObj = findEatArr[index] as Map? ?? {};
+                    return MealFoodDetail(cObj: fObj, index: index);
                   },
                 ),
               ),
