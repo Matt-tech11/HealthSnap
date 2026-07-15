@@ -98,65 +98,42 @@ class _MealFoodDetailState extends State<MealFoodDetail> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: media.width * 0.05),
-                Row(
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: media.width * 0.05),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Today Meals",
+                      "Category",
                       style: TextStyle(
                         color: TColor.black,
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
                       ),
                     ),
-                    Container(
-                      height: 30,
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(colors: TColor.primaryG),
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: DropdownButton(
-                        items:
-                            [
-                                  "Breakfast",
-                                  "Lunch",
-                                  "Supper",
-                                  "Desserts",
-                                  "Snacks",
-                                ]
-                                .map(
-                                  (name) => DropdownMenuItem(
-                                    value: name,
-                                    child: Text(
-                                      name,
-                                      style: TextStyle(
-                                        color: TColor.gray,
-                                        fontSize: 14,
-                                      ),
-                                    ),
-                                  ),
-                                )
-                                .toList(),
-                        onChanged: (value) {},
-                        icon: Icon(Icons.arrow_drop_down, color: TColor.white),
-                        hint: Text(
-                          "Breakfast",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(color: TColor.white, fontSize: 12),
-                        ),
-                      ),
-                    ),
                   ],
                 ),
-                SizedBox(height: media.width * 0.05),
-                ListView.builder(
+              ),
+              SizedBox(
+                height: 100,
+                child: ListView.builder(
+                  padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: findEatArr.length,
+                  itemBuilder: (context, index) {
+                    var fObj = findEatArr[index] as Map? ?? {};
+                    return FindEatCell(fObj: fObj, index: index);
+                  },
+                ),
+              ),
+              SizedBox(height: media.width * 0.05),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: ListView.builder(
                   padding: EdgeInsets.zero,
                   itemCount: todayMealArr.length,
                   shrinkWrap: true,
@@ -166,8 +143,8 @@ class _MealFoodDetailState extends State<MealFoodDetail> {
                     return TodayMealRow(mObj: mObj);
                   },
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
 
           Padding(
@@ -184,18 +161,18 @@ class _MealFoodDetailState extends State<MealFoodDetail> {
                   ),
                 ),
 
-                SizedBox(
-                  height: media.width * 0.55,
-                  child: ListView.builder(
-                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                    scrollDirection: Axis.horizontal,
-                    itemCount: findEatArr.length,
-                    itemBuilder: (context, index) {
-                      var fObj = findEatArr[index] as Map? ?? {};
-                      return FindEatCell(fObj: fObj, index: index);
-                    },
-                  ),
-                ),
+                // SizedBox(
+                //   height: media.width * 0.55,
+                //   child: ListView.builder(
+                //     padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                //     scrollDirection: Axis.horizontal,
+                //     itemCount: findEatArr.length,
+                //     itemBuilder: (context, index) {
+                //       var fObj = findEatArr[index] as Map? ?? {};
+                //       return FindEatCell(fObj: fObj, index: index);
+                //     },
+                //   ),
+                // ),
                 SizedBox(height: media.width * 0.5),
               ],
             ),
