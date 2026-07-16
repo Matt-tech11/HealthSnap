@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:healthsnap/common/color_extension.dart';
 import 'package:healthsnap/common_widget/find_eat_cell.dart';
+import 'package:healthsnap/common_widget/meal_catergory_cell.dart';
 //import 'package:healthsnap/common_widget/round_button.dart';
 import 'package:healthsnap/common_widget/today_meal_row.dart';
 
@@ -14,27 +15,50 @@ class MealFoodDetail extends StatefulWidget {
 }
 
 class _MealFoodDetailState extends State<MealFoodDetail> {
-  List todayMealArr = [
+  List categoryArr = [
+    {"name": "Salad", "image": "assets/img/food_4.png"},
+    {"name": "Cake", "image": "assets/img/food_5.png"},
+    {"name": "Pie", "image": "assets/img/food_7.png"},
+    {"name": "Smoothies", "image": "assets/img/food_6.png"},
+    {"name": "Salad", "image": "assets/img/food_4.png"},
+    {"name": "Cake", "image": "assets/img/food_5.png"},
+    {"name": "Pie", "image": "assets/img/food_7.png"},
+    {"name": "Smoothies", "image": "assets/img/food_6.png"},
+  ];
+
+  List popularArr = [
     {
-      "name": "Salmon Nigiri",
+      "name": "Pancakes",
       "image": "assets/img/food_1.png",
-      "time": "28/08/2026 08:00 AM",
+      "size": "Medium",
+      "time": "30mins",
+      "kCal": "230kCal",
     },
     {
-      "name": "Lowfat Milk",
+      "name": "Salmon Nigiri",
       "image": "assets/img/food_7.png",
-      "time": "28/08/2026 09:30 AM",
+      "size": "Medium",
+      "time": "20mins",
+      "kCal": "130kCal",
+    },
+  ];
+  List recommendArr = [
+    {
+      "name": "Pancakes",
+      "image": "assets/img/food_1.png",
+      "size": "Easy",
+      "time": "30mins",
+      "kCal": "180kCal",
+    },
+    {
+      "name": "Canai Bread",
+      "image": "assets/img/food_7.png",
+      "size": "Easy",
+      "time": "20mins",
+      "kCal": "230kCal",
     },
   ];
 
-  List findEatArr = [
-    {
-      "name": "Breakfast",
-      "image": "assets/img/food_2.png",
-      "number": "120+ Foods",
-    },
-    {"name": "Lunch", "image": "assets/img/food_3.png", "number": "300+ Foods"},
-  ];
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
@@ -95,89 +119,91 @@ class _MealFoodDetailState extends State<MealFoodDetail> {
         ],
       ),
       backgroundColor: TColor.white,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: media.width * 0.05),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Category",
-                      style: TextStyle(
-                        color: TColor.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 100,
-                child: ListView.builder(
-                  padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                  scrollDirection: Axis.horizontal,
-                  itemCount: findEatArr.length,
-                  itemBuilder: (context, index) {
-                    var cObj = findEatArr[index] as Map? ?? {};
-                    return MealFoodDetail(cObj: fObj, index: index);
-                  },
-                ),
-              ),
-              SizedBox(height: media.width * 0.05),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: ListView.builder(
-                  padding: EdgeInsets.zero,
-                  itemCount: todayMealArr.length,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    var mObj = todayMealArr[index] as Map? ?? {};
-                    return TodayMealRow(mObj: mObj);
-                  },
-                ),
-              ),
-            ],
-          ),
-
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: Column(
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  "Find Something to Eat",
-                  style: TextStyle(
-                    color: TColor.black,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
+                SizedBox(height: media.width * 0.05),
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Category",
+                        style: TextStyle(
+                          color: TColor.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-
-                // SizedBox(
-                //   height: media.width * 0.55,
+                SizedBox(
+                  height: 100,
+                  child: ListView.builder(
+                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                    scrollDirection: Axis.horizontal,
+                    itemCount: categoryArr.length,
+                    itemBuilder: (context, index) {
+                      var cObj = categoryArr[index] as Map? ?? {};
+                      return MealCatergoryCell(cObj: cObj, index: index);
+                    },
+                  ),
+                ),
+                SizedBox(height: media.width * 0.05),
+                // Padding(
+                //   padding: const EdgeInsets.all(20.0),
                 //   child: ListView.builder(
-                //     padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                //     scrollDirection: Axis.horizontal,
-                //     itemCount: findEatArr.length,
+                //     padding: EdgeInsets.zero,
+                //     itemCount: popularArr.length,
+                //     shrinkWrap: true,
+                //     physics: const NeverScrollableScrollPhysics(),
                 //     itemBuilder: (context, index) {
-                //       var fObj = findEatArr[index] as Map? ?? {};
-                //       return FindEatCell(fObj: fObj, index: index);
+                //       var mObj = popularArr[index] as Map? ?? {};
+                //       return TodayMealRow(mObj: mObj);
                 //     },
                 //   ),
                 // ),
-                SizedBox(height: media.width * 0.5),
               ],
             ),
-          ),
-        ],
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Find Something to Eat",
+                    style: TextStyle(
+                      color: TColor.black,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+
+                  // SizedBox(
+                  //   height: media.width * 0.55,
+                  //   child: ListView.builder(
+                  //     padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                  //     scrollDirection: Axis.horizontal,
+                  //     itemCount: findEatArr.length,
+                  //     itemBuilder: (context, index) {
+                  //       var fObj = findEatArr[index] as Map? ?? {};
+                  //       return FindEatCell(fObj: fObj, index: index);
+                  //     },
+                  //   ),
+                  // ),
+                  SizedBox(height: media.width * 0.5),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
