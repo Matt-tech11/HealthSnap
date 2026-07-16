@@ -144,7 +144,7 @@ class _MealFoodDetailState extends State<MealFoodDetail> {
                   ),
                 ),
                 SizedBox(
-                  height: 100,
+                  height: 120,
                   child: ListView.builder(
                     padding: const EdgeInsets.symmetric(horizontal: 15.0),
                     scrollDirection: Axis.horizontal,
@@ -178,7 +178,7 @@ class _MealFoodDetailState extends State<MealFoodDetail> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Find Something to Eat",
+                    "Recommendation\nfor Diet",
                     style: TextStyle(
                       color: TColor.black,
                       fontSize: 16,
@@ -186,18 +186,18 @@ class _MealFoodDetailState extends State<MealFoodDetail> {
                     ),
                   ),
 
-                  // SizedBox(
-                  //   height: media.width * 0.55,
-                  //   child: ListView.builder(
-                  //     padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                  //     scrollDirection: Axis.horizontal,
-                  //     itemCount: findEatArr.length,
-                  //     itemBuilder: (context, index) {
-                  //       var fObj = findEatArr[index] as Map? ?? {};
-                  //       return FindEatCell(fObj: fObj, index: index);
-                  //     },
-                  //   ),
-                  // ),
+                  SizedBox(
+                    height: media.width * 0.55,
+                    child: ListView.builder(
+                      padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                      scrollDirection: Axis.horizontal,
+                      itemCount: recommendArr.length,
+                      itemBuilder: (context, index) {
+                        var fObj = recommendArr[index] as Map? ?? {};
+                        return FindEatCell(fObj: fObj, index: index);
+                      },
+                    ),
+                  ),
                   SizedBox(height: media.width * 0.5),
                 ],
               ),

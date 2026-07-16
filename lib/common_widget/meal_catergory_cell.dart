@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:healthsnap/common/color_extension.dart';
-import 'package:healthsnap/common_widget/round_button.dart';
+//import 'package:healthsnap/common_widget/round_button.dart';
 
 class MealCatergoryCell extends StatelessWidget {
   final Map cObj;
@@ -11,8 +11,8 @@ class MealCatergoryCell extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isEvent = index % 2 == 0;
     return Container(
-      margin: const EdgeInsets.all(8),
-      width: 80,
+      margin: const EdgeInsets.all(4),
+      width: 90,
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: isEvent
@@ -25,14 +25,10 @@ class MealCatergoryCell extends StatelessWidget {
                   TColor.secondaryColor1.withOpacity(0.5),
                 ],
         ),
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(25),
-          topRight: Radius.circular(75),
-          bottomLeft: Radius.circular(25),
-          bottomRight: Radius.circular(25),
-        ),
+        borderRadius: BorderRadius.circular(15),
       ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           ClipRRect(
@@ -52,12 +48,13 @@ class MealCatergoryCell extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
+            padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
             child: Text(
               cObj["name"],
+              maxLines: 1,
               style: TextStyle(
                 color: TColor.black,
-                fontSize: 14,
+                fontSize: 12,
                 fontWeight: FontWeight.w500,
               ),
             ),
