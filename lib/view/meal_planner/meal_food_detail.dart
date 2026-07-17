@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:healthsnap/common/color_extension.dart';
 import 'package:healthsnap/common_widget/find_eat_cell.dart';
 import 'package:healthsnap/common_widget/meal_catergory_cell.dart';
+import 'package:healthsnap/common_widget/meal_recommend.dart';
+import 'package:healthsnap/common_widget/popular_meal_row.dart';
 //import 'package:healthsnap/common_widget/round_button.dart';
 import 'package:healthsnap/common_widget/today_meal_row.dart';
 
@@ -187,18 +189,48 @@ class _MealFoodDetailState extends State<MealFoodDetail> {
                   ),
 
                   SizedBox(
-                    height: media.width * 0.55,
+                    height: media.width * 0.6,
                     child: ListView.builder(
                       padding: const EdgeInsets.symmetric(horizontal: 15.0),
                       scrollDirection: Axis.horizontal,
                       itemCount: recommendArr.length,
                       itemBuilder: (context, index) {
                         var fObj = recommendArr[index] as Map? ?? {};
-                        return FindEatCell(fObj: fObj, index: index);
+                        return MealRecommend(fObj: fObj, index: index);
                       },
                     ),
                   ),
                   SizedBox(height: media.width * 0.5),
+
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Popular",
+                          style: TextStyle(
+                            color: TColor.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+
+                        ListView.builder(
+                          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: popularArr.length,
+                          itemBuilder: (context, index) {
+                            var fObj = popularArr[index] as Map? ?? {};
+                            return PopularMealRow(mObj: fObj);
+                          },
+                        ),
+
+                        SizedBox(height: media.width * 0.5),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),

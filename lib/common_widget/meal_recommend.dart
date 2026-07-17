@@ -12,7 +12,7 @@ class MealRecommend extends StatelessWidget {
     var media = MediaQuery.of(context).size;
     bool isEvent = index % 2 == 0;
     return Container(
-      margin: const EdgeInsets.all(8),
+      margin: const EdgeInsets.all(5),
       width: media.width * 0.5,
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -26,14 +26,10 @@ class MealRecommend extends StatelessWidget {
                   TColor.secondaryColor1.withOpacity(0.5),
                 ],
         ),
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(25),
-          topRight: Radius.circular(75),
-          bottomLeft: Radius.circular(25),
-          bottomRight: Radius.circular(25),
-        ),
+        borderRadius: BorderRadius.circular(25),
       ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Image.asset(
@@ -57,7 +53,7 @@ class MealRecommend extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Text(
-              fObj["number"],
+              "${fObj["size"]} | ${fObj["time"]} | ${fObj["kCal"]}",
               style: TextStyle(color: TColor.black, fontSize: 12),
             ),
           ),
@@ -66,13 +62,13 @@ class MealRecommend extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: SizedBox(
               width: 90,
-              height: 25,
+              height: 35,
               child: RoundButton(
                 fontSize: 12,
                 type: isEvent
                     ? RoundButtonType.bgGradient
                     : RoundButtonType.bgSGradient,
-                title: "Select",
+                title: "View",
                 onPressed: () {},
               ),
             ),
