@@ -17,12 +17,12 @@ class _MealPlannerViewState extends State<MealPlannerView> {
   List todayMealArr = [
     {
       "name": "Salmon Nigiri",
-      "image": "assets/img/food_1.png",
+      "image": "assets/img/nigiri_1.png",
       "time": "28/08/2026 08:00 AM",
     },
     {
       "name": "Lowfat Milk",
-      "image": "assets/img/food_7.png",
+      "image": "assets/img/lowfat_milk.png",
       "time": "28/08/2026 09:30 AM",
     },
   ];
@@ -30,10 +30,10 @@ class _MealPlannerViewState extends State<MealPlannerView> {
   List findEatArr = [
     {
       "name": "Breakfast",
-      "image": "assets/img/food_2.png",
+      "image": "assets/img/bread.png",
       "number": "120+ Foods",
     },
-    {"name": "Lunch", "image": "assets/img/food_3.png", "number": "300+ Foods"},
+    {"name": "Lunch", "image": "assets/img/pie.png", "number": "300+ Foods"},
   ];
   @override
   Widget build(BuildContext context) {
@@ -108,7 +108,7 @@ class _MealPlannerViewState extends State<MealPlannerView> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Workout Progress",
+                      "Meal Nutritions",
                       style: TextStyle(
                         color: TColor.black,
                         fontSize: 16,

@@ -1,7 +1,7 @@
 //import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:healthsnap/common/color_extension.dart';
-import 'package:healthsnap/common_widget/find_eat_cell.dart';
+//import 'package:healthsnap/common_widget/find_eat_cell.dart';
 import 'package:healthsnap/common_widget/meal_catergory_cell.dart';
 import 'package:healthsnap/common_widget/meal_recommend.dart';
 import 'package:healthsnap/common_widget/popular_meal_row.dart';
@@ -20,13 +20,13 @@ class _MealFoodDetailState extends State<MealFoodDetail> {
   TextEditingController txtSearch = TextEditingController();
   List categoryArr = [
     {"name": "Salad", "image": "assets/img/food_4.png"},
-    {"name": "Cake", "image": "assets/img/food_5.png"},
-    {"name": "Pie", "image": "assets/img/food_7.png"},
+    {"name": "Bakery", "image": "assets/img/food_5.png"},
+    {"name": "Grains", "image": "assets/img/food_7.png"},
     {"name": "Smoothies", "image": "assets/img/food_6.png"},
-    {"name": "Salad", "image": "assets/img/food_4.png"},
-    {"name": "Cake", "image": "assets/img/food_5.png"},
+    {"name": "Proteins", "image": "assets/img/food_4.png"},
+    {"name": "Cereals", "image": "assets/img/food_5.png"},
     {"name": "Pie", "image": "assets/img/food_7.png"},
-    {"name": "Smoothies", "image": "assets/img/food_6.png"},
+    {"name": "Dairy", "image": "assets/img/food_6.png"},
   ];
 
   List popularArr = [
@@ -204,20 +204,20 @@ class _MealFoodDetailState extends State<MealFoodDetail> {
               ),
             ),
             SizedBox(height: media.width * 0.05),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: ListView.builder(
-                padding: EdgeInsets.zero,
-                itemCount: popularArr.length,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  var mObj = popularArr[index] as Map? ?? {};
-                  return TodayMealRow(mObj: mObj);
-                },
-              ),
-            ),
 
+            // Padding(
+            //   padding: const EdgeInsets.all(20.0),
+            //   child: ListView.builder(
+            //     padding: EdgeInsets.zero,
+            //     itemCount: popularArr.length,
+            //     shrinkWrap: true,
+            //     physics: const NeverScrollableScrollPhysics(),
+            //     itemBuilder: (context, index) {
+            //       var mObj = popularArr[index] as Map? ?? {};
+            //       return TodayMealRow(mObj: mObj);
+            //     },
+            //   ),
+            // ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Column(
@@ -244,7 +244,7 @@ class _MealFoodDetailState extends State<MealFoodDetail> {
                       },
                     ),
                   ),
-                  SizedBox(height: media.width * 0.5),
+                  SizedBox(height: media.width * 0.05),
 
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -271,7 +271,7 @@ class _MealFoodDetailState extends State<MealFoodDetail> {
                           },
                         ),
 
-                        SizedBox(height: media.width * 0.5),
+                        SizedBox(height: media.width * 0.05),
                       ],
                     ),
                   ),

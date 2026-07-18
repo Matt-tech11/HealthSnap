@@ -28,10 +28,10 @@ class TodayMealRow extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(30),
             child: Image.asset(
-              mObj["img"].toString(),
+              mObj["image"].toString(),
               width: 40,
               height: 40,
-              fit: BoxFit.cover,
+              fit: BoxFit.contain,
             ),
           ),
 
@@ -41,7 +41,7 @@ class TodayMealRow extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "${getDayTitle(mObj['time'].toString())} | ${getStringDateToOtherFormat(mObj['time'].toString(), outFormatStr: 'h:mm a')}",
+                  mObj["name"].toString(),
                   style: TextStyle(
                     color: TColor.black,
                     fontSize: 12,

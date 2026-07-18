@@ -40,7 +40,7 @@ class MealCatergoryCell extends StatelessWidget {
               ),
 
               child: Image.asset(
-                cObj["Image"].toString(),
+                cObj["image"].toString(),
                 width: 35,
                 height: 35,
                 fit: BoxFit.contain,

@@ -40,7 +40,7 @@ class FindEatCell extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Image.asset(
-                fObj["Image"].toString(),
+                fObj["image"].toString(),
                 width: media.width * 0.3,
                 height: media.width * 0.25,
                 fit: BoxFit.contain,
