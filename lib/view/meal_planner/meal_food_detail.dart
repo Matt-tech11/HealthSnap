@@ -17,7 +17,7 @@ class MealFoodDetail extends StatefulWidget {
 }
 
 class _MealFoodDetailState extends State<MealFoodDetail> {
-  TextEditingController txtSearch =TextEditingController();
+  TextEditingController txtSearch = TextEditingController();
   List categoryArr = [
     {"name": "Salad", "image": "assets/img/food_4.png"},
     {"name": "Cake", "image": "assets/img/food_5.png"},
@@ -126,14 +126,37 @@ class _MealFoodDetailState extends State<MealFoodDetail> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 20),
               padding: const EdgeInsets.symmetric(horizontal: 8),
-              decoration: BoxDecoration(color: TColor.white, borderRadius: BorderRadius.circular(15), boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 2, offset: Offset(0, 1))]),
+              decoration: BoxDecoration(
+                color: TColor.white,
+                borderRadius: BorderRadius.circular(15),
+                boxShadow: const [
+                  BoxShadow(
+                    color: Colors.black12,
+                    blurRadius: 2,
+                    offset: Offset(0, 1),
+                  ),
+                ],
+              ),
               child: Row(
                 children: [
-                  Expanded(child: TextField( controller: txtSearch, decoration: InputDecoration(focusedBorder: InputBorder.none, enabledBorder: InputBorder.none, prefixIcon: Image.asset("assets/img/search.png", width: 25, height: 25), hintText: "Search"),)),
+                  Expanded(
+                    child: TextField(
+                      controller: txtSearch,
+                      decoration: InputDecoration(
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                        prefixIcon: Image.asset(
+                          "assets/img/search.png",
+                          width: 25,
+                          height: 25,
+                        ),
+                        hintText: "Search",
+                      ),
+                    ),
+                  ),
                   Container(
                     margin: const EdgeInsets.symmetric(horizontal: 8),
                     width: 1,
@@ -141,59 +164,58 @@ class _MealFoodDetailState extends State<MealFoodDetail> {
                     color: TColor.gray.withOpacity(0.3),
                   ),
                   InkWell(
-                    onTap: (){
-
-                    },
-                    child: Image.asset("assets/img/filter.png", width: 25, height: 25,),
-                  )
+                    onTap: () {},
+                    child: Image.asset(
+                      "assets/img/filter.png",
+                      width: 25,
+                      height: 25,
+                    ),
+                  ),
                 ],
               ),
             ),
-            
-                SizedBox(height: media.width * 0.05),
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Category",
-                        style: TextStyle(
-                          color: TColor.black,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ],
+            SizedBox(height: media.width * 0.05),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Category",
+                    style: TextStyle(
+                      color: TColor.black,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: 120,
-                  child: ListView.builder(
-                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                    scrollDirection: Axis.horizontal,
-                    itemCount: categoryArr.length,
-                    itemBuilder: (context, index) {
-                      var cObj = categoryArr[index] as Map? ?? {};
-                      return MealCatergoryCell(cObj: cObj, index: index);
-                    },
-                  ),
-                ),
-                SizedBox(height: media.width * 0.05),
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: ListView.builder(
-                    padding: EdgeInsets.zero,
-                    itemCount: popularArr.length,
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      var mObj = popularArr[index] as Map? ?? {};
-                      return TodayMealRow(mObj: mObj);
-                    },
-                  ),
-                ),
-              ],
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 120,
+              child: ListView.builder(
+                padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                scrollDirection: Axis.horizontal,
+                itemCount: categoryArr.length,
+                itemBuilder: (context, index) {
+                  var cObj = categoryArr[index] as Map? ?? {};
+                  return MealCatergoryCell(cObj: cObj, index: index);
+                },
+              ),
+            ),
+            SizedBox(height: media.width * 0.05),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: ListView.builder(
+                padding: EdgeInsets.zero,
+                itemCount: popularArr.length,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  var mObj = popularArr[index] as Map? ?? {};
+                  return TodayMealRow(mObj: mObj);
+                },
+              ),
             ),
 
             Padding(
@@ -258,7 +280,7 @@ class _MealFoodDetailState extends State<MealFoodDetail> {
             ),
           ],
         ),
-      
+      ),
     );
   }
 }

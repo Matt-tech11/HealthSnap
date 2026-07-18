@@ -4,6 +4,7 @@ import 'package:healthsnap/common/color_extension.dart';
 import 'package:healthsnap/common_widget/find_eat_cell.dart';
 import 'package:healthsnap/common_widget/round_button.dart';
 import 'package:healthsnap/common_widget/today_meal_row.dart';
+import 'package:healthsnap/view/meal_planner/meal_food_detail.dart';
 
 class MealPlannerView extends StatefulWidget {
   const MealPlannerView({super.key});
@@ -373,8 +374,7 @@ class _MealPlannerViewState extends State<MealPlannerView> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) =>
-                                  MealFoodDetailView(eObj: fObj),
+                              builder: (context) => MealFoodDetail(eObj: fObj),
                             ),
                           );
                         },
