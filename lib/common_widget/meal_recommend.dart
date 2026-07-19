@@ -33,7 +33,7 @@ class MealRecommend extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Image.asset(
-            fObj["Image"].toString(),
+            fObj["image"].toString(),
             width: media.width * 0.3,
             height: media.width * 0.25,
             fit: BoxFit.contain,

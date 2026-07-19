@@ -32,14 +32,28 @@ class _MealFoodDetailState extends State<MealFoodDetail> {
   List popularArr = [
     {
       "name": "Pancakes",
-      "image": "assets/img/food_1.png",
+      "image": "assets/img/pancake_2.png",
       "size": "Medium",
       "time": "30mins",
       "kCal": "230kCal",
     },
     {
       "name": "Salmon Nigiri",
-      "image": "assets/img/food_7.png",
+      "image": "assets/img/food_4.png",
+      "size": "Medium",
+      "time": "20mins",
+      "kCal": "130kCal",
+    },
+    {
+      "name": "Salmon Nigiri",
+      "image": "assets/img/food_4.png",
+      "size": "Medium",
+      "time": "20mins",
+      "kCal": "130kCal",
+    },
+    {
+      "name": "Salmon Nigiri",
+      "image": "assets/img/food_4.png",
       "size": "Medium",
       "time": "20mins",
       "kCal": "130kCal",
@@ -48,14 +62,14 @@ class _MealFoodDetailState extends State<MealFoodDetail> {
   List recommendArr = [
     {
       "name": "Pancakes",
-      "image": "assets/img/food_1.png",
+      "image": "assets/img/pancakes.png",
       "size": "Easy",
       "time": "30mins",
       "kCal": "180kCal",
     },
     {
       "name": "Canai Bread",
-      "image": "assets/img/food_7.png",
+      "image": "assets/img/bread.png",
       "size": "Easy",
       "time": "20mins",
       "kCal": "230kCal",
