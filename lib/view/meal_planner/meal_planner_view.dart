@@ -34,6 +34,8 @@ class _MealPlannerViewState extends State<MealPlannerView> {
       "number": "120+ Foods",
     },
     {"name": "Lunch", "image": "assets/img/pie.png", "number": "300+ Foods"},
+    {"name": "Supper", "image": "assets/img/pie.png", "number": "300+ Foods"},
+    {"name": "Desserts", "image": "assets/img/pie.png", "number": "300+ Foods"},
   ];
   @override
   Widget build(BuildContext context) {
