@@ -7,6 +7,7 @@ import 'package:healthsnap/common_widget/meal_recommend.dart';
 import 'package:healthsnap/common_widget/popular_meal_row.dart';
 //import 'package:healthsnap/common_widget/round_button.dart';
 import 'package:healthsnap/common_widget/today_meal_row.dart';
+import 'package:healthsnap/view/meal_planner/food_info_detail.dart';
 
 class MealFoodDetail extends StatefulWidget {
   final Map eObj;
@@ -33,6 +34,7 @@ class _MealFoodDetailState extends State<MealFoodDetail> {
     {
       "name": "Pancakes",
       "image": "assets/img/pancake_2.png",
+      "b_image": "",
       "size": "Medium",
       "time": "30mins",
       "kCal": "230kCal",
@@ -40,20 +42,7 @@ class _MealFoodDetailState extends State<MealFoodDetail> {
     {
       "name": "Salmon Nigiri",
       "image": "assets/img/food_4.png",
-      "size": "Medium",
-      "time": "20mins",
-      "kCal": "130kCal",
-    },
-    {
-      "name": "Salmon Nigiri",
-      "image": "assets/img/food_4.png",
-      "size": "Medium",
-      "time": "20mins",
-      "kCal": "130kCal",
-    },
-    {
-      "name": "Salmon Nigiri",
-      "image": "assets/img/food_4.png",
+      "b_image": "",
       "size": "Medium",
       "time": "20mins",
       "kCal": "130kCal",
@@ -281,7 +270,18 @@ class _MealFoodDetailState extends State<MealFoodDetail> {
                           itemCount: popularArr.length,
                           itemBuilder: (context, index) {
                             var fObj = popularArr[index] as Map? ?? {};
-                            return PopularMealRow(mObj: fObj);
+                            return InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        FoodInfoDetail(dObj: fObj),
+                                  ),
+                                );
+                              },
+                              child: PopularMealRow(mObj: fObj),
+                            );
                           },
                         ),
 
