@@ -434,7 +434,10 @@ class _FoodInfoDetailState extends State<FoodInfoDetail> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      RoundButton(title: "Start Workout", onPressed: () {}),
+                      RoundButton(
+                        title: "Add to Breakfast Meal",
+                        onPressed: () {},
+                      ),
                     ],
                   ),
                 ),
