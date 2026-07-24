@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:healthsnap/common/color_extension.dart';
 import 'package:healthsnap/common_widget/exercise_set_section.dart';
+import 'package:healthsnap/common_widget/food_step_detail_row.dart';
 import 'package:healthsnap/common_widget/icon_title_next_row.dart';
 import 'package:healthsnap/common_widget/round_button.dart';
 import 'package:healthsnap/view/workout_tracker/exercises_step_details.dart';
 import 'package:healthsnap/view/workout_tracker/workout_schedule_view.dart';
+import 'package:readmore/readmore.dart';
 
 class FoodInfoDetail extends StatefulWidget {
   final Map mObj;
@@ -53,81 +55,38 @@ class _FoodInfoDetailState extends State<FoodInfoDetail> {
   List nutritionArr = [
     {"img": "assets/img/calories_icon.png", "title": "180kCal"},
     {"img": "assets/img/fat_icon.png", "title": "9g Fat"},
-    {"img": "assets/img/protein_icon.png", "title": "20g Protein"},
+    {"img": "assets/img/protein_1.png", "title": "20g Protein"},
     {"img": "assets/img/carbo_icon.png", "title": "30g Carbs"},
   ];
 
-  List exerciseArr = [
+  List stepArr = [
     {
-      "name": "Set 1",
-      "set": [
-        {"img": "assets/img/warm_up.png", "title": "Warm Up", "value": "05:00"},
-        {
-          "img": "assets/img/jumping_jack.png",
-          "title": "Jumping Jack",
-          "value": "05:00",
-        },
-        {"img": "assets/img/skipp.png", "title": "Skipping", "value": "05:00"},
-        {"img": "assets/img/squats.png", "title": "Squats", "value": "05:00"},
-        {
-          "img": "assets/img/arm_raises.png",
-          "title": "Arm Raises",
-          "value": "05:00",
-        },
-        {
-          "img": "assets/img/rest.png",
-          "title": "Rest and Drink",
-          "value": "05:00",
-        },
-      ],
+      "no": "01",
+      "title": "Mix dry ingredients",
+      "details": "Combine flour, sugar, baking powder, and salt in a bowl.",
     },
     {
-      "name": "Set 2",
-      "set": [
-        {
-          "img": "assets/img/inclined_pushup.png",
-          "title": "Inclined Push-Ups",
-          "value": "05:00",
-        },
-        {
-          "img": "assets/img/push_up.png",
-          "title": "Push-Ups",
-          "value": "05:00",
-        },
-        {"img": "assets/img/skipp.png", "title": "Skipping", "value": "05:00"},
-        {
-          "img": "assets/img/cobra_stretch.png",
-          "title": "Cobra Stretch",
-          "value": "05:00",
-        },
-        {
-          "img": "assets/img/rest.png",
-          "title": "Rest and Drink",
-          "value": "05:00",
-        },
-      ],
+      "no": "02",
+      "title": "Mix wet ingredients",
+      "details": "Whisk milk, egg, and melted butter in a separate container.",
     },
     {
-      "name": "Set 3",
-      "set": [
-        {
-          "img": "assets/img/jumping_jack.png",
-          "title": "Jumping Jack",
-          "value": "05:00",
-        },
-        {"img": "assets/img/skipp.png", "title": "Skipping", "value": "05:00"},
-        {"img": "assets/img/squats.png", "title": "Squats", "value": "05:00"},
-        {
-          "img": "assets/img/arm_raises.png",
-          "title": "Arm Raises",
-          "value": "05:00",
-        },
-        {
-          "img": "assets/img/rest.png",
-          "title": "Rest and Drink",
-          "value": "05:00",
-        },
-      ],
+      "no": "03",
+      "title": "Combine ingredients",
+      "details":
+          "Pour the wet mixture into the dry mix and stir gently until just combined.",
+    },
+    {
+      "no": "04",
+      "title": "Heat the pan",
+      "details":
+          " Warm a lightly oiled or buttered frying pan over medium heat.",
+    },
+    {
+      "no": "05",
+      "title": "Cook and flip",
+      "details":
+          "Cook until golden brown on one side, then flip and cook the other side.Pour a small amount of batter into the pan, cook until bubbles appear on top, then flip and brown the other side.",
     },
   ];
 
@@ -151,9 +110,9 @@ class _FoodInfoDetailState extends State<FoodInfoDetail> {
                   Navigator.pop(context);
                 },
                 child: Container(
-                  margin: const EdgeInsets.all(8),
-                  height: 40,
-                  width: 40,
+                  margin: const EdgeInsets.all(12),
+                  height: 60,
+                  width: 60,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     color: TColor.LightGray,
@@ -168,27 +127,27 @@ class _FoodInfoDetailState extends State<FoodInfoDetail> {
                   ),
                 ),
               ),
-              actions: [
-                InkWell(
-                  onTap: () {},
-                  child: Container(
-                    margin: const EdgeInsets.all(8),
-                    height: 40,
-                    width: 40,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: TColor.LightGray,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Image.asset(
-                      "assets/img/more_nav.png",
-                      width: 13,
-                      height: 13,
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
-              ],
+              // actions: [
+              //   InkWell(
+              //     onTap: () {},
+              //     child: Container(
+              //       margin: const EdgeInsets.all(8),
+              //       height: 40,
+              //       width: 40,
+              //       alignment: Alignment.center,
+              //       decoration: BoxDecoration(
+              //         color: TColor.LightGray,
+              //         borderRadius: BorderRadius.circular(10),
+              //       ),
+              //       child: Image.asset(
+              //         "assets/img/more_nav.png",
+              //         width: 13,
+              //         height: 13,
+              //         fit: BoxFit.contain,
+              //       ),
+              //     ),
+              //   ),
+              // ],
             ),
             SliverAppBar(
               backgroundColor: Colors.transparent,
@@ -204,8 +163,8 @@ class _FoodInfoDetailState extends State<FoodInfoDetail> {
                     Transform.scale(
                       scale: 1.25,
                       child: Container(
-                        width: media.width * 0.55,
-                        height: media.width * 0.55,
+                        width: media.width * 0.5,
+                        height: media.width * 0.5,
                         decoration: BoxDecoration(
                           color: Colors.white24,
                           borderRadius: BorderRadius.circular(
@@ -248,16 +207,22 @@ class _FoodInfoDetailState extends State<FoodInfoDetail> {
               children: [
                 SingleChildScrollView(
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(height: 10),
-                      Container(
-                        width: 50,
-                        height: 4,
-                        decoration: BoxDecoration(
-                          color: TColor.gray.withOpacity(0.3),
-                          borderRadius: BorderRadius.circular(3),
-                        ),
+                      Row(
+                        children: [
+                          Container(
+                            width: 50,
+                            height: 4,
+                            decoration: BoxDecoration(
+                              color: TColor.gray.withOpacity(0.3),
+                              borderRadius: BorderRadius.circular(3),
+                            ),
+                          ),
+                        ],
                       ),
+
                       SizedBox(height: media.width * 0.05),
 
                       Row(
@@ -299,18 +264,13 @@ class _FoodInfoDetailState extends State<FoodInfoDetail> {
 
                       SizedBox(height: media.width * 0.05),
 
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Nutrition",
-                            style: TextStyle(
-                              color: TColor.black,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ],
+                      Text(
+                        "Nutrition",
+                        style: TextStyle(
+                          color: TColor.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
 
                       SizedBox(
@@ -324,7 +284,10 @@ class _FoodInfoDetailState extends State<FoodInfoDetail> {
                             var nObj = nutritionArr[index] as Map? ?? {};
 
                             return Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 4),
+                              margin: const EdgeInsets.symmetric(
+                                vertical: 8,
+                                horizontal: 4,
+                              ),
                               padding: const EdgeInsets.symmetric(
                                 horizontal: 8,
                               ),
@@ -366,54 +329,69 @@ class _FoodInfoDetailState extends State<FoodInfoDetail> {
 
                       SizedBox(height: media.width * 0.05),
 
-                      // Row(
-                      //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //   children: [
-                      //     Text(
-                      //       "Exercises",
-                      //       style: TextStyle(
-                      //         color: TColor.black,
-                      //         fontSize: 16,
-                      //         fontWeight: FontWeight.w700,
-                      //       ),
-                      //     ),
-                      //     TextButton(
-                      //       onPressed: () {},
-                      //       child: Text(
-                      //         "${exerciseArr.length} Sets",
-                      //         style: TextStyle(
-                      //           color: TColor.gray,
-                      //           fontSize: 12,
-                      //           fontWeight: FontWeight.w500,
-                      //         ),
-                      //       ),
-                      //     ),
-                      //   ],
-                      // ),
-                      ListView.builder(
-                        padding: EdgeInsets.zero,
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: exerciseArr.length,
-                        itemBuilder: (context, index) {
-                          var sObj = exerciseArr[index] as Map? ?? {};
+                      Text(
+                        "Description",
+                        style: TextStyle(
+                          color: TColor.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
 
-                          return ExerciseSetSection(
+                      SizedBox(height: media.width * 0.1),
+                      const SizedBox(height: 4),
+                      ReadMoreText(
+                        'Pancakes are some people\'s favorite breakfast—who doesn\'t love pancakes? Especially when they\'re topped with a generous drizzle of real honey. Soft, fluffy, and delicious, pancakes are a comforting meal that can brighten anyone\'s morning. Besides being incredibly tasty, they are also versatile and easy to customize with fruits, syrup, butter, chocolate chips, nuts, or whipped cream. Whether enjoyed as a quick breakfast, a weekend brunch, or even a sweet treat later in the day, pancakes remain a timeless favorite for people of all ages.',
+                        trimMode: TrimMode.Line,
+                        trimLines: 4,
+                        colorClickableText: TColor.black,
+                        trimCollapsedText: 'Read More',
+                        trimExpandedText: '...Read Less',
+                        moreStyle: TextStyle(
+                          color: TColor.gray,
+                          fontSize: 13,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      const SizedBox(height: 15),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Step by Step",
+                            style: TextStyle(
+                              color: TColor.black,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              "${stepArr.length} Steps",
+                              style: TextStyle(
+                                color: TColor.gray,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        padding: EdgeInsets.zero,
+                        shrinkWrap: true,
+                        itemCount: stepArr.length,
+                        itemBuilder: (context, index) {
+                          var sObj = stepArr[index] as Map? ?? {};
+                          return FoodStepDetailRow(
                             sObj: sObj,
-                            onPressed: (obj) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      ExercisesStepDetails(eObj: obj),
-                                ),
-                              );
-                            },
+                            isLast: stepArr.last == sObj,
                           );
                         },
                       ),
-
-                      SizedBox(height: media.width * 0.25),
+                      SizedBox(height: media.width * 0.1),
                     ],
                   ),
                 ),
