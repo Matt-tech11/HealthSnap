@@ -7,9 +7,9 @@ import 'package:healthsnap/view/workout_tracker/exercises_step_details.dart';
 import 'package:healthsnap/view/workout_tracker/workout_schedule_view.dart';
 
 class FoodInfoDetail extends StatefulWidget {
+  final Map mObj;
   final Map dObj;
-
-  const FoodInfoDetail({super.key, required this.dObj});
+  const FoodInfoDetail({super.key, required this.dObj, required this.mObj});
 
   @override
   State<FoodInfoDetail> createState() => _FoodInfoDetailState();
@@ -50,10 +50,11 @@ class _FoodInfoDetailState extends State<FoodInfoDetail> {
     },
   ];
 
-  List youArr = [
-    {"img": "assets/img/skipping_rope.png", "title": "Skipping Rope"},
-    {"img": "assets/img/barbel.png", "title": "Barbel"},
-    {"img": "assets/img/water_bottle.png", "title": "Bottle 1 Liters"},
+  List nutritionArr = [
+    {"img": "assets/img/calories_icon.png", "title": "180kCal"},
+    {"img": "assets/img/fat_icon.png", "title": "9g Fat"},
+    {"img": "assets/img/protein_icon.png", "title": "20g Protein"},
+    {"img": "assets/img/carbo_icon.png", "title": "30g Carbs"},
   ];
 
   List exerciseArr = [
@@ -196,13 +197,37 @@ class _FoodInfoDetailState extends State<FoodInfoDetail> {
               leadingWidth: 0,
               leading: Container(),
               expandedHeight: media.width * 0.5,
-              flexibleSpace: Align(
-                alignment: Alignment.center,
-                child: Image.asset(
-                  "assets/img/skip_detail.png",
-                  width: media.width * 0.75,
-                  height: media.width * 0.8,
-                  fit: BoxFit.contain,
+              flexibleSpace: ClipRect(
+                child: Stack(
+                  alignment: Alignment.bottomCenter,
+                  children: [
+                    Transform.scale(
+                      scale: 1.25,
+                      child: Container(
+                        width: media.width * 0.55,
+                        height: media.width * 0.55,
+                        decoration: BoxDecoration(
+                          color: Colors.white24,
+                          borderRadius: BorderRadius.circular(
+                            media.width * 0.275,
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    Transform.scale(
+                      scale: 1.2,
+                      child: Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Image.asset(
+                          widget.dObj["b_image"].toString(),
+                          width: media.width * 0.50,
+                          height: media.width * 0.50,
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -243,7 +268,7 @@ class _FoodInfoDetailState extends State<FoodInfoDetail> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  widget.dObj["title"].toString(),
+                                  widget.dObj["name"].toString(),
                                   style: TextStyle(
                                     color: TColor.black,
                                     fontSize: 16,
@@ -251,7 +276,7 @@ class _FoodInfoDetailState extends State<FoodInfoDetail> {
                                   ),
                                 ),
                                 Text(
-                                  "${widget.dObj["exercises"].toString()} | ${widget.dObj["time"].toString()} 320 Calories Burn",
+                                  "by Jacques Pépin",
                                   style: TextStyle(
                                     color: TColor.gray,
                                     fontSize: 12,
@@ -274,91 +299,58 @@ class _FoodInfoDetailState extends State<FoodInfoDetail> {
 
                       SizedBox(height: media.width * 0.05),
 
-                      IconTitleNextRow(
-                        icon: "assets/img/calendar.png",
-                        title: "Schedule Workout",
-                        time: "5/27, 09:00 AM",
-                        color: TColor.primaryColor2.withOpacity(0.3),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => WorkoutScheduleView(),
-                            ),
-                          );
-                        },
-                      ),
-
-                      SizedBox(height: media.width * 0.02),
-
-                      IconTitleNextRow(
-                        icon: "assets/img/difficulity.png",
-                        title: "Difficulty",
-                        time: "Beginner",
-                        color: TColor.secondaryColor2.withOpacity(0.3),
-                        onPressed: () {},
-                      ),
-
-                      SizedBox(height: media.width * 0.05),
-
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "You'll Need",
+                            "Nutrition",
                             style: TextStyle(
                               color: TColor.black,
                               fontSize: 16,
                               fontWeight: FontWeight.w700,
                             ),
                           ),
-                          TextButton(
-                            onPressed: () {},
-                            child: Text(
-                              "${youArr.length} Items",
-                              style: TextStyle(
-                                color: TColor.gray,
-                                fontSize: 12,
-                              ),
-                            ),
-                          ),
                         ],
                       ),
 
                       SizedBox(
-                        height: media.width * 0.5,
+                        height: 60,
                         child: ListView.builder(
                           padding: EdgeInsets.zero,
                           scrollDirection: Axis.horizontal,
                           shrinkWrap: true,
-                          itemCount: youArr.length,
+                          itemCount: nutritionArr.length,
                           itemBuilder: (context, index) {
-                            var yObj = youArr[index] as Map? ?? {};
+                            var nObj = nutritionArr[index] as Map? ?? {};
 
                             return Container(
-                              margin: const EdgeInsets.all(8),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                              margin: const EdgeInsets.symmetric(horizontal: 4),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8,
+                              ),
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [
+                                    TColor.primaryColor2.withOpacity(0.4),
+                                    TColor.primaryColor1.withOpacity(0.4),
+                                  ],
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Container(
-                                    height: media.width * 0.35,
-                                    width: media.width * 0.35,
-                                    decoration: BoxDecoration(
-                                      color: TColor.LightGray,
-                                      borderRadius: BorderRadius.circular(15),
-                                    ),
-                                    alignment: Alignment.center,
-                                    child: Image.asset(
-                                      yObj["img"].toString(),
-                                      width: media.width * 0.2,
-                                      height: media.width * 0.2,
-                                      fit: BoxFit.contain,
-                                    ),
+                                  Image.asset(
+                                    nObj["img"].toString(),
+                                    width: 15,
+                                    height: 15,
+                                    fit: BoxFit.contain,
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Text(
-                                      yObj["title"].toString(),
+                                      nObj["title"].toString(),
                                       style: TextStyle(
                                         color: TColor.black,
                                         fontSize: 12,
@@ -374,33 +366,30 @@ class _FoodInfoDetailState extends State<FoodInfoDetail> {
 
                       SizedBox(height: media.width * 0.05),
 
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Exercises",
-                            style: TextStyle(
-                              color: TColor.black,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                          TextButton(
-                            onPressed: () {},
-                            child: Text(
-                              "${exerciseArr.length} Sets",
-                              style: TextStyle(
-                                color: TColor.gray,
-                                fontSize: 12,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-
-                      SizedBox(height: media.width * 0.03),
-
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      //   children: [
+                      //     Text(
+                      //       "Exercises",
+                      //       style: TextStyle(
+                      //         color: TColor.black,
+                      //         fontSize: 16,
+                      //         fontWeight: FontWeight.w700,
+                      //       ),
+                      //     ),
+                      //     TextButton(
+                      //       onPressed: () {},
+                      //       child: Text(
+                      //         "${exerciseArr.length} Sets",
+                      //         style: TextStyle(
+                      //           color: TColor.gray,
+                      //           fontSize: 12,
+                      //           fontWeight: FontWeight.w500,
+                      //         ),
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
                       ListView.builder(
                         padding: EdgeInsets.zero,
                         physics: const NeverScrollableScrollPhysics(),
@@ -435,7 +424,7 @@ class _FoodInfoDetailState extends State<FoodInfoDetail> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       RoundButton(
-                        title: "Add to Breakfast Meal",
+                        title: "Add to ${widget.mObj['name']} Meal",
                         onPressed: () {},
                       ),
                     ],

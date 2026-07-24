@@ -34,7 +34,7 @@ class _MealFoodDetailState extends State<MealFoodDetail> {
     {
       "name": "Pancakes",
       "image": "assets/img/pancake_2.png",
-      "b_image": "",
+      "b_image": "assets/img/pancake_1.png",
       "size": "Medium",
       "time": "30mins",
       "kCal": "230kCal",
@@ -42,7 +42,7 @@ class _MealFoodDetailState extends State<MealFoodDetail> {
     {
       "name": "Salmon Nigiri",
       "image": "assets/img/food_4.png",
-      "b_image": "",
+      "b_image": "assets/img/nigiri_1.png",
       "size": "Medium",
       "time": "20mins",
       "kCal": "130kCal",
@@ -275,8 +275,10 @@ class _MealFoodDetailState extends State<MealFoodDetail> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) =>
-                                        FoodInfoDetail(dObj: fObj),
+                                    builder: (context) => FoodInfoDetail(
+                                      dObj: fObj,
+                                      mObj: widget.eObj,
+                                    ),
                                   ),
                                 );
                               },
