@@ -328,7 +328,7 @@ class _FoodInfoDetailState extends State<FoodInfoDetail> {
                         ),
                       ),
 
-                      SizedBox(height: media.width * 0.1),
+                      SizedBox(height: media.width * 0.01),
                       const SizedBox(height: 4),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -346,7 +346,7 @@ class _FoodInfoDetailState extends State<FoodInfoDetail> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 15),
+                      SizedBox(height: media.width * 0.1),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15),
                         child: Row(
@@ -374,6 +374,7 @@ class _FoodInfoDetailState extends State<FoodInfoDetail> {
                           ],
                         ),
                       ),
+                      const SizedBox(height: 15),
                       SizedBox(
                         height: (media.height * 0.25) + 40,
                         child: ListView.builder(
@@ -394,7 +395,7 @@ class _FoodInfoDetailState extends State<FoodInfoDetail> {
                                 children: [
                                   Container(
                                     width: media.width * 0.23,
-                                    height: media.height * 0.23,
+                                    height: media.height * 0.12,
                                     decoration: BoxDecoration(
                                       color: TColor.LightGray,
                                       borderRadius: BorderRadius.circular(10),
@@ -479,9 +480,12 @@ class _FoodInfoDetailState extends State<FoodInfoDetail> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      RoundButton(
-                        title: "Add to ${widget.mObj['name']} Meal",
-                        onPressed: () {},
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: RoundButton(
+                          title: "Add to ${widget.mObj['name']} Meal",
+                          onPressed: () {},
+                        ),
                       ),
                     ],
                   ),
