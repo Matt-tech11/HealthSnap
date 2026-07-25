@@ -18,45 +18,26 @@ class FoodInfoDetail extends StatefulWidget {
 }
 
 class _FoodInfoDetailState extends State<FoodInfoDetail> {
-  List latestArr = [
-    {
-      "img": "assets/img/skip.png",
-      "title": "Fullbody Workout",
-      "time": "Today, 03:00pm",
-    },
-    {
-      "img": "assets/img/lift.png",
-      "title": "Upperbody Workout",
-      "time": "June 05, 02:00pm",
-    },
-  ];
-
-  List upcomingArr = [
-    {
-      "img": "assets/img/skipper.png",
-      "title": "Fullbody Workout",
-      "exercises": "11 Exercises",
-      "time": "32mins",
-    },
-    {
-      "img": "assets/img/lowerbody.png",
-      "title": "Lowerbody Workout",
-      "exercises": "12 Exercises",
-      "time": "40mins",
-    },
-    {
-      "img": "assets/img/ab_workout.png",
-      "title": "AB Workout",
-      "exercises": "14 Exercises",
-      "time": "20mins",
-    },
-  ];
-
   List nutritionArr = [
     {"img": "assets/img/calories_icon.png", "title": "180kCal"},
     {"img": "assets/img/fat_icon.png", "title": "9g Fat"},
     {"img": "assets/img/protein_1.png", "title": "20g Protein"},
     {"img": "assets/img/carbo_icon.png", "title": "30g Carbs"},
+  ];
+
+  List ingredientsArr = [
+    {
+      "img": "assets/img/flour_icon.png",
+      "title": "Wheat Flour",
+      "value": "100g",
+    },
+    {"img": "assets/img/sugar_3.png", "title": "Sugar", "value": "3 tbsp"},
+    {
+      "img": "assets/img/baking_soda.png",
+      "title": "Baking Soda",
+      "value": "2 tbsp",
+    },
+    {"img": "assets/img/eggs_icon.png", "title": "Eggs", "value": "2 items"},
   ];
 
   List stepArr = [
@@ -193,7 +174,6 @@ class _FoodInfoDetailState extends State<FoodInfoDetail> {
           ];
         },
         body: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
           decoration: BoxDecoration(
             color: TColor.white,
             borderRadius: const BorderRadius.only(
@@ -211,6 +191,7 @@ class _FoodInfoDetailState extends State<FoodInfoDetail> {
                     children: [
                       const SizedBox(height: 10),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
                             width: 50,
@@ -225,58 +206,64 @@ class _FoodInfoDetailState extends State<FoodInfoDetail> {
 
                       SizedBox(height: media.width * 0.05),
 
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  widget.dObj["name"].toString(),
-                                  style: TextStyle(
-                                    color: TColor.black,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w700,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    widget.dObj["name"].toString(),
+                                    style: TextStyle(
+                                      color: TColor.black,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700,
+                                    ),
                                   ),
-                                ),
-                                Text(
-                                  "by Jacques Pépin",
-                                  style: TextStyle(
-                                    color: TColor.gray,
-                                    fontSize: 12,
+                                  Text(
+                                    "by Jacques Pépin",
+                                    style: TextStyle(
+                                      color: TColor.gray,
+                                      fontSize: 12,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                          TextButton(
-                            onPressed: () {},
-                            child: Image.asset(
-                              "assets/img/fav.png",
-                              width: 15,
-                              height: 15,
-                              fit: BoxFit.contain,
+                            TextButton(
+                              onPressed: () {},
+                              child: Image.asset(
+                                "assets/img/fav.png",
+                                width: 15,
+                                height: 15,
+                                fit: BoxFit.contain,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
 
                       SizedBox(height: media.width * 0.05),
 
-                      Text(
-                        "Nutrition",
-                        style: TextStyle(
-                          color: TColor.black,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: Text(
+                          "Nutrition",
+                          style: TextStyle(
+                            color: TColor.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
                       ),
 
                       SizedBox(
                         height: 60,
                         child: ListView.builder(
-                          padding: EdgeInsets.zero,
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
                           scrollDirection: Axis.horizontal,
                           shrinkWrap: true,
                           itemCount: nutritionArr.length,
@@ -329,58 +316,149 @@ class _FoodInfoDetailState extends State<FoodInfoDetail> {
 
                       SizedBox(height: media.width * 0.05),
 
-                      Text(
-                        "Description",
-                        style: TextStyle(
-                          color: TColor.black,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: Text(
+                          "Description",
+                          style: TextStyle(
+                            color: TColor.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
                       ),
 
                       SizedBox(height: media.width * 0.1),
                       const SizedBox(height: 4),
-                      ReadMoreText(
-                        'Pancakes are some people\'s favorite breakfast—who doesn\'t love pancakes? Especially when they\'re topped with a generous drizzle of real honey. Soft, fluffy, and delicious, pancakes are a comforting meal that can brighten anyone\'s morning. Besides being incredibly tasty, they are also versatile and easy to customize with fruits, syrup, butter, chocolate chips, nuts, or whipped cream. Whether enjoyed as a quick breakfast, a weekend brunch, or even a sweet treat later in the day, pancakes remain a timeless favorite for people of all ages.',
-                        trimMode: TrimMode.Line,
-                        trimLines: 4,
-                        colorClickableText: TColor.black,
-                        trimCollapsedText: 'Read More',
-                        trimExpandedText: '...Read Less',
-                        moreStyle: TextStyle(
-                          color: TColor.gray,
-                          fontSize: 13,
-                          fontWeight: FontWeight.w500,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: ReadMoreText(
+                          'Pancakes are some people\'s favorite breakfast—who doesn\'t love pancakes? Especially when they\'re topped with a generous drizzle of real honey. Soft, fluffy, and delicious, pancakes are a comforting meal that can brighten anyone\'s morning. Besides being incredibly tasty, they are also versatile and easy to customize with fruits, syrup, butter, chocolate chips, nuts, or whipped cream. Whether enjoyed as a quick breakfast, a weekend brunch, or even a sweet treat later in the day, pancakes remain a timeless favorite for people of all ages.',
+                          trimMode: TrimMode.Line,
+                          trimLines: 4,
+                          colorClickableText: TColor.black,
+                          trimCollapsedText: 'Read More',
+                          trimExpandedText: '...Read Less',
+                          moreStyle: TextStyle(
+                            color: TColor.gray,
+                            fontSize: 13,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                       ),
                       const SizedBox(height: 15),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Step by Step",
-                            style: TextStyle(
-                              color: TColor.black,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                          TextButton(
-                            onPressed: () {},
-                            child: Text(
-                              "${stepArr.length} Steps",
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Ingredients That You\nWill Need",
                               style: TextStyle(
-                                color: TColor.gray,
-                                fontSize: 12,
-                                fontWeight: FontWeight.w500,
+                                color: TColor.black,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700,
                               ),
                             ),
-                          ),
-                        ],
+                            TextButton(
+                              onPressed: () {},
+                              child: Text(
+                                "${ingredientsArr.length} Items",
+                                style: TextStyle(
+                                  color: TColor.gray,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: (media.height * 0.25) + 40,
+                        child: ListView.builder(
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
+                          scrollDirection: Axis.horizontal,
+                          shrinkWrap: true,
+                          itemCount: ingredientsArr.length,
+                          itemBuilder: (context, index) {
+                            var nObj = ingredientsArr[index] as Map? ?? {};
+
+                            return Container(
+                              margin: const EdgeInsets.symmetric(horizontal: 4),
+                              width: media.width * 0.23,
+
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: media.width * 0.23,
+                                    height: media.height * 0.23,
+                                    decoration: BoxDecoration(
+                                      color: TColor.LightGray,
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    alignment: Alignment.center,
+                                    child: Image.asset(
+                                      nObj["img"].toString(),
+                                      width: 50,
+                                      height: 50,
+                                      fit: BoxFit.contain,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 4),
+                                  Text(
+                                    nObj["title"].toString(),
+                                    style: TextStyle(
+                                      color: TColor.black,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                  Text(
+                                    nObj["value"].toString(),
+                                    style: TextStyle(
+                                      color: TColor.gray,
+                                      fontSize: 10,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                      // SizedBox(height: media.width * 0.05),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Step by Step",
+                              style: TextStyle(
+                                color: TColor.black,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: Text(
+                                "${stepArr.length} Steps",
+                                style: TextStyle(
+                                  color: TColor.gray,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                       ListView.builder(
                         physics: const NeverScrollableScrollPhysics(),
-                        padding: EdgeInsets.zero,
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
                         shrinkWrap: true,
                         itemCount: stepArr.length,
                         itemBuilder: (context, index) {
@@ -391,7 +469,7 @@ class _FoodInfoDetailState extends State<FoodInfoDetail> {
                           );
                         },
                       ),
-                      SizedBox(height: media.width * 0.1),
+                      SizedBox(height: media.width * 0.25),
                     ],
                   ),
                 ),
