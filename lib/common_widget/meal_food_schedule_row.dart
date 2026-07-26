@@ -61,7 +61,7 @@ class MealFoodScheduleRow extends StatelessWidget {
                   style: TextStyle(
                     color: TColor.black,
                     fontSize: 12,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
                 Text(
@@ -74,7 +74,7 @@ class MealFoodScheduleRow extends StatelessWidget {
           IconButton(
             onPressed: () {},
             icon: Image.asset(
-              "assets/img/notification.png",
+              "assets/img/icon_arrow1.png",
               width: 25,
               height: 25,
             ),
