@@ -38,6 +38,18 @@ class Selectedview extends StatelessWidget {
                 );
               },
             ),
+            const SizedBox(height: 15),
+            RoundButton(
+              title: "Sleep Tracker",
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const MealPlannerView(),
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),

@@ -68,7 +68,7 @@ class _MealScheduleViewState extends State<MealScheduleView> {
     },
     {
       "title": "Proteins",
-      "image": "assets/img/proteins.png",
+      "image": "assets/img/protein_1.png",
       "unit_name": "g",
       "value": "140",
       "max_value": "1000",
@@ -175,6 +175,7 @@ class _MealScheduleViewState extends State<MealScheduleView> {
             dayNameFontSize: 12,
             dayNumberFontSize: 16,
             dayBGColor: Colors.grey.withOpacity(0.15),
+            dayColor: Colors.black,
             titleSpaceBetween: 15,
             backgroundColor: Colors.transparent,
             fullCalendarScroll: FullCalendarScroll.horizontal,

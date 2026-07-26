@@ -151,6 +151,7 @@ class _WorkoutScheduleViewState extends State<WorkoutScheduleView> {
             dayNameFontSize: 12,
             dayNumberFontSize: 16,
             dayBGColor: Colors.grey.withOpacity(0.15),
+            dayColor: Colors.black,
             titleSpaceBetween: 15,
             backgroundColor: Colors.transparent,
             fullCalendarScroll: FullCalendarScroll.horizontal,
