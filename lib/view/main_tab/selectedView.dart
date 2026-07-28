@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:healthsnap/common_widget/round_button.dart';
 import 'package:healthsnap/view/meal_planner/meal_planner_view.dart';
+import 'package:healthsnap/view/sleep_tracker/sleep_tracker_view.dart';
 import 'package:healthsnap/view/workout_tracker/workout_tracker_view.dart';
 
 class Selectedview extends StatelessWidget {
@@ -45,7 +46,7 @@ class Selectedview extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const MealPlannerView(),
+                    builder: (context) => const SleepTrackerView(),
                   ),
                 );
               },

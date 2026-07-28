@@ -1,11 +1,12 @@
 //import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:flutter/material.dart';
 import 'package:healthsnap/common/color_extension.dart';
+import 'package:healthsnap/common/common.dart';
 //import 'package:healthsnap/common/common.dart';
 
-class TodayMealRow extends StatelessWidget {
-  final Map mObj;
-  const TodayMealRow({super.key, required this.mObj});
+class TodaySleepScheduleRow extends StatelessWidget {
+  final Map sObj;
+  const TodaySleepScheduleRow({super.key, required this.sObj});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class TodayMealRow extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(30),
             child: Image.asset(
-              mObj["image"].toString(),
+              sObj["image"].toString(),
               width: 40,
               height: 40,
               fit: BoxFit.contain,
@@ -41,27 +42,32 @@ class TodayMealRow extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  mObj["name"].toString(),
+                  sObj["name"].toString(),
                   style: TextStyle(
                     color: TColor.black,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w500,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
                 Text(
-                  mObj["time"].toString(),
+                  "${getDayTitle(sObj["time"].toString())} | ${getDayTitle(sObj["time"].toString())}",
+                  //sObj["time"].toString(),
                   style: TextStyle(color: TColor.gray, fontSize: 10),
                 ),
               ],
             ),
           ),
-          IconButton(
-            onPressed: () {},
-            icon: Image.asset(
-              "assets/img/notification.png",
-              width: 25,
-              height: 25,
-            ),
+          Column(
+            children: [
+              IconButton(
+                onPressed: () {},
+                icon: Image.asset(
+                  "assets/img/notification.png",
+                  width: 25,
+                  height: 25,
+                ),
+              ),
+            ],
           ),
         ],
       ),
