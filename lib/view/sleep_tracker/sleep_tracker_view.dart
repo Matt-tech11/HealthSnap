@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:healthsnap/common/color_extension.dart';
 import 'package:healthsnap/common_widget/find_eat_cell.dart';
 import 'package:healthsnap/common_widget/round_button.dart';
+import 'package:healthsnap/common_widget/today_Sleep_schedule_row.dart';
 import 'package:healthsnap/common_widget/today_meal_row.dart';
 import 'package:healthsnap/view/meal_planner/food_info_detail.dart';
 import 'package:healthsnap/view/meal_planner/meal_food_detail.dart';
@@ -16,16 +17,18 @@ class SleepTrackerView extends StatefulWidget {
 }
 
 class _SleepTrackerViewState extends State<SleepTrackerView> {
-  List todayMealArr = [
+  List todaySleepArr = [
     {
-      "name": "Salmon Nigiri",
-      "image": "assets/img/nigiri_1.png",
+      "name": "BedTime",
+      "image": "assets/img/bed_icon.png",
       "time": "28/08/2026 08:00 AM",
+      "duration": "in 6hours 30minutes",
     },
     {
-      "name": "Lowfat Milk",
-      "image": "assets/img/lowfat_milk.png",
+      "name": "Alarm",
+      "image": "assets/img/alarm_clock.png",
       "time": "28/08/2026 09:30 AM",
+      "duration": "in 14hours 30minutes left",
     },
   ];
 
@@ -260,12 +263,12 @@ class _SleepTrackerViewState extends State<SleepTrackerView> {
                   SizedBox(height: media.width * 0.03),
                   ListView.builder(
                     padding: EdgeInsets.zero,
-                    itemCount: todayMealArr.length,
+                    itemCount: todaySleepArr.length,
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
-                      var mObj = todayMealArr[index] as Map? ?? {};
-                      return TodayMealRow(mObj: mObj);
+                      var sObj = todaySleepArr[index] as Map? ?? {};
+                      return TodaySleepScheduleRow(sObj: sObj);
                     },
                   ),
                 ],
