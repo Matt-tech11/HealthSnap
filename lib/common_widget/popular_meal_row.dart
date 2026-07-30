@@ -10,22 +10,25 @@ class PopularMealRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 0),
+      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 2),
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: TColor.white,
-        borderRadius: BorderRadius.circular(30),
+        borderRadius: BorderRadius.circular(25),
         boxShadow: const [
           BoxShadow(color: Colors.black12, blurRadius: 2, offset: Offset(0, 1)),
         ],
       ),
       child: Row(
         children: [
-          Image.asset(
-            mObj["image"].toString(),
-            width: 40,
-            height: 40,
-            fit: BoxFit.contain,
+          ClipRRect(
+            borderRadius: BorderRadius.circular(30),
+            child: Image.asset(
+              mObj["image"].toString(),
+              width: 40,
+              height: 40,
+              fit: BoxFit.contain,
+            ),
           ),
 
           const SizedBox(width: 15),

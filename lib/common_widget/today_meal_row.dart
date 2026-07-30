@@ -14,7 +14,7 @@ class TodayMealRow extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: TColor.white,
-        borderRadius: BorderRadius.circular(30),
+        borderRadius: BorderRadius.circular(25),
         boxShadow: const [
           BoxShadow(
             color: Colors.black12,

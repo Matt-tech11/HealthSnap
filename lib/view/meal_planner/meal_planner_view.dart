@@ -400,7 +400,7 @@ class _MealPlannerViewState extends State<MealPlannerView> {
                       },
                     ),
                   ),
-                  SizedBox(height: media.width * 0.5),
+                  SizedBox(height: media.width * 0.1),
                 ],
               ),
             ),

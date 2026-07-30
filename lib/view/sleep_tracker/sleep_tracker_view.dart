@@ -38,10 +38,12 @@ class _SleepTrackerViewState extends State<SleepTrackerView> {
     {"name": "Supper", "image": "assets/img/pie.png", "number": "300+ Foods"},
     {"name": "Desserts", "image": "assets/img/pie.png", "number": "300+ Foods"},
   ];
+
+  List<int> showingTooltipOnSpots = [4];
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
-
+    final tooltipsOnBar = lineBarsData1[0];
     return Scaffold(
       appBar: AppBar(
         backgroundColor: TColor.white,
@@ -114,6 +116,17 @@ class _SleepTrackerViewState extends State<SleepTrackerView> {
                     width: double.maxFinite,
                     child: LineChart(
                       LineChartData(
+                        showingTooltipIndicators: showingTooltipOnSpots.map((
+                          index,
+                        ) {
+                          return ShowingTooltipIndicators([
+                            LineBarSpot(
+                              tooltipsOnBar,
+                              lineBarsData1.indexOf(tooltipsOnBar),
+                              tooltipsOnBar.spots[index],
+                            ),
+                          ]);
+                        }).toList(),
                         lineTouchData: LineTouchData(
                           enabled: true,
                           handleBuiltInTouches: false,
@@ -121,7 +134,20 @@ class _SleepTrackerViewState extends State<SleepTrackerView> {
                               (
                                 FlTouchEvent event,
                                 LineTouchResponse? response,
-                              ) {},
+                              ) {
+                                if (response == null ||
+                                    response.lineBarSpots == null) {
+                                  return;
+                                }
+                                if (event is FlTapUpEvent) {
+                                  final spotIndex =
+                                      response.lineBarSpots!.first.spotIndex;
+                                  showingTooltipOnSpots.clear();
+                                  setState(() {
+                                    showingTooltipOnSpots.add(spotIndex);
+                                  });
+                                }
+                              },
                           mouseCursorResolver:
                               (
                                 FlTouchEvent event,
@@ -140,7 +166,8 @@ class _SleepTrackerViewState extends State<SleepTrackerView> {
                               ) {
                                 return spotIndexes.map((index) {
                                   return TouchedSpotIndicatorData(
-                                    FlLine(color: Colors.transparent),
+                                    FlLine(color: TColor.primaryColor1),
+
                                     FlDotData(
                                       show: true,
                                       getDotPainter:
@@ -148,9 +175,9 @@ class _SleepTrackerViewState extends State<SleepTrackerView> {
                                               FlDotCirclePainter(
                                                 radius: 3,
                                                 color: TColor.white,
-                                                strokeWidth: 3,
+                                                strokeWidth: 1,
                                                 strokeColor:
-                                                    TColor.secondaryColor1,
+                                                    TColor.primaryColor2,
                                               ),
                                     ),
                                   );
@@ -158,12 +185,12 @@ class _SleepTrackerViewState extends State<SleepTrackerView> {
                               },
                           touchTooltipData: LineTouchTooltipData(
                             getTooltipColor: (spot) => TColor.secondaryColor1,
-                            tooltipRoundedRadius: 20,
+                            tooltipRoundedRadius: 5,
                             getTooltipItems:
                                 (List<LineBarSpot> linearBarsSpot) {
                                   return linearBarsSpot.map((lineBarSpot) {
                                     return LineTooltipItem(
-                                      "${lineBarSpot.x.toInt()} mins ago",
+                                      "${lineBarSpot.y.toInt()} hours",
                                       const TextStyle(
                                         color: Colors.white,
                                         fontSize: 10,
@@ -175,8 +202,8 @@ class _SleepTrackerViewState extends State<SleepTrackerView> {
                           ),
                         ),
                         lineBarsData: lineBarsData1,
-                        minY: -0.5,
-                        maxY: 110,
+                        minY: -0.01,
+                        maxY: 10.01,
                         titlesData: FlTitlesData(
                           show: true,
                           leftTitles: AxisTitles(),
@@ -187,7 +214,7 @@ class _SleepTrackerViewState extends State<SleepTrackerView> {
                         gridData: FlGridData(
                           show: true,
                           drawHorizontalLine: true,
-                          horizontalInterval: 25,
+                          horizontalInterval: 2,
                           drawVerticalLine: false,
                           getDrawingHorizontalLine: (value) {
                             return FlLine(
@@ -239,7 +266,7 @@ class _SleepTrackerViewState extends State<SleepTrackerView> {
                         ),
                         const Spacer(),
                         Image.asset(
-                          "assets/img/sleep_graph.png",
+                          "assets/img/white_graph.png",
                           width: double.maxFinite,
                         ),
                       ],
@@ -327,31 +354,32 @@ class _SleepTrackerViewState extends State<SleepTrackerView> {
     ),
     barWidth: 2,
     isStrokeCapRound: true,
-    dotData: FlDotData(
+
+    dotData: FlDotData(show: false),
+
+    belowBarData: BarAreaData(
       show: true,
-      getDotPainter: (spot, percent, barData, index) => FlDotCirclePainter(
-        radius: 3,
-        color: TColor.white,
-        strokeWidth: 1,
-        strokeColor: TColor.primaryColor2,
+      gradient: LinearGradient(
+        colors: [TColor.primaryColor2, TColor.white],
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
       ),
     ),
-    belowBarData: BarAreaData(show: false),
     spots: const [
-      FlSpot(1, 35),
-      FlSpot(2, 70),
-      FlSpot(3, 40),
-      FlSpot(4, 80),
-      FlSpot(5, 25),
-      FlSpot(6, 70),
-      FlSpot(7, 35),
+      FlSpot(1, 3),
+      FlSpot(2, 5),
+      FlSpot(3, 4),
+      FlSpot(4, 7),
+      FlSpot(5, 4),
+      FlSpot(6, 8),
+      FlSpot(7, 5),
     ],
   );
 
   SideTitles rightTitles() => SideTitles(
     getTitlesWidget: rightTitleWidgets,
     showTitles: true,
-    interval: 20,
+    interval: 2,
     reservedSize: 40,
   );
 
@@ -360,22 +388,22 @@ class _SleepTrackerViewState extends State<SleepTrackerView> {
 
     switch (value.toInt()) {
       case 0:
-        text = '0%';
+        text = '8h';
         break;
-      case 20:
-        text = '20%';
+      case 2:
+        text = '2h';
         break;
-      case 40:
-        text = '40%';
+      case 4:
+        text = '4h';
         break;
-      case 60:
-        text = '60%';
+      case 6:
+        text = '6h';
         break;
-      case 80:
-        text = '80%';
+      case 8:
+        text = '8h';
         break;
-      case 100:
-        text = '100%';
+      case 10:
+        text = '10h';
         break;
       default:
         return Container();
