@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:healthsnap/common/color_extension.dart';
 import 'package:healthsnap/common_widget/round_button.dart';
 import 'package:healthsnap/common_widget/today_Sleep_schedule_row.dart';
-import 'package:healthsnap/view/meal_planner/meal_schedule_view.dart';
+import 'package:healthsnap/view/sleep_tracker/sleep_schedule_view.dart';
 
 class SleepTrackerView extends StatefulWidget {
   const SleepTrackerView({super.key});
@@ -305,7 +305,7 @@ class _SleepTrackerViewState extends State<SleepTrackerView> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => MealScheduleView(),
+                                  builder: (context) => SleepScheduleView(),
                                 ),
                               );
                             },
