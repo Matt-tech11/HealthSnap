@@ -4,7 +4,6 @@ import 'package:healthsnap/common/color_extension.dart';
 import 'package:healthsnap/common_widget/find_eat_cell.dart';
 import 'package:healthsnap/common_widget/round_button.dart';
 import 'package:healthsnap/common_widget/today_meal_row.dart';
-import 'package:healthsnap/view/meal_planner/food_info_detail.dart';
 import 'package:healthsnap/view/meal_planner/meal_food_detail.dart';
 import 'package:healthsnap/view/meal_planner/meal_schedule_view.dart';
 

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:healthsnap/common/color_extension.dart';
 import 'package:healthsnap/common_widget/meal_food_schedule_row.dart';
 import 'package:healthsnap/common_widget/nutrition_row.dart';
-import 'package:simple_animation_progress_bar/simple_animation_progress_bar.dart';
 
 class MealScheduleView extends StatefulWidget {
   const MealScheduleView({super.key});

@@ -1,12 +1,8 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:healthsnap/common/color_extension.dart';
-import 'package:healthsnap/common_widget/find_eat_cell.dart';
 import 'package:healthsnap/common_widget/round_button.dart';
 import 'package:healthsnap/common_widget/today_Sleep_schedule_row.dart';
-import 'package:healthsnap/common_widget/today_meal_row.dart';
-import 'package:healthsnap/view/meal_planner/food_info_detail.dart';
-import 'package:healthsnap/view/meal_planner/meal_food_detail.dart';
 import 'package:healthsnap/view/meal_planner/meal_schedule_view.dart';
 
 class SleepTrackerView extends StatefulWidget {
@@ -20,13 +16,13 @@ class _SleepTrackerViewState extends State<SleepTrackerView> {
   List todaySleepArr = [
     {
       "name": "BedTime",
-      "image": "assets/img/bed_icon.png",
+      "image": "assets/img/bed.png",
       "time": "28/08/2026 08:00 AM",
       "duration": "in 6hours 30minutes",
     },
     {
       "name": "Alarm",
-      "image": "assets/img/alarm_clock.png",
+      "image": "assets/img/alarm-clock.png",
       "time": "28/08/2026 09:30 AM",
       "duration": "in 14hours 30minutes left",
     },
@@ -205,6 +201,48 @@ class _SleepTrackerViewState extends State<SleepTrackerView> {
                           border: Border.all(color: Colors.transparent),
                         ),
                       ),
+                    ),
+                  ),
+                  SizedBox(height: media.width * 0.05),
+                  Container(
+                    width: double.maxFinite,
+                    height: media.width * 0.4,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(colors: TColor.primaryG),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 15),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                          child: Text(
+                            "Last Night Sleep",
+                            style: TextStyle(
+                              color: TColor.white,
+                              fontSize: 14,
+                              // fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                          child: Text(
+                            "6h 30m",
+                            style: TextStyle(
+                              color: TColor.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                        const Spacer(),
+                        Image.asset(
+                          "assets/img/sleep_graph.png",
+                          width: double.maxFinite,
+                        ),
+                      ],
                     ),
                   ),
                   SizedBox(height: media.width * 0.05),

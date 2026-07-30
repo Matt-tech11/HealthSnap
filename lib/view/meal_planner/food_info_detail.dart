@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:healthsnap/common/color_extension.dart';
-import 'package:healthsnap/common_widget/exercise_set_section.dart';
 import 'package:healthsnap/common_widget/food_step_detail_row.dart';
-import 'package:healthsnap/common_widget/icon_title_next_row.dart';
 import 'package:healthsnap/common_widget/round_button.dart';
 import 'package:healthsnap/view/meal_planner/meal_schedule_view.dart';
-import 'package:healthsnap/view/workout_tracker/exercises_step_details.dart';
-import 'package:healthsnap/view/workout_tracker/workout_schedule_view.dart';
 import 'package:readmore/readmore.dart';
 
 class FoodInfoDetail extends StatefulWidget {
