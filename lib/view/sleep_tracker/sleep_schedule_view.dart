@@ -71,7 +71,7 @@ class _SleepScheduleViewState extends State<SleepScheduleView> {
           ),
         ),
         title: Text(
-          "Sleep Tracker",
+          "Sleep Schedule",
           style: TextStyle(
             color: TColor.black,
             fontSize: 16,

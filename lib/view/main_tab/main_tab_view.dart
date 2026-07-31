@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:healthsnap/common/color_extension.dart';
 import 'package:healthsnap/common_widget/tab_button.dart';
-import 'package:healthsnap/view/home/blank_view.dart';
 import 'package:healthsnap/view/home/home_view.dart';
 import 'package:healthsnap/view/main_tab/selectedView.dart';
+import 'package:healthsnap/view/photo_progress/photo_progress_view.dart';
 import 'package:healthsnap/view/profile/profile_view.dart';
 //import 'package:healthsnap/view/workout_tracker/workout_tracker_view.dart';
 
@@ -90,7 +90,7 @@ class _MainTabViewState extends State<MainTabView> {
                 isActive: selectTab == 2,
                 onTap: () {
                   selectTab = 2;
-                  currentTab = const BlankView();
+                  currentTab = const PhotoProgressView();
                   if (mounted) {
                     setState(() {});
                   }
