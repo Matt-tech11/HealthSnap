@@ -10,6 +10,26 @@ class PhotoProgressView extends StatefulWidget {
 }
 
 class _PhotoProgressViewState extends State<PhotoProgressView> {
+  List photoArr = [
+    {
+      "time": "10 August",
+      "photo": [
+        "assets/img/G_1",
+        "assets/img/G_2",
+        "assets/img/G_3",
+        "assets/img/G_4",
+      ],
+    },
+    {
+      "time": "20 August",
+      "photo": [
+        "assets/img/G_5",
+        "assets/img/G_6",
+        "assets/img/G_7",
+        "assets/img/G_1",
+      ],
+    },
+  ];
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
@@ -58,6 +78,75 @@ class _PhotoProgressViewState extends State<PhotoProgressView> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 10,
+                    horizontal: 20,
+                  ),
+                  child: Container(
+                    width: double.maxFinite,
+                    padding: EdgeInsets.all(15),
+                    decoration: BoxDecoration(
+                      color: Color(0xffFFE5E5),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Row(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            color: TColor.white,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          width: 60,
+                          height: 60,
+                          alignment: Alignment.center,
+                          child: Image.asset(
+                            "assets/img/reminder.png",
+                            width: 30,
+                            height: 30,
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                "Reminder!",
+                                style: TextStyle(
+                                  color: Colors.red,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              Text(
+                                "Next Photos Fall On July 08",
+                                style: TextStyle(
+                                  color: TColor.black,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          height: 60,
+                          alignment: Alignment.topRight,
+                          child: IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.close,
+                              color: TColor.gray,
+                              size: 15,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     vertical: 10,
@@ -114,18 +203,73 @@ class _PhotoProgressViewState extends State<PhotoProgressView> {
                   ),
                 ),
                 SizedBox(height: media.width * 0.05),
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 15,
+                    horizontal: 15,
+                  ),
+                  decoration: BoxDecoration(
+                    color: TColor.primaryColor2.withValues(alpha: 0.3),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Compare my Photo",
+                        style: TextStyle(
+                          color: TColor.black,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 100,
+                        height: 30,
+                        child: RoundButton(
+                          title: "Compare",
+                          type: RoundButtonType.bgGradient,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          onPressed: () {
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //     builder: (context) =>
+                            //         const ActivityTrackerView(),
+                            //   ),
+                            // );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     vertical: 10,
                     horizontal: 20,
                   ),
-                  child: Text(
-                    "Your Schedule",
-                    style: TextStyle(
-                      color: TColor.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                    ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Gallery",
+                        style: TextStyle(
+                          color: TColor.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          "see more",
+                          style: TextStyle(color: TColor.gray, fontSize: 12),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -158,7 +302,7 @@ class _PhotoProgressViewState extends State<PhotoProgressView> {
             ],
           ),
           alignment: Alignment.center,
-          child: Icon(Icons.add, size: 20, color: TColor.white),
+          child: Icon(Icons.photo_camera, size: 20, color: TColor.white),
         ),
       ),
     );
