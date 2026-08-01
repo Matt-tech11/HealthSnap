@@ -272,6 +272,60 @@ class _PhotoProgressViewState extends State<PhotoProgressView> {
                     ],
                   ),
                 ),
+                ListView.builder(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: photoArr.length,
+                  itemBuilder: ((context, index) {
+                    var pObj = photoArr[index] as Map? ?? {};
+                    var imaArr = pObj["photo"] as List? ?? [];
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            pObj["time"].toString(),
+                            style: TextStyle(color: TColor.gray, fontSize: 12),
+                          ),
+                        ),
+                        //const SizedBox(height: 4),
+                        SizedBox(
+                          height: 100,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            padding: EdgeInsets.zero,
+                            // physics: NeverScrollableScrollPhysics(),
+                            // shrinkWrap: true,
+                            itemCount: photoArr.length,
+                            itemBuilder: ((context, indexRow) {
+                              return Container(
+                                margin: const EdgeInsets.symmetric(
+                                  horizontal: 4,
+                                ),
+                                width: 100,
+                                decoration: BoxDecoration(
+                                  color: TColor.LightGray,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Image.asset(
+                                    imaArr[indexRow] as String? ?? "",
+                                    width: 100,
+                                    height: 100,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              );
+                            }),
+                          ),
+                        ),
+                      ],
+                    );
+                  }),
+                ),
               ],
             ),
             SizedBox(height: media.width * 0.05),
