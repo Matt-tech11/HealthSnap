@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:healthsnap/common/color_extension.dart';
 import 'package:healthsnap/common_widget/round_button.dart';
+import 'package:image_picker/image_picker.dart';
 
 class PhotoProgressView extends StatefulWidget {
   const PhotoProgressView({super.key});
@@ -356,7 +357,23 @@ class _PhotoProgressViewState extends State<PhotoProgressView> {
             ],
           ),
           alignment: Alignment.center,
-          child: Icon(Icons.photo_camera, size: 20, color: TColor.white),
+          child: ElevatedButton(
+            onPressed: () async {
+              final XFile? image = await ImagePicker().pickImage(
+                source: ImageSource.camera,
+              );
+              if (image != null) {
+                setState(() {
+                  // store image.path or the XFile wherever you're tracking the progress photo
+                });
+              }
+            },
+            child: Icon(
+              Icons.photo_camera,
+              size: 20,
+              color: TColor.secondaryColor1,
+            ),
+          ),
         ),
       ),
     );
