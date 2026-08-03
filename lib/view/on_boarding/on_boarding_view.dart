@@ -50,7 +50,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
 
   @override
   Widget build(BuildContext context) {
-    var media = MediaQuery.of(context).size;
+    // var media = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: TColor.white,
       body: Stack(
