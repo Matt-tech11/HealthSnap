@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:healthsnap/common/color_extension.dart';
 import 'package:healthsnap/common_widget/round_button.dart';
+import 'package:healthsnap/view/photo_progress/comparison.dart';
 import 'package:image_picker/image_picker.dart';
 
 class PhotoProgressView extends StatefulWidget {
@@ -234,13 +235,12 @@ class _PhotoProgressViewState extends State<PhotoProgressView> {
                           fontSize: 12,
                           fontWeight: FontWeight.w400,
                           onPressed: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) =>
-                            //         const ActivityTrackerView(),
-                            //   ),
-                            // );
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const ComparisonView(),
+                              ),
+                            );
                           },
                         ),
                       ),
