@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:healthsnap/common/color_extension.dart';
 import 'package:healthsnap/common_widget/icon_title_next_row.dart';
 import 'package:healthsnap/common_widget/round_button.dart';
+import 'package:healthsnap/view/photo_progress/results_view.dart';
 
 class ComparisonView extends StatefulWidget {
   const ComparisonView({super.key});
@@ -70,7 +71,20 @@ class _ComparisonViewState extends State<ComparisonView> {
               color: TColor.LightGray,
             ),
             const Spacer(),
-            RoundButton(title: "Compare", onPressed: () {}),
+            RoundButton(
+              title: "Compare",
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ResultsView(
+                      date1: DateTime(2026, 5, 1),
+                      date2: DateTime(2026, 6, 1),
+                    ),
+                  ),
+                );
+              },
+            ),
             const SizedBox(height: 20),
           ],
         ),
