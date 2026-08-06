@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:healthsnap/common/color_extension.dart';
+import 'package:simple_animation_progress_bar/simple_animation_progress_bar.dart';
 
 class ResultsView extends StatefulWidget {
   final DateTime date1;
@@ -141,7 +142,6 @@ class _ResultsViewState extends State<ResultsView> {
                               },
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: TColor.LightGray,
                                   borderRadius: BorderRadius.circular(30),
                                 ),
                                 child: Text(
@@ -167,7 +167,6 @@ class _ResultsViewState extends State<ResultsView> {
                               },
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: TColor.LightGray,
                                   borderRadius: BorderRadius.circular(30),
                                 ),
                                 child: Text(
@@ -195,14 +194,74 @@ class _ResultsViewState extends State<ResultsView> {
               if (selectButton == 0)
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [],
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Average Progress",
+                          style: TextStyle(
+                            color: TColor.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        const Text(
+                          "Good",
+                          style: TextStyle(
+                            color: Colors.green,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        SimpleAnimationProgressBar(
+                          height: 15,
+                          width: media.width - 80,
+                          backgroundColor: Colors.grey.shade100,
+                          foregroundColor: Colors.purple,
+                          ratio: 0.96,
+                          direction: Axis.horizontal,
+                          curve: Curves.fastLinearToSlowEaseIn,
+                          duration: const Duration(seconds: 3),
+                          borderRadius: BorderRadius.circular(7.5),
+                          gradientColor: LinearGradient(
+                            colors: TColor.primaryG,
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight,
+                          ),
+                        ),
+                        Text(
+                          "66%",
+                          style: TextStyle(
+                            color: TColor.black,
+                            fontSize: 12,
+                            // fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
 
               //Statistic tab
               if (selectButton == 1)
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [],
+                  children: [
+                    Text(
+                      "Average",
+                      style: TextStyle(
+                        color: TColor.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
                 ),
             ],
           ),
