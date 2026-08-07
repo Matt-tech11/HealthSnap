@@ -120,6 +120,7 @@ class _WorkoutTrackerViewState extends State<WorkoutTrackerView> {
               elevation: 0,
               expandedHeight: media.width * 0.5,
               leadingWidth: 0,
+              leading: const SizedBox(),
               automaticallyImplyLeading: false,
               flexibleSpace: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
