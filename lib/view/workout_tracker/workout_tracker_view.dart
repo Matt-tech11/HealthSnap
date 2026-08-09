@@ -92,25 +92,25 @@ class _WorkoutTrackerViewState extends State<WorkoutTrackerView> {
                 ),
               ),
               actions: [
-                InkWell(
-                  onTap: () {},
-                  child: Container(
-                    margin: const EdgeInsets.all(8),
-                    height: 40,
-                    width: 40,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: TColor.LightGray,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Image.asset(
-                      "assets/img/more_nav.png",
-                      width: 13,
-                      height: 13,
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
+                // InkWell(
+                //   onTap: () {},
+                //   child: Container(
+                //     margin: const EdgeInsets.all(8),
+                //     height: 40,
+                //     width: 40,
+                //     alignment: Alignment.center,
+                //     decoration: BoxDecoration(
+                //       color: TColor.LightGray,
+                //       borderRadius: BorderRadius.circular(10),
+                //     ),
+                //     child: Image.asset(
+                //       "assets/img/more_nav.png",
+                //       width: 13,
+                //       height: 13,
+                //       fit: BoxFit.contain,
+                //     ),
+                //   ),
+                // ),
               ],
             ),
 
