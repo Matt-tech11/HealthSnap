@@ -55,7 +55,7 @@ class _MainTabViewState extends State<MainTabView> {
               ),
             ],
           ),
-          height: kTextTabBarHeight,
+          height: kToolbarHeight,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
