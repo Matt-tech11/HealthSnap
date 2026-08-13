@@ -185,7 +185,7 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
 
                       SizedBox(height: media.width * 0.07),
                       RoundButton(
-                        title: "Next >",
+                        title: "Next",
                         onPressed: () {
                           Navigator.push(
                             context,
