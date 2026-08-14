@@ -13,32 +13,32 @@ class _NotificationViewState extends State<NotificationView> {
   List notificationArr = [
     {
       "img": "assets/img/launch.png",
-      "title": "Your order has been shipped",
+      "title": "Hey, it’s time for lunch",
       "time": "2 hours ago",
     },
     {
       "img": "assets/img/notifications1.png",
-      "title": "Your order has been delivered",
+      "title": "Don’t miss your lowerbody workout",
       "time": "1 day ago",
     },
     {
       "img": "assets/img/lunch.png",
-      "title": "Your order has been cancelled",
+      "title": "Hey, let’s add some meals for your breakfast",
       "time": "3 days ago",
     },
     {
       "img": "assets/img/notifications2.png",
-      "title": "Your order has been cancelled",
+      "title": "Congratulations, You have finished All your workouts for today",
       "time": "3 days ago",
     },
     {
       "img": "assets/img/notifications.png",
-      "title": "Your order has been cancelled",
+      "title": "Hey, it’s time for lunch",
       "time": "3 days ago",
     },
     {
       "img": "assets/img/notifications3.png",
-      "title": "Your order has been cancelled",
+      "title": "Ups, You have missed your Lowerbody workout for today",
       "time": "3 days ago",
     },
   ];
