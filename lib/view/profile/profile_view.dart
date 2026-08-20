@@ -43,25 +43,25 @@ class _ProfileViewState extends State<ProfileView> {
           ),
         ),
         actions: [
-          InkWell(
-            onTap: () {},
-            child: Container(
-              margin: const EdgeInsets.all(8),
-              height: 40,
-              width: 40,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: TColor.LightGray,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Image.asset(
-                "assets/img/more_nav.png",
-                width: 15,
-                height: 15,
-                fit: BoxFit.contain,
-              ),
-            ),
-          ),
+          // InkWell(
+          //   onTap: () {},
+          //   child: Container(
+          //     margin: const EdgeInsets.all(8),
+          //     height: 40,
+          //     width: 40,
+          //     alignment: Alignment.center,
+          //     decoration: BoxDecoration(
+          //       color: TColor.LightGray,
+          //       borderRadius: BorderRadius.circular(10),
+          //     ),
+          //     child: Image.asset(
+          //       "assets/img/more_nav.png",
+          //       width: 15,
+          //       height: 15,
+          //       fit: BoxFit.contain,
+          //     ),
+          //   ),
+          // ),
         ],
       ),
       backgroundColor: TColor.white,
