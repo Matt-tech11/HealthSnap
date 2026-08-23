@@ -39,7 +39,12 @@ class _MainTabViewState extends State<MainTabView> {
                 BoxShadow(color: Colors.black12, blurRadius: 2),
               ],
             ),
-            child: Icon(Icons.search, color: TColor.white, size: 35),
+            child: Image.asset(
+              "assets/img/ai.png",
+              width: 30,
+              height: 30,
+              color: TColor.white,
+            ),
           ),
         ),
       ),

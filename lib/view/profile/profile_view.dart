@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:healthsnap/common_widget/round_button.dart';
 import 'package:healthsnap/common_widget/settings_row.dart';
 import 'package:healthsnap/common_widget/title_subtitle_cell.dart';
+import 'package:healthsnap/view/profile/edit_profile.dart';
 import '../../common/color_extension.dart';
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 
@@ -27,6 +28,7 @@ class _ProfileViewState extends State<ProfileView> {
   ];
   @override
   Widget build(BuildContext context) {
+    var isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
     // final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
@@ -43,6 +45,11 @@ class _ProfileViewState extends State<ProfileView> {
           ),
         ),
         actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(isDark ? Icons.light_mode : Icons.dark_mode),
+            // icon: Icon(isDark ? LineAwesomeIcons.sun : LineAwesomeIcons.moon),
+          ),
           // InkWell(
           //   onTap: () {},
           //   child: Container(
@@ -96,7 +103,7 @@ class _ProfileViewState extends State<ProfileView> {
                           ),
                         ),
                         Text(
-                          'Lose a Fat Program',
+                          'rodaanas@gmail.com',
                           style: TextStyle(color: TColor.gray, fontSize: 12),
                         ),
                       ],
@@ -110,7 +117,17 @@ class _ProfileViewState extends State<ProfileView> {
                       type: RoundButtonType.bgGradient,
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => EditProfileView(
+                              date:
+                                  DateTime.now(), // Replace with the user's actual date
+                            ),
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ],
@@ -165,6 +182,7 @@ class _ProfileViewState extends State<ProfileView> {
                     const SizedBox(height: 25),
                     ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
+                      padding: EdgeInsets.zero,
                       shrinkWrap: true,
                       itemCount: accountArr.length,
                       itemBuilder: ((context, index) {
