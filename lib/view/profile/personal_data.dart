@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:healthsnap/common/color_extension.dart';
+import 'package:healthsnap/common_widget/round_button.dart';
 // import 'package:healthsnap/common_widget/round_button.dart';
 import 'package:healthsnap/common_widget/round_textfield.dart';
+import 'package:healthsnap/view/profile/profile_view.dart';
 // import 'package:healthsnap/view/profile/profile_view.dart';
 //import 'package:healthsnap/view/workout_tracker/workout_schedule_view.dart';
 
@@ -116,25 +118,32 @@ class _PersonalDataViewState extends State<PersonalDataView> {
                             Expanded(
                               child: DropdownButtonHideUnderline(
                                 child: DropdownButton(
-                                  items: ["Male", "Female"]
-                                      .map(
-                                        (name) => DropdownMenuItem(
-                                          value: name,
-                                          child: Text(
-                                            name,
-                                            style: TextStyle(
-                                              color: TColor.gray,
-                                              fontSize: 14,
+                                  items:
+                                      [
+                                            "Africa",
+                                            "Europe",
+                                            "South America",
+                                            "North America",
+                                            "Asia",
+                                          ]
+                                          .map(
+                                            (name) => DropdownMenuItem(
+                                              value: name,
+                                              child: Text(
+                                                name,
+                                                style: TextStyle(
+                                                  color: TColor.gray,
+                                                  fontSize: 14,
+                                                ),
+                                              ),
                                             ),
-                                          ),
-                                        ),
-                                      )
-                                      .toList(),
+                                          )
+                                          .toList(),
                                   onChanged: (value) {},
                                   isExpanded: true,
 
                                   hint: Text(
-                                    "Choose Gender",
+                                    "Choose Continent",
                                     style: TextStyle(
                                       color: TColor.gray,
                                       fontSize: 12,
@@ -144,6 +153,43 @@ class _PersonalDataViewState extends State<PersonalDataView> {
                               ),
                             ),
                             const SizedBox(width: 8),
+                            Expanded(
+                              child: DropdownButtonHideUnderline(
+                                child: DropdownButton(
+                                  items:
+                                      [
+                                            "Africa",
+                                            "Europe",
+                                            "South America",
+                                            "North America",
+                                            "Asia",
+                                          ]
+                                          .map(
+                                            (name) => DropdownMenuItem(
+                                              value: name,
+                                              child: Text(
+                                                name,
+                                                style: TextStyle(
+                                                  color: TColor.gray,
+                                                  fontSize: 14,
+                                                ),
+                                              ),
+                                            ),
+                                          )
+                                          .toList(),
+                                  onChanged: (value) {},
+                                  isExpanded: true,
+
+                                  hint: Text(
+                                    "Choose Continent",
+                                    style: TextStyle(
+                                      color: TColor.gray,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -222,18 +268,18 @@ class _PersonalDataViewState extends State<PersonalDataView> {
                         ],
                       ),
 
-                      // SizedBox(height: media.width * 0.07),
-                      // RoundButton(
-                      //   title: "Save Profile",
-                      //   onPressed: () {
-                      //     // Navigator.push(
-                      //     //   context,
-                      //     //   MaterialPageRoute(
-                      //     //     builder: (context) => const ProfileView(),
-                      //     //   ),
-                      //     // );
-                      //   },
-                      // ),
+                      SizedBox(height: media.width * 0.07),
+                      RoundButton(
+                        title: "Save Profile",
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ProfileView(),
+                            ),
+                          );
+                        },
+                      ),
                     ],
                   ),
                 ),

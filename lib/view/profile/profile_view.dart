@@ -24,7 +24,7 @@ class _ProfileViewState extends State<ProfileView> {
   List otherArr = [
     {"img": "assets/img/message.png", "name": "Contact Us", "tag": "5"},
     {"img": "assets/img/privacy.png", "name": "Privacy Policy", "tag": "6"},
-    {"img": "assets/img/settings.png", "name": "Settings", "tag": "7"},
+    // {"img": "assets/img/settings.png", "name": "Settings", "tag": "7"},
   ];
   @override
   Widget build(BuildContext context) {
