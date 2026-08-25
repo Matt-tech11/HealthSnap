@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:healthsnap/common/color_extension.dart';
 import 'package:healthsnap/common_widget/round_button.dart';
+import 'package:healthsnap/view/workout_tracker/workout_detail.dart';
 
 class WhatTrain extends StatelessWidget {
   final Map wObj;
@@ -56,7 +57,14 @@ class WhatTrain extends StatelessWidget {
                       type: RoundButtonType.textGradient,
                       elevation: 0.05,
                       fontWeight: FontWeight.w400,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => WorkoutDetail(dObj: wObj),
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ],

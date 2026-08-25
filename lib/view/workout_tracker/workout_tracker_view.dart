@@ -350,14 +350,14 @@ class _WorkoutTrackerViewState extends State<WorkoutTrackerView> {
                     itemBuilder: (context, index) {
                       var wObj = upcomingArr[index] as Map? ?? {};
                       return InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => WorkoutDetail(dObj: wObj),
-                            ),
-                          );
-                        },
+                        // onTap: () {
+                        //   Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //       builder: (context) => WorkoutDetail(dObj: wObj),
+                        //     ),
+                        //   );
+                        // },
                         child: WhatTrain(wObj: wObj),
                       );
                     },
