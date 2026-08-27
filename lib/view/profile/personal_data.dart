@@ -158,11 +158,16 @@ class _PersonalDataViewState extends State<PersonalDataView> {
                                 child: DropdownButton(
                                   items:
                                       [
-                                            "Africa",
-                                            "Europe",
-                                            "South America",
-                                            "North America",
-                                            "Asia",
+                                            "Ghana",
+                                            "Nigeria",
+                                            "Kenya",
+                                            "Ethopia",
+                                            "South Africa",
+                                            "Argentina",
+                                            "Brazil",
+                                            "USA",
+                                            "Canada",
+                                            "Mexico",
                                           ]
                                           .map(
                                             (name) => DropdownMenuItem(
@@ -181,7 +186,7 @@ class _PersonalDataViewState extends State<PersonalDataView> {
                                   isExpanded: true,
 
                                   hint: Text(
-                                    "Choose Continent",
+                                    "Select Country",
                                     style: TextStyle(
                                       color: TColor.gray,
                                       fontSize: 12,
