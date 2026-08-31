@@ -4,7 +4,7 @@ import 'package:healthsnap/common/color_extension.dart';
 import 'package:healthsnap/common_widget/round_button.dart';
 import 'package:healthsnap/common_widget/upcoming_workout_row.dart';
 import 'package:healthsnap/common_widget/what_train.dart';
-import 'package:healthsnap/view/workout_tracker/workout_detail.dart';
+// import 'package:healthsnap/view/workout_tracker/workout_detail.dart';
 
 class WorkoutTrackerView extends StatefulWidget {
   const WorkoutTrackerView({super.key});

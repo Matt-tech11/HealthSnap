@@ -134,7 +134,7 @@ class _HomeViewState extends State<HomeView> {
                           style: TextStyle(color: TColor.gray, fontSize: 12),
                         ),
                         Text(
-                          "Rodaline Anas",
+                          "Hannah Lisa",
                           style: TextStyle(
                             color: TColor.black,
                             fontSize: 20,

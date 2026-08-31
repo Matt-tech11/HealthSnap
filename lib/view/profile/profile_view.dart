@@ -95,7 +95,7 @@ class _ProfileViewState extends State<ProfileView> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Rodaline Anas',
+                          'Hannah Lisa',
                           style: TextStyle(
                             color: TColor.black,
                             fontSize: 14,
@@ -103,7 +103,7 @@ class _ProfileViewState extends State<ProfileView> {
                           ),
                         ),
                         Text(
-                          'rodaanas@gmail.com',
+                          'lisahannah76@gmail.com',
                           style: TextStyle(color: TColor.gray, fontSize: 12),
                         ),
                       ],

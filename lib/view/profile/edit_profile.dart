@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:healthsnap/common/color_extension.dart';
 import 'package:healthsnap/common_widget/round_button.dart';
 import 'package:healthsnap/common_widget/round_textfield.dart';
-// import 'package:healthsnap/view/profile/profile_view.dart';
-//import 'package:healthsnap/view/workout_tracker/workout_schedule_view.dart';
 
 class EditProfileView extends StatefulWidget {
   final DateTime date;
@@ -19,7 +17,6 @@ class _EditProfileViewState extends State<EditProfileView> {
   TextEditingController txtWeight = TextEditingController();
   TextEditingController txtHeight = TextEditingController();
 
-  // bool positive = false;
   @override
   Widget build(BuildContext context) {
     // var media = MediaQuery.of(context).size;
