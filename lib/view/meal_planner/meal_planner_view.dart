@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:healthsnap/common/color_extension.dart';
 import 'package:healthsnap/common_widget/find_eat_cell.dart';
 import 'package:healthsnap/common_widget/round_button.dart';
@@ -7,14 +8,14 @@ import 'package:healthsnap/common_widget/today_meal_row.dart';
 import 'package:healthsnap/view/meal_planner/meal_food_detail.dart';
 import 'package:healthsnap/view/meal_planner/meal_schedule_view.dart';
 
-class MealPlannerView extends StatefulWidget {
+class MealPlannerView extends ConsumerStatefulWidget {
   const MealPlannerView({super.key});
 
   @override
-  State<MealPlannerView> createState() => _MealPlannerViewState();
+  ConsumerState<MealPlannerView> createState() => _MealPlannerViewState();
 }
 
-class _MealPlannerViewState extends State<MealPlannerView> {
+class _MealPlannerViewState extends ConsumerState<MealPlannerView> {
   List todayMealArr = [
     {
       "name": "Salmon Nigiri",

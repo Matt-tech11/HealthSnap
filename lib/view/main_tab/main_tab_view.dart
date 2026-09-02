@@ -1,25 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:healthsnap/common/color_extension.dart';
 import 'package:healthsnap/common_widget/tab_button.dart';
+import 'package:healthsnap/providers/navigation_provider.dart';
 import 'package:healthsnap/view/home/home_view.dart';
 import 'package:healthsnap/view/main_tab/selectedView.dart';
 import 'package:healthsnap/view/photo_progress/photo_progress_view.dart';
 import 'package:healthsnap/view/profile/profile_view.dart';
-//import 'package:healthsnap/view/workout_tracker/workout_tracker_view.dart';
 
-class MainTabView extends StatefulWidget {
+class MainTabView extends ConsumerStatefulWidget {
   const MainTabView({super.key});
 
   @override
-  State<MainTabView> createState() => _MainTabViewState();
+  ConsumerState<MainTabView> createState() => _MainTabViewState();
 }
 
-class _MainTabViewState extends State<MainTabView> {
-  int selectTab = 0;
+class _MainTabViewState extends ConsumerState<MainTabView> {
   final pageStorageBucket = PageStorageBucket();
-  Widget currentTab = const HomeView();
+
+  Widget _getTabWidget(int tabIndex) {
+    switch (tabIndex) {
+      case 0:
+        return const HomeView();
+      case 1:
+        return const Selectedview();
+      case 2:
+        return const PhotoProgressView();
+      case 3:
+        return const ProfileView();
+      default:
+        return const HomeView();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final selectTab = ref.watch(navigationProvider);
+    final currentTab = _getTabWidget(selectTab);
+
     return Scaffold(
       backgroundColor: TColor.white,
       body: PageStorage(bucket: pageStorageBucket, child: currentTab),
@@ -69,11 +87,7 @@ class _MainTabViewState extends State<MainTabView> {
                 selectIcon: "assets/img/home_1.png",
                 isActive: selectTab == 0,
                 onTap: () {
-                  selectTab = 0;
-                  currentTab = const HomeView();
-                  if (mounted) {
-                    setState(() {});
-                  }
+                  ref.read(navigationProvider.notifier).setTab(0);
                 },
               ),
               TabButton(
@@ -81,11 +95,7 @@ class _MainTabViewState extends State<MainTabView> {
                 selectIcon: "assets/img/activity_1.png",
                 isActive: selectTab == 1,
                 onTap: () {
-                  selectTab = 1;
-                  currentTab = const Selectedview();
-                  if (mounted) {
-                    setState(() {});
-                  }
+                  ref.read(navigationProvider.notifier).setTab(1);
                 },
               ),
               const SizedBox(width: 40),
@@ -94,11 +104,7 @@ class _MainTabViewState extends State<MainTabView> {
                 selectIcon: "assets/img/camera_1.png",
                 isActive: selectTab == 2,
                 onTap: () {
-                  selectTab = 2;
-                  currentTab = const PhotoProgressView();
-                  if (mounted) {
-                    setState(() {});
-                  }
+                  ref.read(navigationProvider.notifier).setTab(2);
                 },
               ),
               TabButton(
@@ -106,11 +112,7 @@ class _MainTabViewState extends State<MainTabView> {
                 selectIcon: "assets/img/profile_1.png",
                 isActive: selectTab == 3,
                 onTap: () {
-                  selectTab = 3;
-                  currentTab = const ProfileView();
-                  if (mounted) {
-                    setState(() {});
-                  }
+                  ref.read(navigationProvider.notifier).setTab(3);
                 },
               ),
             ],

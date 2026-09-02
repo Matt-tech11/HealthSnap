@@ -1,18 +1,19 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:healthsnap/common/color_extension.dart';
 import 'package:healthsnap/common_widget/round_button.dart';
 import 'package:healthsnap/common_widget/today_Sleep_schedule_row.dart';
 import 'package:healthsnap/view/sleep_tracker/sleep_schedule_view.dart';
 
-class SleepTrackerView extends StatefulWidget {
+class SleepTrackerView extends ConsumerStatefulWidget {
   const SleepTrackerView({super.key});
 
   @override
-  State<SleepTrackerView> createState() => _SleepTrackerViewState();
+  ConsumerState<SleepTrackerView> createState() => _SleepTrackerViewState();
 }
 
-class _SleepTrackerViewState extends State<SleepTrackerView> {
+class _SleepTrackerViewState extends ConsumerState<SleepTrackerView> {
   List todaySleepArr = [
     {
       "name": "BedTime",

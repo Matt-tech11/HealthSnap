@@ -1,23 +1,27 @@
 import 'package:dotted_dashed_line/dotted_dashed_line.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:healthsnap/common/color_extension.dart';
 import 'package:healthsnap/common_widget/round_button.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:healthsnap/common_widget/workout_row.dart';
+import 'package:healthsnap/providers/meal_provider.dart';
+import 'package:healthsnap/providers/user_provider.dart';
+import 'package:healthsnap/providers/workout_provider.dart';
 import 'package:healthsnap/view/home/activity_tracker_view.dart';
 import 'package:healthsnap/view/home/finished_workout_view.dart';
 import 'package:healthsnap/view/home/notification_view.dart';
 import 'package:simple_animation_progress_bar/simple_animation_progress_bar.dart';
 import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
 
-class HomeView extends StatefulWidget {
+class HomeView extends ConsumerStatefulWidget {
   const HomeView({super.key});
 
   @override
-  State<HomeView> createState() => _HomeViewState();
+  ConsumerState<HomeView> createState() => _HomeViewState();
 }
 
-class _HomeViewState extends State<HomeView> {
+class _HomeViewState extends ConsumerState<HomeView> {
   List lastWorkoutArr = [
     {
       "name": "Full Body Workout",
@@ -86,6 +90,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
+    final userState = ref.watch(userProvider);
 
     // FIX #1: Changed curly braces {} to square brackets [] to make this a List instead of a Set
     final lineBarsData = [
@@ -134,7 +139,7 @@ class _HomeViewState extends State<HomeView> {
                           style: TextStyle(color: TColor.gray, fontSize: 12),
                         ),
                         Text(
-                          "Hannah Lisa",
+                          userState.name,
                           style: TextStyle(
                             color: TColor.black,
                             fontSize: 20,
@@ -214,13 +219,13 @@ class _HomeViewState extends State<HomeView> {
                                   SizedBox(
                                     width: 120,
                                     height: 35,
-                                    child: RoundButton(
-                                      title: "View More",
-                                      type: RoundButtonType.bgSGradient,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                      onPressed: () {},
-                                    ),
+                                    // child: RoundButton(
+                                    //   title: "View More",
+                                    //   type: RoundButtonType.bgSGradient,
+                                    //   fontSize: 12,
+                                    //   fontWeight: FontWeight.w400,
+                                    //   onPressed: () {},
+                                    // ),
                                   ),
                                 ],
                               ),

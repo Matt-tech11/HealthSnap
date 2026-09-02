@@ -1,19 +1,19 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:healthsnap/common/color_extension.dart';
 import 'package:healthsnap/common_widget/round_button.dart';
 import 'package:healthsnap/common_widget/upcoming_workout_row.dart';
 import 'package:healthsnap/common_widget/what_train.dart';
-// import 'package:healthsnap/view/workout_tracker/workout_detail.dart';
 
-class WorkoutTrackerView extends StatefulWidget {
+class WorkoutTrackerView extends ConsumerStatefulWidget {
   const WorkoutTrackerView({super.key});
 
   @override
-  State<WorkoutTrackerView> createState() => _WorkoutTrackerViewState();
+  ConsumerState<WorkoutTrackerView> createState() => _WorkoutTrackerViewState();
 }
 
-class _WorkoutTrackerViewState extends State<WorkoutTrackerView> {
+class _WorkoutTrackerViewState extends ConsumerState<WorkoutTrackerView> {
   List latestArr = [
     {
       "img": "assets/img/skip.png",

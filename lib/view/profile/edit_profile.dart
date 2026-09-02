@@ -1,25 +1,49 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:healthsnap/common/color_extension.dart';
 import 'package:healthsnap/common_widget/round_button.dart';
 import 'package:healthsnap/common_widget/round_textfield.dart';
+import 'package:healthsnap/providers/user_provider.dart';
 
-class EditProfileView extends StatefulWidget {
+class EditProfileView extends ConsumerStatefulWidget {
   final DateTime date;
   const EditProfileView({super.key, required this.date});
 
   @override
-  State<EditProfileView> createState() => _EditProfileViewState();
+  ConsumerState<EditProfileView> createState() => _EditProfileViewState();
 }
 
-class _EditProfileViewState extends State<EditProfileView> {
-  TextEditingController txtDate = TextEditingController();
-  TextEditingController txtWeight = TextEditingController();
-  TextEditingController txtHeight = TextEditingController();
+class _EditProfileViewState extends ConsumerState<EditProfileView> {
+  late TextEditingController txtFirstName;
+  late TextEditingController txtLastName;
+  late TextEditingController txtEmail;
+  late TextEditingController txtWeight;
+  late TextEditingController txtHeight;
+
+  @override
+  void initState() {
+    super.initState();
+    final user = ref.read(userProvider);
+    final nameParts = user.name.split(" ");
+    txtFirstName = TextEditingController(text: nameParts.isNotEmpty ? nameParts.first : "");
+    txtLastName = TextEditingController(text: nameParts.length > 1 ? nameParts.sublist(1).join(" ") : "");
+    txtEmail = TextEditingController(text: user.email);
+    txtWeight = TextEditingController(text: user.weight.replaceAll(RegExp(r'[^0-9.]'), ''));
+    txtHeight = TextEditingController(text: user.height.replaceAll(RegExp(r'[^0-9.]'), ''));
+  }
+
+  @override
+  void dispose() {
+    txtFirstName.dispose();
+    txtLastName.dispose();
+    txtEmail.dispose();
+    txtWeight.dispose();
+    txtHeight.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    // var media = MediaQuery.of(context).size;
     var media = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
@@ -102,98 +126,31 @@ class _EditProfileViewState extends State<EditProfileView> {
                 ),
                 SizedBox(height: media.width * 0.05),
                 RoundTextField(
+                  controller: txtFirstName,
                   hintText: "First Name",
                   icon: "assets/img/profile.png",
                   margin: const EdgeInsets.symmetric(vertical: 8),
                 ),
-
                 SizedBox(height: media.width * 0.02),
                 RoundTextField(
+                  controller: txtLastName,
                   hintText: "Last Name",
                   icon: "assets/img/profile.png",
                   margin: const EdgeInsets.symmetric(vertical: 8),
                 ),
-
                 SizedBox(height: media.width * 0.02),
                 RoundTextField(
+                  controller: txtEmail,
                   hintText: "Email",
                   icon: "assets/img/email.png",
                   keyboardType: TextInputType.emailAddress,
                   margin: const EdgeInsets.symmetric(vertical: 8),
                 ),
-
                 SizedBox(height: media.width * 0.04),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15.0),
                   child: Column(
                     children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          color: TColor.LightGray,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        //child: Row(
-                        // children: [
-                        //   Container(
-                        //     alignment: Alignment.center,
-                        //     width: 50,
-                        //     height: 50,
-                        //     padding: const EdgeInsets.symmetric(
-                        //       horizontal: 15,
-                        //     ),
-                        //     child: Image.asset(
-                        //       "assets/img/gender.png",
-                        //       width: 20,
-                        //       height: 20,
-                        //       fit: BoxFit.contain,
-                        //       color: TColor.gray,
-                        //     ),
-                        //   ),
-
-                        //   Expanded(
-                        //     child: DropdownButtonHideUnderline(
-                        //       child: DropdownButton(
-                        //         items: ["Male", "Female"]
-                        //             .map(
-                        //               (name) => DropdownMenuItem(
-                        //                 value: name,
-                        //                 child: Text(
-                        //                   name,
-                        //                   style: TextStyle(
-                        //                     color: TColor.gray,
-                        //                     fontSize: 14,
-                        //                   ),
-                        //                 ),
-                        //               ),
-                        //             )
-                        //             .toList(),
-                        //         onChanged: (value) {},
-                        //         isExpanded: true,
-
-                        //         hint: Text(
-                        //           "Choose Gender",
-                        //           style: TextStyle(
-                        //             color: TColor.gray,
-                        //             fontSize: 12,
-                        //           ),
-                        //         ),
-                        //       ),
-                        //     ),
-                        //   ),
-                        //   const SizedBox(width: 8),
-                        // ],
-                        //),
-                      ),
-
-                      // SizedBox(height: media.width * 0.04),
-                      // RoundTextField(
-                      //   controller: txtDate,
-                      //   hintText: "Date of Birth",
-                      //   icon: "assets/img/calendar.png",
-                      //   margin: const EdgeInsets.only(bottom: 0),
-                      // ),
-
-                      // SizedBox(height: media.width * 0.04),
                       Row(
                         children: [
                           Expanded(
@@ -204,7 +161,6 @@ class _EditProfileViewState extends State<EditProfileView> {
                               margin: const EdgeInsets.only(bottom: 0),
                             ),
                           ),
-
                           const SizedBox(width: 8),
                           Container(
                             width: 50,
@@ -237,7 +193,6 @@ class _EditProfileViewState extends State<EditProfileView> {
                               margin: const EdgeInsets.only(bottom: 0),
                             ),
                           ),
-
                           const SizedBox(width: 8),
                           Container(
                             width: 50,
@@ -263,12 +218,14 @@ class _EditProfileViewState extends State<EditProfileView> {
                       RoundButton(
                         title: "Save Profile",
                         onPressed: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => const ProfileView(),
-                          //   ),
-                          // );
+                          final fullName = "${txtFirstName.text.trim()} ${txtLastName.text.trim()}".trim();
+                          ref.read(userProvider.notifier).updateProfile(
+                                name: fullName.isNotEmpty ? fullName : null,
+                                email: txtEmail.text.trim().isNotEmpty ? txtEmail.text.trim() : null,
+                                weight: txtWeight.text.trim().isNotEmpty ? "${txtWeight.text.trim()}kg" : null,
+                                height: txtHeight.text.trim().isNotEmpty ? "${txtHeight.text.trim()}cm" : null,
+                              );
+                          Navigator.pop(context);
                         },
                       ),
                     ],

@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:healthsnap/common_widget/round_button.dart';
 import 'package:healthsnap/common_widget/settings_row.dart';
 import 'package:healthsnap/common_widget/title_subtitle_cell.dart';
+import 'package:healthsnap/providers/user_provider.dart';
 import 'package:healthsnap/view/profile/edit_profile.dart';
 import '../../common/color_extension.dart';
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 
-class ProfileView extends StatefulWidget {
+class ProfileView extends ConsumerStatefulWidget {
   const ProfileView({super.key});
 
   @override
-  State<ProfileView> createState() => _ProfileViewState();
+  ConsumerState<ProfileView> createState() => _ProfileViewState();
 }
 
-class _ProfileViewState extends State<ProfileView> {
-  bool positive = false;
+class _ProfileViewState extends ConsumerState<ProfileView> {
   List accountArr = [
     {"img": "assets/img/profile2.png", "name": "Personal Data", "tag": "1"},
     {"img": "assets/img/document.png", "name": "Achievements", "tag": "2"},
@@ -24,12 +25,13 @@ class _ProfileViewState extends State<ProfileView> {
   List otherArr = [
     {"img": "assets/img/message.png", "name": "Contact Us", "tag": "5"},
     {"img": "assets/img/privacy.png", "name": "Privacy Policy", "tag": "6"},
-    // {"img": "assets/img/settings.png", "name": "Settings", "tag": "7"},
   ];
+
   @override
   Widget build(BuildContext context) {
     var isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
-    // final theme = Theme.of(context);
+    final userState = ref.watch(userProvider);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: TColor.white,
@@ -46,29 +48,11 @@ class _ProfileViewState extends State<ProfileView> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: Icon(isDark ? Icons.light_mode : Icons.dark_mode),
-            // icon: Icon(isDark ? LineAwesomeIcons.sun : LineAwesomeIcons.moon),
+            onPressed: () {
+              ref.read(userProvider.notifier).toggleDarkMode(!userState.isDarkMode);
+            },
+            icon: Icon(isDark || userState.isDarkMode ? Icons.light_mode : Icons.dark_mode),
           ),
-          // InkWell(
-          //   onTap: () {},
-          //   child: Container(
-          //     margin: const EdgeInsets.all(8),
-          //     height: 40,
-          //     width: 40,
-          //     alignment: Alignment.center,
-          //     decoration: BoxDecoration(
-          //       color: TColor.LightGray,
-          //       borderRadius: BorderRadius.circular(10),
-          //     ),
-          //     child: Image.asset(
-          //       "assets/img/more_nav.png",
-          //       width: 15,
-          //       height: 15,
-          //       fit: BoxFit.contain,
-          //     ),
-          //   ),
-          // ),
         ],
       ),
       backgroundColor: TColor.white,
@@ -95,7 +79,7 @@ class _ProfileViewState extends State<ProfileView> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Hannah Lisa',
+                          userState.name,
                           style: TextStyle(
                             color: TColor.black,
                             fontSize: 14,
@@ -103,7 +87,7 @@ class _ProfileViewState extends State<ProfileView> {
                           ),
                         ),
                         Text(
-                          'lisahannah76@gmail.com',
+                          userState.email,
                           style: TextStyle(color: TColor.gray, fontSize: 12),
                         ),
                       ],
@@ -122,8 +106,7 @@ class _ProfileViewState extends State<ProfileView> {
                           context,
                           MaterialPageRoute(
                             builder: (context) => EditProfileView(
-                              date:
-                                  DateTime.now(), // Replace with the user's actual date
+                              date: DateTime.now(),
                             ),
                           ),
                         );
@@ -133,21 +116,27 @@ class _ProfileViewState extends State<ProfileView> {
                 ],
               ),
               const SizedBox(height: 15),
-              const Row(
+              Row(
                 children: [
                   Expanded(
                     child: TitleSubtitleCell(
                       title: "Height",
-                      subtitle: "180cm",
+                      subtitle: userState.height,
                     ),
                   ),
-                  SizedBox(width: 15),
+                  const SizedBox(width: 15),
                   Expanded(
-                    child: TitleSubtitleCell(title: "Weight", subtitle: "65kg"),
+                    child: TitleSubtitleCell(
+                      title: "Weight",
+                      subtitle: userState.weight,
+                    ),
                   ),
-                  SizedBox(width: 25),
+                  const SizedBox(width: 25),
                   Expanded(
-                    child: TitleSubtitleCell(title: "Age", subtitle: "22yo"),
+                    child: TitleSubtitleCell(
+                      title: "Age",
+                      subtitle: userState.age,
+                    ),
                   ),
                 ],
               ),
@@ -248,25 +237,27 @@ class _ProfileViewState extends State<ProfileView> {
                             ),
                           ),
                           CustomAnimatedToggleSwitch<bool>(
-                            current: positive,
-                            values: [false, true],
+                            current: userState.notificationsEnabled,
+                            values: const [false, true],
                             spacing: 0.0,
-                            indicatorSize: Size.square(30.0),
+                            indicatorSize: const Size.square(30.0),
                             animationDuration: const Duration(
                               milliseconds: 200,
                             ),
                             animationCurve: Curves.linear,
                             onChanged: (b) {
-                              setState(() => positive = b);
+                              ref.read(userProvider.notifier).toggleNotifications(b);
                             },
                             iconBuilder: (context, local, global) {
                               return const SizedBox();
                             },
-                            cursors: ToggleCursors(
+                            cursors: const ToggleCursors(
                               defaultCursor: SystemMouseCursors.click,
                             ),
                             onTap: (info) {
-                              setState(() => positive = !positive);
+                              ref
+                                  .read(userProvider.notifier)
+                                  .toggleNotifications(!userState.notificationsEnabled);
                             },
                             iconsTappable: false,
                             wrapperBuilder: (context, global, child) {
@@ -282,7 +273,6 @@ class _ProfileViewState extends State<ProfileView> {
                                         gradient: LinearGradient(
                                           colors: TColor.secondaryG,
                                         ),
-
                                         borderRadius: const BorderRadius.all(
                                           Radius.circular(50.0),
                                         ),
@@ -296,16 +286,15 @@ class _ProfileViewState extends State<ProfileView> {
                             foregroundIndicatorBuilder: (context, global) {
                               return SizedBox.fromSize(
                                 size: const Size(10, 10),
-                                child: DecoratedBox(
+                                child: const DecoratedBox(
                                   decoration: BoxDecoration(
                                     color: Colors.white,
-                                    borderRadius: const BorderRadius.all(
+                                    borderRadius: BorderRadius.all(
                                       Radius.circular(50.0),
                                     ),
-                                    boxShadow: const [
+                                    boxShadow: [
                                       BoxShadow(
                                         color: Colors.black38,
-
                                         blurRadius: 1.1,
                                         offset: Offset(0, 0.8),
                                       ),
