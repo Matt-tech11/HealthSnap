@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:healthsnap/common/color_extension.dart';
 import 'package:healthsnap/common_widget/round_button.dart';
+import 'package:healthsnap/providers/user_provider.dart';
 import 'package:healthsnap/view/main_tab/main_tab_view.dart';
 
-class WelcomeView extends StatefulWidget {
+class WelcomeView extends ConsumerWidget {
   const WelcomeView({super.key});
 
   @override
-  State<WelcomeView> createState() => _WelcomeViewState();
-}
-
-class _WelcomeViewState extends State<WelcomeView> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     var media = MediaQuery.of(context).size;
+    final userState = ref.watch(userProvider);
+    final displayName = userState.name.trim().isNotEmpty ? userState.name : "Friend";
+
     return Scaffold(
       backgroundColor: TColor.white,
       body: SafeArea(
@@ -32,7 +32,7 @@ class _WelcomeViewState extends State<WelcomeView> {
               ),
               SizedBox(height: media.width * 0.1),
               Text(
-                "Welcome, Friend",
+                "Welcome, $displayName",
                 style: TextStyle(
                   color: TColor.black,
                   fontSize: 20,

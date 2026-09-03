@@ -1,19 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:healthsnap/common/color_extension.dart';
 import 'package:healthsnap/common_widget/round_button.dart';
 import 'package:healthsnap/common_widget/round_textfield.dart';
+import 'package:healthsnap/providers/user_provider.dart';
 import 'package:healthsnap/view/login/complete_profile_view.dart';
 import 'package:healthsnap/view/login/login_view.dart';
 
-class SignupView extends StatefulWidget {
+class SignupView extends ConsumerStatefulWidget {
   const SignupView({super.key});
 
   @override
-  State<SignupView> createState() => _SignUpViewState();
+  ConsumerState<SignupView> createState() => _SignUpViewState();
 }
 
-class _SignUpViewState extends State<SignupView> {
+class _SignUpViewState extends ConsumerState<SignupView> {
   bool isCheck = false;
+  final TextEditingController txtFirstName = TextEditingController();
+  final TextEditingController txtLastName = TextEditingController();
+  final TextEditingController txtEmail = TextEditingController();
+  final TextEditingController txtPassword = TextEditingController();
+
+  @override
+  void dispose() {
+    txtFirstName.dispose();
+    txtLastName.dispose();
+    txtEmail.dispose();
+    txtPassword.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
@@ -41,6 +57,7 @@ class _SignUpViewState extends State<SignupView> {
                 SizedBox(height: media.width * 0.05),
 
                 RoundTextField(
+                  controller: txtFirstName,
                   hintText: "First Name",
                   icon: "assets/img/profile.png",
                   margin: const EdgeInsets.symmetric(vertical: 8),
@@ -48,6 +65,7 @@ class _SignUpViewState extends State<SignupView> {
 
                 SizedBox(height: media.width * 0.02),
                 RoundTextField(
+                  controller: txtLastName,
                   hintText: "Last Name",
                   icon: "assets/img/profile.png",
                   margin: const EdgeInsets.symmetric(vertical: 8),
@@ -55,6 +73,7 @@ class _SignUpViewState extends State<SignupView> {
 
                 SizedBox(height: media.width * 0.02),
                 RoundTextField(
+                  controller: txtEmail,
                   hintText: "Email",
                   icon: "assets/img/email.png",
                   keyboardType: TextInputType.emailAddress,
@@ -63,6 +82,7 @@ class _SignUpViewState extends State<SignupView> {
 
                 SizedBox(height: media.width * 0.04),
                 RoundTextField(
+                  controller: txtPassword,
                   hintText: "Password",
                   icon: "assets/img/password.png",
                   obscureText: true,
@@ -96,7 +116,7 @@ class _SignUpViewState extends State<SignupView> {
                       },
                       icon: Icon(
                         isCheck
-                            ? Icons.check_box_outline_blank_outlined
+                            ? Icons.check_box_outlined
                             : Icons.check_box_outline_blank_outlined,
                         color: TColor.gray,
                         size: 20,
@@ -116,6 +136,11 @@ class _SignUpViewState extends State<SignupView> {
                 RoundButton(
                   title: "Register",
                   onPressed: () {
+                    final fullName = "${txtFirstName.text.trim()} ${txtLastName.text.trim()}".trim();
+                    ref.read(userProvider.notifier).updateProfile(
+                          name: fullName.isNotEmpty ? fullName : null,
+                          email: txtEmail.text.trim().isNotEmpty ? txtEmail.text.trim() : null,
+                        );
                     Navigator.push(
                       context,
                       MaterialPageRoute(

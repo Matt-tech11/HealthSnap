@@ -1,19 +1,23 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:healthsnap/common/color_extension.dart';
 import 'package:healthsnap/common_widget/round_button.dart';
+import 'package:healthsnap/providers/user_provider.dart';
 import 'package:healthsnap/view/login/welcome_view.dart';
 
-class WhatYourGoalView extends StatefulWidget {
+class WhatYourGoalView extends ConsumerStatefulWidget {
   const WhatYourGoalView({super.key});
 
   @override
-  State<WhatYourGoalView> createState() => _WhatYourGoalViewState();
+  ConsumerState<WhatYourGoalView> createState() => _WhatYourGoalViewState();
 }
 
-class _WhatYourGoalViewState extends State<WhatYourGoalView> {
+class _WhatYourGoalViewState extends ConsumerState<WhatYourGoalView> {
   CarouselSliderController buttonCarouselController =
       CarouselSliderController();
+  int selectIndex = 0;
+
   List goalArr = [
     {
       "image": "assets/img/vector.png",
@@ -34,6 +38,7 @@ class _WhatYourGoalViewState extends State<WhatYourGoalView> {
           "I have over 20 lbs to lose. I want to\ndrop all this and gain muscle\nmass",
     },
   ];
+
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
@@ -104,6 +109,11 @@ class _WhatYourGoalViewState extends State<WhatYourGoalView> {
                   viewportFraction: 0.7,
                   aspectRatio: 0.74,
                   initialPage: 0,
+                  onPageChanged: (index, reason) {
+                    setState(() {
+                      selectIndex = index;
+                    });
+                  },
                 ),
               ),
             ),
@@ -133,6 +143,10 @@ class _WhatYourGoalViewState extends State<WhatYourGoalView> {
                   RoundButton(
                     title: "Confirm",
                     onPressed: () {
+                      final selectedGoal = goalArr[selectIndex]["title"].toString();
+                      ref.read(userProvider.notifier).updateProfile(
+                            program: selectedGoal,
+                          );
                       Navigator.push(
                         context,
                         MaterialPageRoute(
